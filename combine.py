@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu June 10th 2018
+
+@author: Benson.Chen benson.chen@ap.jll.com
+"""
+
 import pandas as pd
 import numpy as np
 

@@ -14,7 +14,7 @@ search_headers = {
         'Host': 'www.qichacha.com',
         #'Referer': 'http://www.qichacha.com/search?key=%E4%BB%B2%E9%87%8F%E8%81%94%E8%A1%8C',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
-        'Cookie':'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; PHPSESSID=e6ibh3qg308gvuk7ophcgsm5t6; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1529632559; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1529400386,1529550168,1529571443,1529633823; hasShow=1; acw_tc=AQAAAHwY9B/MCgsA2yUTy4LLHc+bOBEF; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914C438AECD7F8B6F6E4763C63FD9454EA6B; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201529633823164%2C%22updated%22%3A%201529634737911%2C%22info%22%3A%201529573803244%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22a0a7d0d090beea056d84c394f3864499%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1529634738',
+        'Cookie':'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; acw_tc=AQAAADRntBxJhQEA2yUTywLKfIn8r7P3; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1529679448,1529723950,1529735916,1530168634; PHPSESSID=488pjcg21h58b2od9pcfgrvae0; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914CB54088DD5818285FAC0053A22A50519C; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1530586818; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201530588165392%2C%22updated%22%3A%201530588234785%2C%22info%22%3A%201530235628495%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22a0a7d0d090beea056d84c394f3864499%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1530588235',
         'Connection': 'keep-alive',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
@@ -22,10 +22,9 @@ search_headers = {
         'Cache-Control': 'max-age=0',
         'Connection': 'keep-alive'}
 
-columnname = ['ID','SourceID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
+columnname = ['ID','Source ID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
 company_scrapy_list = pd.DataFrame()#columns = columnname)
 #company_input_list = pd.read_excel(r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Company Check.xlsx',sheet_name='Company')
-company_keyword = '立足之地vklknzxc'
 
 # for index, row in company_input_list.iterrows():
 #         print(row['Company Name'])
@@ -37,7 +36,7 @@ now = datetime.datetime.now()
 #         r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Company Check.xlsx',
 #         sheet_name='Company')
 sourcename = 'ICG'
-company_keyword = '仲量联行'
+company_keyword = 'BEI Capital'
 
 now = datetime.datetime.now()
 timestamp = '2018062214'  # YYYYMMDDHH
@@ -82,12 +81,12 @@ search_province = '&province='
 #time.sleep(random.randint(3, 5))
 search_url_keyword = search_base + search_key + '&ajaxflag=1' + search_index
 respond_keyword = requests.get(search_url_keyword, headers=search_headers)
-#print(respond_keyword)
+print(company_keyword)
 soup_keyword = BeautifulSoup(respond_keyword.text, 'lxml')
 #print(soup_keyword)
 
 company_info_list_flag = soup_keyword.find('span', attrs={'id': 'countOld'}).span.text.strip()
-print(company_info_list_flag)
+#print(company_info_list_flag)
 
 
 # Company details
@@ -100,15 +99,17 @@ if company_info_list_flag:
 
 
                 if step  == 1:
-                        #print(company.a)
                         company_href = company.a['href']
-                        search_url_company = 'https://www.qichacha.com/firm_h3692174a880f4e314a6cc62a168e4a8.html' # + company_href
+                        search_url_company = 'https://www.qichacha.com/' + company_href
                         time.sleep(random.randint(2, 4))
                         respond_company = requests.get(search_url_company, headers=search_headers)
                         soup_company = BeautifulSoup(respond_company.text, 'lxml')
+                        #print(soup_company)
                         company_isforeign = False
                         if (soup_company.find('div', attrs={'class': 'row title'}).h1 == None):  # HongKong Company
-                                company_name = soup_company.find('div', attrs={'class': 'row title'}).text.split(' ')[0]
+                                soup_company.find('div', attrs={'class': 'row title'}).span.extract()
+                                company_name = soup_company.find('div', attrs={'class': 'row title'}).text
+                                print(company_name)
                                 company_isforeign = True
                         else:
                                 company_name = soup_company.find('div', attrs={'class': 'row title'}).h1.text
@@ -118,7 +119,7 @@ if company_info_list_flag:
                         company_email = ''
                         company_address = ''
                         #print(soup_company.find('span', attrs={'class': "cdes"}).next_sibling.span.text)
-                        print(soup_company)
+                        #print(soup_company)
                         if (soup_company.find('span', attrs={'style': "color: #000"}) != None):
                                 cpmpany_phone = soup_company.find('span', attrs={'style': "color: #000;"}).text
                         if (soup_company.find('a', attrs={'onclick': "zhugeTrack('企业主页-企业头部-官网')"}) != None):

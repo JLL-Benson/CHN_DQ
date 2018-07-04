@@ -34,6 +34,8 @@ sourcename = 'ICG'
 company_count = len(company_input_list)
 timestamp = '2018062223' #YYYYMMDDHH
 #company_keyword = '仲量联行'
+company_count = len(company_input_list)
+company_progress = 0
 
 now = datetime.datetime.now()
 if timestamp == '':
@@ -48,6 +50,7 @@ try:
                 sheet_name='Sheet1')
         # Remove breakpoint record
         company_keyword_break = np.array(company_scrapy_list[company_scrapy_list['ID'] == 'breakpoint']['搜索词']).tolist()[0]
+        company_progress = np.array(company_scrapy_list[company_scrapy_list['ID'] == 'breakpoint']['Source ID']).tolist()[0]
         company_scrapy_list = company_scrapy_list[company_scrapy_list['搜索词'] != company_keyword_break]
         if company_input_list[company_input_list['Company Local Name'] == company_keyword_break].empty == False:
             company_input_break = np.array(company_input_list[company_input_list['Company Local Name'] == company_keyword_break].index).tolist()[0]
@@ -61,6 +64,7 @@ except:
 
 
 for index, row in company_input_list.iterrows():
+    company_progress += 1
     if row['Company Local Name'] != None and row['Company Local Name'] != '' and row['Company Local Name'] is not np.nan:
         company_keyword = row['Company Local Name']
     else:
@@ -102,7 +106,8 @@ for index, row in company_input_list.iterrows():
                     soup_company = BeautifulSoup(respond_company.text, 'lxml')
                     company_isforeign = False
                     if (soup_company.find('div', attrs={'class': 'row title'}).h1 == None):  # HongKong Company
-                        company_name = soup_company.find('div', attrs={'class': 'row title'}).text.split(' ')[0]
+                        soup_company.find('div', attrs={'class': 'row title'}).span.extract()
+                        company_name = soup_company.find('div', attrs={'class': 'row title'}).text
                         company_isforeign = True
                     else:
                         company_name = soup_company.find('div', attrs={'class': 'row title'}).h1.text
@@ -224,21 +229,24 @@ for index, row in company_input_list.iterrows():
                 step += 1
 
         except: # Need verification, set ID as 'breakpoint'
-            company_info_data = ['breakpoint', '', company_keyword, '', '', '', '', '', '', '', '', '', '',
+            company_info_data = ['breakpoint', company_progress, company_keyword, '', '', '', '', '', '', '', '', '', '',
                                  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
             company_info_data = dict(zip(columnname, company_info_data))
             company_scrapy_list = company_scrapy_list.append(company_info_data, ignore_index=True)
             print('Need Verification!')
+            print('Progress: ' + company_progress/company_count*100 + '%')
             break
+    # Need verification, set ID as 'breakpoint'
     elif company_info_list_flag == None:
-        company_info_data = ['breakpoint', '', company_keyword, '', '', '', '', '', '', '', '', '', '',
+        company_info_data = ['breakpoint', company_progress, company_keyword, '', '', '', '', '', '', '', '', '', '',
                              '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
         company_info_data = dict(zip(columnname, company_info_data))
         company_scrapy_list = company_scrapy_list.append(company_info_data, ignore_index=True)
 
         print('Need Verification!')
-        print('Progress: ' )
+        print('Progress: ' + company_progress/company_count*100 + '%')
         break
+    # No result return
     elif company_info_list_flag.span.text.strip() == '0':
         search_id = sourcename + '_' + timestamp + '_' + str(company_sourceid)
         # Column count 32
