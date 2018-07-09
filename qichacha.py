@@ -9,7 +9,6 @@ import requests
 from bs4 import BeautifulSoup
 import urllib
 import re
-from pandas import DataFrame
 import datetime
 import pandas as pd
 import numpy as np
@@ -256,6 +255,7 @@ for index, row in company_input_list.iterrows():
 
 
 print(timestamp)
+print()
 company_scrapy_list.to_excel(r'C:\Users\Benson.Chen\Desktop\Capforce\ICG\QiChaCha\QiChaCha'+timestamp+'.xlsx', index = False, header=True, columns= list(columnname), sheet_name='Qichacha')
 
 
