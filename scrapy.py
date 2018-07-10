@@ -41,7 +41,7 @@ if timestamp == '':
     timestamp = str(now.strftime("%Y%m%d"))+str(now.hour)
 
 # Column count 32
-columnname = ['ID','SourceID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
+columnname = ['ID','SourceID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','境外公司','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
 # Find existing file
 try:
         company_scrapy_list = pd.read_excel(
@@ -149,6 +149,7 @@ for index, row in company_input_list.iterrows():
                     company_info_data.append(company_website)
                     company_info_data.append(company_email)
                     company_info_data.append(company_address)
+                    company_info_data.append(company_isforeign)
                     for business_info in company_info_list[:-2]:
                         company_info_data.append(business_info.find_all('td')[1].text.replace('\n', '').strip())
                         company_info_data.append(business_info.find_all('td')[3].text.replace('\n', '').strip())

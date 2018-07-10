@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu June 10th 2018
+Created on Thu July 9th 2018
 
 @author: Benson.Chen benson.chen@ap.jll.com
 """
@@ -11,12 +11,12 @@ import re
 
 path = r'C:\Users\Benson.Chen\Desktop\Capforce\Shared Files'
 lastname_list = pd.read_excel(path + '\LastName.xlsx', sheet_name='Sheet2', sort=False)
-city_list = pd.read_excel(path + '\China City&District List.xlsx', sheet_name='district-full', sort=False)
+geo_list = pd.read_excel(path + '\China City&District List.xlsx', sheet_name='district-full', sort=False)
 
 company_list = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\icg-CF Data Load-20180704_dqreview.xlsx', sheet_name='Full Company', sort=False)
 contact_input_list = pd.read_excel(r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Contact Check_Rannie 20180613.xlsx', sheet_name='Contact', sort=False)
 contact_colnames = ['Company Name', 'First Name', 'Last Name', 'Email', 'Phone', 'Title', 'Source Company ID', 'vc_Load', 'Reject Reason', 'First Name2', 'Last Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
-# Check Contacts
+# Check contacts
 def validate_contacts(contact_list, colnames):
     contact_output_list = pd.DataFrame(columns=colnames)
     for index, contact in contact_list.iterrows():
@@ -139,12 +139,101 @@ def validate_email(contact, company_list):
     contact['ve_Email_Domain'] = epersonal or edomain
     contact['ve_Email_Check'] = echeck
 
+# Validate company
+def validate_company(company_list, company_scrapy_list):
+    company_scrapy_verfy = pd.DataFrame(columns=list(company_scrapy_list))
+    for index, company in company_list:
+        sourceid = company['Source ID']
+        scrapy_list = company_scrapy_list[company_scrapy_list['Source ID'] == sourceid]
+        scrapy_best = scrapy_list[scrapy_list['Confidence'] == 0]
+        # If multiple best match, get first one with address
+        # If no best match, return top 5 result
+        if (len(scrapy_best) > 1):
+            scrapy_best = scrapy_best[scrapy_best['地址'].notnull()].iloc[0]
+        elif (len(scrapy_best) < 1):
+            scrapy_verfy = scrapy_list[scrapy_list['地址'].notnull()].sort_values(by='Confidence')[0:5]
+            company_scrapy_verfy = company_scrapy_verfy.append(scrapy_verfy)
+            continue
+        company_list.iloc[index] = fill_company(company, scrapy_best)
+
+    return company_list, company_scrapy_verfy
+
+# Enrich company detail
+def fill_company(company, scrapy):
+    if scrapy['英文名'] != None:
+        company['Company Name'] = scrapy['英文名']
+    company['Company Local Name'] = scrapy['公司名称']
+    if scrapy['境外公司'] == True or scrapy['境外公司'] == 'True':
+        company['Country'] = ''
+    else:
+        company['Country'] = 'China'
+    if company['Billing Address line1 (Street/Road)'] == None:
+        state, company['City'], company['District'], company['Billing Address line1 (Street/Road)'] = format_address(scrapy['地址'])
+        if scrapy['所属地区'] is not None and len(scrapy['所属地区']) > 1:
+            company['State'] = scrapy['所属地区']
+        else:
+            company['State'] = state
+    # No district field in system for now
+    company['Full Address'] = company['District'] + company['Billing Address line1 (Street/Road)']
+    company['Company Type'] = scrapy['公司类型']
+    company['Phone'] = scrapy['电话']
+    company['Website'] = scrapy['网址']
+    company['Email'] = scrapy['邮箱']
+    return company
+
+# Keep only one space
 def format_space(str):
     space = re.compile(r'\s\s+')
     str = space.subn('', str)
     return str[0].strip()
 
+def format_address(address):
+    dcities = geo_list[geo_list['Level ID'] == 0]
+    states = geo_list[geo_list['Level ID'] == 1]
+    cities = geo_list[geo_list['Level ID'] == 2]
+    districts = geo_list[geo_list['Level ID'] == 3]
+    state = None
+    city = None
+    district = None
+    street = None
+    if address == None:
+        return state, city, district, street
+    # Find direct city
+    for index, d in dcities:
+        if d['Full Name'] in address or d['Name'] in address:
+            state = d['Name']
+            city = d['Name']
+            address = address.replace(d['Full Name'], '')
+            address = address.replace(d['Name'], '')
+            break
 
-# TODO: Company Address, Duplicate
+    # Find state
+    for index, s in states:
+        if s['Full Name'] in address or s['Name'] in address:
+            state = s['Name']
+            address = address.replace(s['Full Name'], '')
+            address = address.replace(s['Name'], '')
+            break
+    # Find city
+    for index, c in cities:
+        if c['Full Name'] in address or c['Name'] in address:
+            city = c['Name']
+            address = address.replace(c['Full Name'], '')
+            address = address.replace(c['Name'], '')
+            break
+    # Find district
+    for index, dis in districts:
+        if dis['Full Name'] in address or dis['Name'] in address:
+            district = dis['Name']
+            address = address.replace(dis['Full Name'], '')
+            address = address.replace(dis['Name'], '')
+            break
+    street = address
+    return state, city, district, street
+# TODO: Zipcode fill
+
+
+
+# TODO: Company Duplicate
 contact_output = validate_contacts(contact_input_list, contact_colnames)
 contact_output.to_excel(r'C:\Users\Benson.Chen\Desktop\test.xlsx', index=False, header=True, columns= contact_colnames, sheet_name='Contact')
