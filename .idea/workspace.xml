@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/CHN_DQ.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CHN_DQ.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qichacha.py" beforeDir="false" afterPath="$PROJECT_DIR$/qichacha.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapy.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/validation.py" afterDir="false" />
     </list>
@@ -21,36 +21,45 @@
       <file leaf-file-name="confidence.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confidence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="16" />
+            <state relative-caret-position="610">
+              <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+              <folding>
+                <element signature="e#107#126#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="validation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="232" column="20" lean-forward="true" selection-start-line="232" selection-start-column="20" selection-end-line="232" selection-end-column="20" />
+            <state relative-caret-position="-2211">
+              <caret line="166" lean-forward="true" selection-start-line="166" selection-end-line="166" />
               <folding>
-                <element signature="e#1141#2050#0" />
-                <element signature="e#2100#3350#0" />
-                <element signature="e#3416#5960#0" />
+                <element signature="e#107#126#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qichacha.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/qichacha.py">
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="114" column="40" lean-forward="true" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="40" />
+            <state relative-caret-position="276">
+              <caret line="177" lean-forward="true" selection-start-line="177" selection-end-line="177" />
               <folding>
                 <element signature="e#24#106#1" />
-                <element signature="e#108#123#0" expanded="true" />
-                <element signature="e#10580#10591#0" />
+                <element signature="e#108#127#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="supplyscrapy.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="257" lean-forward="true" selection-start-line="257" selection-end-line="257" />
             </state>
           </provider>
         </entry>
@@ -58,8 +67,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="89" lean-forward="true" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
+            <state relative-caret-position="570">
+              <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -78,36 +87,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>search_soup_company</find>
+      <find>contact_list</find>
+      <find>company_dedup_list</find>
+      <find>read_excel</find>
+      <find>enrich_company</find>
+      <find>enrich_address</find>
+      <find>company_raw_list</find>
+      <find>file</find>
       <find>company_scrapy_list</find>
-      <find>company_source</find>
-      <find>step</find>
-      <find>index</find>
-      <find>time</find>
-      <find>span</find>
-      <find>time.</find>
-      <find>sourceid</find>
-      <find>Verification</find>
-      <find>origin</find>
-      <find>Tr</find>
-      <find>print</find>
-      <find>output</find>
-      <find>电话</find>
-      <find>cvlu</find>
-      <find>cdes</find>
-      <find>is</find>
-      <find>nan</find>
-      <find>1</find>
-      <find>bool</find>
       <find>writer</find>
-      <find>sleep</find>
-      <find>swap</find>
-      <find>append</find>
-      <find />
-      <find>Reject</find>
-      <find>\n</find>
-      <find>city_list</find>
-      <find>foreign</find>
+      <find>scrapy_verfy</find>
+      <find>C:</find>
+      <find>Full</find>
+      <find>validate_contacts</find>
+      <find>for index, company in</find>
+      <find>contact_common_list</find>
+      <find>contact_output_list</find>
+      <find>isin</find>
+      <find>contact</find>
+      <find>pd</find>
+      <find>CHN_DQ_backupriter</find>
+      <find>Local</find>
+      <find>SourceID</find>
+      <find>company_colnames</find>
+      <find>].loc[</find>
+      <find>print</find>
+      <find>common</find>
+      <find>duplica</find>
+      <find>dupli</find>
+      <find>Email</find>
+      <find>zip</find>
     </findStrings>
     <replaceStrings>
       <replace>soup_company</replace>
@@ -119,6 +128,20 @@
       <replace>\n</replace>
       <replace />
       <replace>geo_list</replace>
+      <replace>contact_common_list</replace>
+      <replace>company_dedup_list</replace>
+      <replace>company_dq_list</replace>
+      <replace>enrich_scrapy</replace>
+      <replace>company_init_list</replace>
+      <replace>company_scrapy_result</replace>
+      <replace>scrapy_verify</replace>
+      <replace>contact_dedup_list</replace>
+      <replace>contact_validate_list</replace>
+      <replace>CHN_DQ_Writer</replace>
+      <replace>backupfilepath</replace>
+      <replace>CHN_DQ_backupwriter</replace>
+      <replace>Source ID</replace>
+      <replace>,</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -135,16 +158,19 @@
         <option value="$PROJECT_DIR$/confidence.py" />
         <option value="$PROJECT_DIR$/combine.py" />
         <option value="$PROJECT_DIR$/qichacha.py" />
+        <option value="$PROJECT_DIR$/scrapy.py" />
+        <option value="$PROJECT_DIR$/supplyscrapy.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/validation.py" />
+        <option value="$PROJECT_DIR$/run.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2607" />
-    <option name="y" value="108" />
-    <option name="width" value="576" />
-    <option name="height" value="309" />
+    <option name="x" value="1912" />
+    <option name="y" value="-14" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -152,28 +178,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="CHN_DQ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CHN_DQ" type="47feb1d3:ProjectViewModuleNode" />
+            </path>
+            <path>
+              <item name="CHN_DQ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CHN_DQ" type="47feb1d3:ProjectViewModuleNode" />
               <item name="CHN_DQ" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CHN_DQ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CHN_DQ" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -187,25 +217,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="QiChaCha-test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CHN_DQ" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/QiChaCha-test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.run">
     <configuration name="combine" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CHN_DQ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -237,6 +249,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/confidence.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CHN_DQ" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -282,16 +312,16 @@
       <item itemvalue="Python.confidence" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.combine" />
-      <item itemvalue="Python.QiChaCha-test" />
       <item itemvalue="Python.validation" />
+      <item itemvalue="Python.run" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.run" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.confidence" />
         <item itemvalue="Python.validation" />
+        <item itemvalue="Python.confidence" />
         <item itemvalue="Python.combine" />
-        <item itemvalue="Python.QiChaCha-test" />
       </list>
     </recent_temporary>
   </component>
@@ -318,148 +348,93 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-14" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09747102" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09747102" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49841937" weight="0.41285402" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.50653595" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39969254" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09747102" />
+      <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.4291939" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39969254" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="66" column="91" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="66" column="91" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="66" column="91" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="66" column="91" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="66" column="91" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="66" column="91" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="66" column="91" lean-forward="true" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="51" selection-start-line="51" selection-end-line="51" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="80" column="108" lean-forward="true" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$USER_HOME$/Desktop/Scraper/Industry.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -474,36 +449,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/combine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="89" column="126" lean-forward="true" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="126" />
+        <state relative-caret-position="394">
+          <caret line="90" selection-start-line="90" selection-end-line="91" selection-end-column="14" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy.py" />
     <entry file="file://$PROJECT_DIR$/confidence.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qichacha.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="114" column="40" lean-forward="true" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="40" />
+        <state relative-caret-position="610">
+          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
           <folding>
-            <element signature="e#24#106#1" />
-            <element signature="e#108#123#0" expanded="true" />
-            <element signature="e#10580#10591#0" />
+            <element signature="e#107#126#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="89" lean-forward="true" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
+        <state relative-caret-position="570">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -512,12 +480,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="232" column="20" lean-forward="true" selection-start-line="232" selection-start-column="20" selection-end-line="232" selection-end-column="20" />
+        <state relative-caret-position="-2211">
+          <caret line="166" lean-forward="true" selection-start-line="166" selection-end-line="166" />
           <folding>
-            <element signature="e#1141#2050#0" />
-            <element signature="e#2100#3350#0" />
-            <element signature="e#3416#5960#0" />
+            <element signature="e#107#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="257" lean-forward="true" selection-start-line="257" selection-end-line="257" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="177" lean-forward="true" selection-start-line="177" selection-end-line="177" />
+          <folding>
+            <element signature="e#24#106#1" />
+            <element signature="e#108#127#0" expanded="true" />
           </folding>
         </state>
       </provider>
