@@ -2,6 +2,7 @@ import pandas as pd
 import logging
 import numpy as np
 import re
+import validation
 
 def tryc(x,y):
     return y,x
@@ -9,42 +10,15 @@ def tryc(x,y):
 #print(tryc(1,2)[0])
 
 col = ['col1','col2', 'col3']
-test = pd.DataFrame([['a','ab',1], ['b', 'b', 2], ['c', 'b', 0],['a','c',3], ['a', 'c', 'acdefg']],columns=col)
-test3 = test.ix[4,'col3']
-test2 = test.ix[0]
-# print(test3)
-# if test2['col1'] in test3:
-#     print(test3.replace(test2['col2'],''))
-#     print(test3.replace(test2['col1'],''))
-#print(test2)
-test2['col1'] = 'd'
+test = pd.DataFrame([['a ss ddd','ab',1], [' dvde dd   d', 'b', 2], ['c ', 'b', 0],['a','c',3], ['a', 'c', 'acdefg']],columns=col)
+rawpath = r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\CM - South\CHN-DQ_CM-South-1_2018071317_RAWC.xlsx'
+# company_raw_list = pd.read_excel(rawpath, sheet_name='Company', sort=False)
 
-# for index, r in test.iterrows():
-#     test.ix[index] = test2
-#     print(test.ix[index])
-#     print(index)
-#print(test[test['col3'].notnull()].sort_values(by='col3')[0:2])
-# test2 = test[test['col3'] == 3]
-# print(test2.empty)
-# print(pd.notnull(test2['col2']).bool())
-#
-# # l = ['aa', 'b', 'dvvvd']
-# # for  cl in test.iloc[:,1:]:
-# #     print(list(test[cl]))
-# #print(test.ix[1,cl])
-#
-# suffix = [r'\.com$', r'\.cn$', r'\.cc$', r'\.uk$', r'\.fr$', r'\.hk$', r'\.tw$']
-# email = 'ss   s@cc.co.m'
-#logging.warning('test')
-#print(test.duplicated(subset=['col1', 'col2'], keep=False))
-# l1 = [1,2,3,4,4,5,7,76]
-# l2 = [2,5,3,6,7,6,7]
-# print(list(set(l1).intersection(set(l2))))
-# print(test[test['col3'].isin([1,2]) ])
-# test5 = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\test_com.xlsx', sheet_name='Duplicate')
-# print(test5[~test5['col1'].isin([1, 2, 3])])
-# for index, t in test5.iterrows():
-#     print()
-# print([True, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False] and [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True])
-v= np.array([True, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, True, False]) &  np.array([True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True])
-#print(type(v.tolist()))
+# for i,r in test.iterrows():
+    #print(validation.format_space(r['col1'].lower()) )
+    # print(type(r))
+    # print(type(r['col1']))
+    # test.ix[i,'col5'] = (r['col1'].strip().replace(' ',''))
+# print(test['col5'])
+# print(test.duplicated(subset=['col5'], keep=False))
+#print(test[test['col1']])

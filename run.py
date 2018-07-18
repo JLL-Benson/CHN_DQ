@@ -20,20 +20,22 @@ import bau_cf_contacts as bau_contacts
 
 
 # Source-Site-LoadRound
-rawpath = r'C:\Users\Benson.Chen\Desktop\CM-North.xlsx'
-sourcename = 'CM-North-1'
+sourcename = 'CM-West-1'
 # YYYYMMDDHH
-timestamp = '2018072217'
-path = r'C:\Users\Benson.Chen\Desktop'
+timestamp = '2018071717'
+# File path
+path = r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\CM - WEST'
+rawfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp +'_RAWC.xlsx'
+rawfilepath = path + rawfilename
 backupfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp +'_BACKUP.xlsx'
 backupfilepath = path + backupfilename
 reviewfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp +'_REVIEW.xlsx'
 reviewfilepath = path + reviewfilename
 #backupfilepath = r'C:\Users\Benson.Chen\Desktop\test_com.xlsx'
 
-contact_colnames = ['Source ID', 'Company Name', 'First Name', 'Last Name', 'Email', 'Phone', 'Title', 'Source Company ID', 'vc_Load', 'Reject Reason', 'First Name2', 'Last Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
+contact_colnames = ['Source ID', 'Company Name', 'Name','First Name', 'Last Name', 'Email', 'Phone', 'Title', 'Source Company ID', 'vc_Load', 'Reject Reason', 'First Name2', 'Last Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
 company_colnames = ['Source ID', 'Company Name', 'Company Local Name', 'Billing Address line1 (Street/Road)', 'Billing Address line2 (Building Name)', 'Billing Address line3(Suite, Level, Floor, Unit)', 'Postal Code','District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website','Industry', 'Revenue', 'Employee', 'Full Address', 'dq_New']
-company_dup_colnames = ['Company Name','Company Name Local', 'Billing Address line1 (Street/Road)', 'City', 'State', 'Source ID', 'vc_Deduplicate', 'vc_Load', 'vc_Master ID']
+company_dup_colnames = ['Company Name','Company Local Name', 'Billing Address line1 (Street/Road)', 'City', 'State', 'Source ID', 'vc_Deduplicate', 'vc_Load', 'vc_Master ID', 'ComName_temp']
 
 
 
@@ -45,13 +47,17 @@ def run(phrase):
     if phrase == 'p1':
         CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
         CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
-        company_raw_list = pd.read_excel(rawpath, sheet_name='Company', sort=False)
-        contact_raw_list = pd.read_excel(rawpath, sheet_name='Contact', sort=False)
+        company_raw_list = pd.read_excel(rawfilepath, sheet_name='Company', sort=False)
+        contact_raw_list = pd.read_excel(rawfilepath, sheet_name='Contact', sort=False)
         company_init_list = vd.init_company(company_raw_list)
         company_common_list, contact_common_list = vd.validate_common(company_init_list, contact_raw_list)
-        company_duplicate = vd.dedup_company(company_common_list)
-        company_duplicate.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns= company_dup_colnames, sheet_name='1_Duplicate')
+
+        company_duplicate_list, company_duplicate_full, company_common_list, contact_common_list = vd.dedup_company(company_common_list, contact_common_list)
+        company_duplicate_list.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns= company_dup_colnames, sheet_name='1_Duplicate')
+        company_duplicate_full.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns= company_dup_colnames, sheet_name='1_Duplicate_Full')
         company_common_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns= company_colnames, sheet_name='company_common_list')
+        company_common_list.to_excel(r'C:\Users\Benson.Chen\Desktop\a.xlsx', index=False, header=True, columns=company_colnames,
+                                     sheet_name='company_common_list')
         contact_common_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns= contact_colnames, sheet_name='contact_common_list')
         CHN_DQ_reviewwriter.save()
         CHN_DQ_reviewwriter.close()
@@ -170,14 +176,10 @@ def run(phrase):
                                    sheet_name='4_Contact_Load')
         CHN_DQ_reviewwriter.save()
         CHN_DQ_reviewwriter.close()
-run('p6')
+run('p3')
 
-
-
-
-
-
-
+def toexcel(filepath, colnames, sheetname):
+    return 0
 
 
 # contact_output = validate_contacts(contact_input_list, contact_colnames)
