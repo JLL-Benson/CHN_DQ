@@ -27,10 +27,8 @@ for index, company in commonlist.iterrows():
         continue
     else:
         checks = checks[pd.notnull(checks['Office Address'])]
-        print(len(checks))
         if checks.empty:
             continue
-        print(checks['Office Address'].iloc[0])
         commonlist.ix[commonlist['Source ID'] == company['Source ID'],'Billing Address line1 (Street/Road)'] = checks['Office Address'].iloc[0]
 
 commonlist.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns=company_colnames,

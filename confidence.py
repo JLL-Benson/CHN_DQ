@@ -9,8 +9,8 @@ import pandas as pd
 import numpy as np
 import Levenshtein as lv
 import sys
-company_input_list = pd.read_excel(r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Company Check.xlsx',sheet_name='Company')
-company_scrapy_list = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\Capforce\ICG\QiChaCha\QiChaCha2018062223.xlsx',sheet_name='Sheet1')
+# company_input_list = pd.read_excel(r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Company Check.xlsx',sheet_name='Company')
+# company_scrapy_list = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\Capforce\ICG\QiChaCha\QiChaCha2018062223.xlsx',sheet_name='Sheet1')
 
 # For english, split company name by space and calculate distance by matching words
 def lvEN(com1, com2):
@@ -20,7 +20,7 @@ def lvEN(com1, com2):
     #print(list2)
     if len(list1) == 0 or len(list2) == 0:
         return len(list1) + len(list2)
-    d = [ list(range(len(list2) + 1)) for i in range(len(list1) + 1)]
+    d = [list(range(len(list2) + 1)) for i in range(len(list1) + 1)]
     for i in range(1,len(list1)+1):
         for j in range(1,len(list2)+1):
             delete = d[i-1][j] + 1
@@ -51,6 +51,6 @@ def getConfidence(company_scrapy):
     else:
         return None
 
-company_scrapy_list['Confidence'] = company_scrapy_list.apply(getConfidence, axis=1)
-company_scrapy_list.to_excel(r'C:\Users\Benson.Chen\Desktop\testconfidence.xlsx', sheet_name='Sheet1', index=False)
+# company_scrapy_list['Confidence'] = company_scrapy_list.apply(getConfidence, axis=1)
+# company_scrapy_list.to_excel(r'C:\Users\Benson.Chen\Desktop\testconfidence.xlsx', sheet_name='Sheet1', index=False)
 

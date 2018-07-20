@@ -24,7 +24,7 @@ sourcename = 'CM-West-1'
 # YYYYMMDDHH
 timestamp = '2018071717'
 # File path
-path = r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\CM - WEST'
+path = r'C:\Users\Benson.Chen\Desktop'
 rawfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp +'_RAWC.xlsx'
 rawfilepath = path + rawfilename
 backupfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp +'_BACKUP.xlsx'
@@ -34,7 +34,7 @@ reviewfilepath = path + reviewfilename
 #backupfilepath = r'C:\Users\Benson.Chen\Desktop\test_com.xlsx'
 
 contact_colnames = ['Source ID', 'Company Name', 'Name','First Name', 'Last Name', 'Email', 'Phone', 'Title', 'Source Company ID', 'vc_Load', 'Reject Reason', 'First Name2', 'Last Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
-company_colnames = ['Source ID', 'Company Name', 'Company Local Name', 'Billing Address line1 (Street/Road)', 'Billing Address line2 (Building Name)', 'Billing Address line3(Suite, Level, Floor, Unit)', 'Postal Code','District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website','Industry', 'Revenue', 'Employee', 'Full Address', 'dq_New']
+company_colnames = ['Source ID', 'Group Name', 'Company Name', 'Company Local Name', 'Billing Address line1 (Street/Road)', 'Billing Address line2 (Building Name)', 'Billing Address line3(Suite, Level, Floor, Unit)', 'Postal Code','District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website','Industry', 'Revenue', 'Employee', 'Full Address', 'dq_New']
 company_dup_colnames = ['Company Name','Company Local Name', 'Billing Address line1 (Street/Road)', 'City', 'State', 'Source ID', 'vc_Deduplicate', 'vc_Load', 'vc_Master ID', 'ComName_temp']
 
 
@@ -176,7 +176,7 @@ def run(phrase):
                                    sheet_name='4_Contact_Load')
         CHN_DQ_reviewwriter.save()
         CHN_DQ_reviewwriter.close()
-run('p3')
+run('p1')
 
 def toexcel(filepath, colnames, sheetname):
     return 0

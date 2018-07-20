@@ -14,31 +14,39 @@ from openpyxl import load_workbook
 path = r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\Shared Files'
 lastname_list = pd.read_excel(path + '\LastName.xlsx', sheet_name='Sheet2', sort=False)
 geo_list = pd.read_excel(path + '\China City&District List.xlsx', sheet_name='district-full', sort=False)
+company_common_suffix = ['股份', '有限', '责任', '公司', '集团', '企业', '控股', '实业']
+company_common_func = ['银行', '置业', '房地产','地产', '开发', '银行', '投资', '基金', '证券', '资本', '物业', '服务', '管理', '资产']
 
 # company_list = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\icg-CF Data Load-20180704_dqreview.xlsx', sheet_name='Full Company', sort=False)
 # contact_input_list = pd.read_excel(r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Contact Check_Rannie 20180613.xlsx', sheet_name='Contact', sort=False)
 
 # Deduplicate company by name
 def dedup_company(company_common_list, contact_common_list):
-    company_common_list.loc['ComName_temp'] = None
-    company_common_list.loc['vc_Deduplicate'] = None
-    company_common_list.loc['vc_Load'] = None
-    company_common_list.loc['vc_Master ID'] = None
+    # company_common_list.loc['ComName_temp'] = None
+    # company_common_list.loc['vc_Deduplicate'] = None
+    # company_common_list.loc['vc_Load'] = None
+    # company_common_list.loc['vc_Master ID'] = None
     for index, company in company_common_list.iterrows():
         if pd.notna(company['Company Local Name']):
-            company_common_list.ix[index, 'ComName_temp'] = str(company['Company Local Name']).strip().replace(' ','')
-        else:
-            company_common_list.ix[index, 'ComName_temp'] = format_space(company['Company Name'].lower())
+            company_common_list.ix[index, 'ComName_temp'] = extract_keyword(company['Company Local Name'])#str(company['Company Local Name']).strip().replace(' ','')
 
-    company_common_list.loc['vc_Deduplicate'] = company_common_list.duplicated(subset=['ComName_temp'], keep=False)
-    company_common_list.loc['vc_Deduplicate'] = company_common_list['vc_Deduplicate'].apply(lambda x: False if x else True)
+        else:
+            company_common_list.ix[index, 'ComName_temp'] = format_space(str(company['Company Name']).strip().lower())
+
+    company_common_list['vc_Deduplicate'] = company_common_list.duplicated(subset=['ComName_temp'], keep=False)
+    company_common_list['vc_Deduplicate'] = company_common_list['vc_Deduplicate'].apply(lambda x: False if x else True)
     company_duplicate_list = company_common_list[company_common_list['vc_Deduplicate'] == False]
     company_duplicate_full = company_duplicate_list
     company_duplications = list(company_duplicate_list.groupby(['ComName_temp']).count().index)
-
     for dup in company_duplications:
         company_dup_group = company_duplicate_list[company_duplicate_list['ComName_temp'] == dup]
-        company_master = company_dup_group[pd.notna(company_dup_group['Billing Address line1 (Street/Road)'])]
+        company_master = dedup_get_master(company_dup_group)#pd.DataFrame(dedup_get_master(company_dup_group),columns = list(company_duplicate_list)) #company_dup_group[pd.notna(company_dup_group['Billing Address line1 (Street/Road)'])]
+        print('list', list(company_master))
+        print('len', len(company_master))
+        print('sieze', company_master.size)
+        print('shape', company_master.shape)
+        print('count',company_master.count())
+
         if company_master.empty:
             company_master = company_common_list[company_common_list['ComName_temp'] == dup].iloc[0]
             company_common_list, contact_common_list = merge_company(company_common_list, contact_common_list, company_dup_group, company_master)
@@ -61,6 +69,44 @@ def dedup_fix(company_common_list, contact_common_list, company_duplicate_list):
         contact_common_list.loc[contact_common_list['Source Company ID'] == sourceid, 'Source Company ID'] = masterid
     return company_common_list, contact_common_list
 
+# Get master duplicate, if multiple duplicates
+def dedup_get_master(company_dup_group):
+    if company_dup_group.empty:
+        return company_dup_group
+    master_address = company_dup_group.ix[company_dup_group['Billing Address line1 (Street/Road)'].dropna().duplicated(keep=False).index, 'Billing Address line1 (Street/Road)']
+    master_city = company_dup_group.ix[company_dup_group['City'].dropna().duplicated(keep=False).index, 'City']
+    if len(master_city) > 1:
+        master_city = master_city.iloc[0]
+    master_state = company_dup_group.ix[company_dup_group['State'].dropna().duplicated(keep=False).index, 'State']
+    if len(master_state) > 1:
+        master_state = master_state.iloc[0]
+    master_country = company_dup_group.ix[company_dup_group['Country'].dropna().duplicated(keep=False).index, 'Country']
+    if len(master_country) > 1:
+        master_country = master_country.iloc[0]
+
+    master_phone = company_dup_group.ix[company_dup_group['Phone'].dropna().duplicated(keep=False).index, 'Phone']
+    master_email = company_dup_group.ix[company_dup_group['Email'].dropna().duplicated(keep=False).index, 'Email']
+    master_website = company_dup_group.ix[company_dup_group['Website'].dropna().duplicated(keep=False).index, 'Website']
+    if len(master_address) > 1 or len(master_phone) > 1 or len(master_email) > 1 or len(master_website) > 1:
+        return company_dup_group
+    else:
+        #print(company_dup_group.iloc[0])
+
+        company_master = dict()
+        company_master['Source ID'] = list(company_dup_group.loc['Source ID'])[0]
+        company_master['Company Name'] = list(company_dup_group.loc['Company Name'])[0]
+        company_master['Company Local Name'] = list(company_dup_group.iloc[0].loc['Company Local Name'])[0]
+        company_master['Billing Address line1 (Street/Road)'] = master_address
+        company_master['City'] = master_city
+        company_master['State'] = master_state
+        company_master['Country'] = master_country
+        company_master['Phone'] = master_phone
+        company_master['Email'] = master_email
+        company_master['Website'] = master_website
+        company_master = pd.DataFrame(company_master, columns=list(company_dup_group))
+        print(type(company_master))
+    return company_master
+
 # Enrich company address
 def enrich_address(address):
     dcities = geo_list[geo_list['Level ID'] == 0]
@@ -81,7 +127,6 @@ def enrich_address(address):
             address = address.replace(d['Full Name'], '')
             address = address.replace(d['Name'], '')
             break
-
     # Find state
     for index, s in states:
         if s['Full Name'] in address or s['Name'] in address:
@@ -159,6 +204,48 @@ def enrich_scrapy(company, scrapy):
 
     return company
 
+# Extract company keyword
+def extract_keyword(company_name):
+    company_keyword = str(company_name).strip().replace(' ','')
+    dcities = geo_list[geo_list['Level ID'] == 0]
+    states = geo_list[geo_list['Level ID'] == 1]
+    cities = geo_list[geo_list['Level ID'] == 2]
+    state = None
+    city = None
+    if company_keyword == None:
+        return None
+    # Find direct city
+    for index, d in dcities.iterrows():
+        if d['Full Name'] in company_keyword or d['Name'] in company_keyword:
+            state = d['Name']
+            city = d['Name']
+            company_keyword = company_keyword.replace(d['Full Name'], '')
+            company_keyword = company_keyword.replace(d['Name'], '')
+            break
+    # Find state
+    for index, s in states.iterrows():
+        if s['Full Name'] in company_keyword or s['Name'] in company_keyword:
+            state = s['Name']
+            company_keyword = company_keyword.replace(s['Full Name'], '')
+            company_keyword = company_keyword.replace(s['Name'], '')
+            break
+    # Find city
+    for index, c in cities.iterrows():
+        if c['Full Name'] in company_keyword or c['Name'] in company_keyword:
+            city = c['Name']
+            company_keyword = company_keyword.replace(c['Full Name'], '')
+            company_keyword = company_keyword.replace(c['Name'], '')
+            break
+    # Find company suffix
+    for cs in company_common_suffix:
+        if cs in company_keyword:
+            company_keyword = company_keyword.replace(cs, '')
+    # Find company function
+    for cf in company_common_func:
+        if cf in company_keyword:
+            company_keyword = company_keyword.replace(cf, '')
+    return company_keyword
+
 # Keep only one space
 def format_space(str):
     space = re.compile(r'\s\s+')
@@ -173,7 +260,7 @@ def init_company(company_raw_list):
 
 # Merger duplicate company
 def merge_company(company_common_list, contact_common_list, company_dup_group, company_master):
-    sourceid = company_master['Source ID']
+    sourceid = company_master.loc['Source ID']
     company_dup_group.loc[company_dup_group['Source ID'] != sourceid, 'vc_Load'] = False
     company_dup_group.loc[company_dup_group['Source ID'] != sourceid, 'vc_Master ID'] = sourceid
     company_common_list, contact_common_list = dedup_fix(company_common_list, contact_common_list, company_dup_group)

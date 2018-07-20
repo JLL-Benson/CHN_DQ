@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Temp/GZ_address_enrich.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/combine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cross_validation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/GZ_address_enrich.py" beforeDir="false" afterPath="$PROJECT_DIR$/Temp/GZ_address_enrich.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/confidence.py" beforeDir="false" afterPath="$PROJECT_DIR$/confidence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +20,8 @@
       <file leaf-file-name="confidence.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confidence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" column="62" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
+            <state relative-caret-position="394">
+              <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
               <folding>
                 <element signature="e#107#126#0" expanded="true" />
               </folding>
@@ -28,23 +29,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="validation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="105" selection-start-line="30" selection-start-column="105" selection-end-line="30" selection-end-column="105" />
+            <state relative-caret-position="418">
+              <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
               <folding>
                 <element signature="e#107#126#0" expanded="true" />
-                <element signature="e#5518#6024#0" />
-                <element signature="e#6113#7158#0" />
-                <element signature="e#7236#8330#0" />
-                <element signature="e#8381#8465#0" />
-                <element signature="e#8525#8632#0" />
-                <element signature="e#9976#11019#0" />
-                <element signature="e#10625#10717#0" />
-                <element signature="e#11122#12546#0" />
-                <element signature="e#12607#15575#0" />
-                <element signature="e#15625#16875#0" />
+                <element signature="e#3233#3728#0" />
+                <element signature="e#3788#5305#0" />
+                <element signature="e#5472#5978#0" />
+                <element signature="e#6067#7112#0" />
+                <element signature="e#7190#8284#0" />
+                <element signature="e#10518#11989#0" />
+                <element signature="e#8335#8419#0" />
+                <element signature="e#8479#8586#0" />
+                <element signature="e#9208#9873#0" />
+                <element signature="e#9978#11021#0" />
+                <element signature="e#11124#12548#0" />
+                <element signature="e#12609#15571#0" />
+                <element signature="e#15621#16871#0" />
               </folding>
             </state>
           </provider>
@@ -53,8 +57,8 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="63" selection-start-line="63" selection-end-line="64" selection-end-column="35" />
+            <state relative-caret-position="167">
+              <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
               <folding>
                 <element signature="e#24#106#1" />
                 <element signature="e#108#127#0" expanded="true" />
@@ -63,26 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GZ_address_enrich.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Temp/GZ_address_enrich.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="29" selection-start-line="29" selection-end-line="29" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="77" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -98,8 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>company_scrapy_list</find>
-      <find>writer</find>
       <find>scrapy_verfy</find>
       <find>C:</find>
       <find>Full</find>
@@ -126,8 +113,10 @@
       <find>np.</find>
       <find>company_dup_group.loc['vc_Master ID'] = sourceid</find>
       <find>notnull</find>
-      <find>print</find>
       <find>= s</find>
+      <find>company_name</find>
+      <find>print</find>
+      <find>pd.Data</find>
     </findStrings>
     <replaceStrings>
       <replace>soup_company</replace>
@@ -153,6 +142,8 @@
       <replace>CHN_DQ_backupwriter</replace>
       <replace>Source ID</replace>
       <replace>,</replace>
+      <replace>company_name</replace>
+      <replace>company_keyword</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -166,23 +157,23 @@
         <option value="$PROJECT_DIR$/QiChaCha_V3.py" />
         <option value="$PROJECT_DIR$/venv/rules.py" />
         <option value="$PROJECT_DIR$/QiChaCha-test.py" />
-        <option value="$PROJECT_DIR$/confidence.py" />
         <option value="$PROJECT_DIR$/combine.py" />
         <option value="$PROJECT_DIR$/qichacha.py" />
         <option value="$PROJECT_DIR$/scrapy.py" />
         <option value="$PROJECT_DIR$/supplyscrapy.py" />
-        <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/validation.py" />
-        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/Temp/GZ_address_enrich.py" />
+        <option value="$PROJECT_DIR$/confidence.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/validation.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2269" />
-    <option name="y" value="279" />
-    <option name="width" value="960" />
-    <option name="height" value="496" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -235,7 +226,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GZ_address_enrich">
+  <component name="RunManager" selected="Python.run">
     <configuration name="GZ_address_enrich" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CHN_DQ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -335,9 +326,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.GZ_address_enrich" />
         <item itemvalue="Python.run" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.GZ_address_enrich" />
         <item itemvalue="Python.validation" />
         <item itemvalue="Python.confidence" />
       </list>
@@ -367,43 +358,44 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.119072706" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" weight="0.09799789" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.5174292" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49841937" weight="0.37037036" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39969254" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.5163399" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09747102" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09799789" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.4291939" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39969254" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -411,7 +403,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -458,21 +450,9 @@
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
     <entry file="file://$PROJECT_DIR$/venv/rules.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha-test.py" />
-    <entry file="file://$PROJECT_DIR$/cross_validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_validation.py" />
     <entry file="file://$PROJECT_DIR$/qichacha.py" />
-    <entry file="file://$PROJECT_DIR$/combine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="90" selection-start-line="90" selection-end-line="91" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/combine.py" />
     <entry file="file://$PROJECT_DIR$/scrapy.py" />
     <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -481,10 +461,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Temp/GZ_address_enrich.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="28" column="61" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/confidence.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="62" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
+        <state relative-caret-position="394">
+          <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
           <folding>
             <element signature="e#107#126#0" expanded="true" />
           </folding>
@@ -493,38 +483,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="105" selection-start-line="30" selection-start-column="105" selection-end-line="30" selection-end-column="105" />
-          <folding>
-            <element signature="e#107#126#0" expanded="true" />
-            <element signature="e#5518#6024#0" />
-            <element signature="e#6113#7158#0" />
-            <element signature="e#7236#8330#0" />
-            <element signature="e#8381#8465#0" />
-            <element signature="e#8525#8632#0" />
-            <element signature="e#9976#11019#0" />
-            <element signature="e#10625#10717#0" />
-            <element signature="e#11122#12546#0" />
-            <element signature="e#12607#15575#0" />
-            <element signature="e#15625#16875#0" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="63" selection-start-line="63" selection-end-line="64" selection-end-column="35" />
+        <state relative-caret-position="167">
+          <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
           <folding>
             <element signature="e#24#106#1" />
             <element signature="e#108#127#0" expanded="true" />
@@ -532,12 +499,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Temp/GZ_address_enrich.py">
+    <entry file="file://$PROJECT_DIR$/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="29" selection-start-line="29" selection-end-line="29" selection-end-column="26" />
+        <state relative-caret-position="418">
+          <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#107#126#0" expanded="true" />
+            <element signature="e#3233#3728#0" />
+            <element signature="e#3788#5305#0" />
+            <element signature="e#5472#5978#0" />
+            <element signature="e#6067#7112#0" />
+            <element signature="e#7190#8284#0" />
+            <element signature="e#10518#11989#0" />
+            <element signature="e#8335#8419#0" />
+            <element signature="e#8479#8586#0" />
+            <element signature="e#9208#9873#0" />
+            <element signature="e#9978#11021#0" />
+            <element signature="e#11124#12548#0" />
+            <element signature="e#12609#15571#0" />
+            <element signature="e#15621#16871#0" />
           </folding>
         </state>
       </provider>
