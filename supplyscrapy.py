@@ -14,6 +14,7 @@ import pandas as pd
 import numpy as np
 import random
 import time
+from openpyxl import load_workbook
 
 # Replace Cookies with your own
 # TODO: Multiple cookie
@@ -21,7 +22,7 @@ search_headers = {
         'Host': 'www.qichacha.com',
         #'Referer': 'http://www.qichacha.com/search?key=%E4%BB%B2%E9%87%8F%E8%81%94%E8%A1%8C',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
-        'Cookie':'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; PHPSESSID=ih1ucl9safclihopf3c997gdi6; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1531451309; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1529723950,1529735916,1530168634,1531454260; hasShow=1; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914CBAAE924260BA7606432A5CCAFD53623D; acw_tc=AQAAAFZWsSVtVg0AqI+rbAp1RgmIntD5; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201531454259635%2C%22updated%22%3A%201531454269526%2C%22info%22%3A%201531454259640%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22a0a7d0d090beea056d84c394f3864499%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1531454270',
+        'Cookie':'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; PHPSESSID=8pt65iue4vlev7pitthaeimvt7; hasShow=1; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1530168634,1531454260,1531900363,1532069553; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914CA07C57C86EB145AB6DE3939F4D3733BA; acw_tc=AQAAAIU6KjhviAAAqI+rbN4Kll8D1s9z; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1532070771; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201532069552841%2C%22updated%22%3A%201532072849222%2C%22info%22%3A%201532069552844%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22dc09655cd33494e7b3c689a23f3ef65d%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1532072849',
         'Connection': 'keep-alive',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
@@ -32,7 +33,7 @@ search_headers = {
 # Column count 32
 columnname = ['ID','Source ID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','境外公司','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
 
-def qichacha(company_input_list, path, sourcename, timestamp):
+def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
 
     company_count = len(company_input_list)
     company_progress = 0
@@ -45,7 +46,7 @@ def qichacha(company_input_list, path, sourcename, timestamp):
     try:
         company_scrapy_result = pd.read_excel(
             path,
-            sheet_name='company_srapy_list')
+            sheet_name=sheetname)
         # Remove breakpoint record
         company_keyword_break = \
         np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['搜索词']).tolist()[0]
@@ -65,7 +66,7 @@ def qichacha(company_input_list, path, sourcename, timestamp):
 
     for index, row in company_input_list.iterrows():
         company_progress += 1
-        if pd.notnull(row['Company Local Name']):
+        if pd.notna(row['Company Local Name']):
             company_keyword = row['Company Local Name']
         else:
             company_keyword = row['Company Name']
@@ -84,8 +85,8 @@ def qichacha(company_input_list, path, sourcename, timestamp):
         search_province = '&province='
 
         # Fuzzy search for keyword
-        # time.sleep(random.randint(1, 2))
-        search_url_keyword = search_base + search_key + '&ajaxflag=1' + search_index
+        time.sleep(random.randint(1, 2))
+        search_url_keyword = search_base + search_key# + '&ajaxflag=1' + search_index
         respond_keyword = requests.get(search_url_keyword, headers=search_headers)
         soup_keyword = BeautifulSoup(respond_keyword.text, 'lxml')
         company_info_list_flag = soup_keyword.find('span', attrs={'id': 'countOld'})
@@ -99,9 +100,10 @@ def qichacha(company_input_list, path, sourcename, timestamp):
                     if step % 3 == 1:
                         company_href = company.a['href']
                         search_url_company = 'https://www.qichacha.com' + company_href
-                        # time.sleep(random.randint(0, 1))
+                        time.sleep(random.randint(0, 1))
                         respond_company = requests.get(search_url_company, headers=search_headers)
                         soup_company = BeautifulSoup(respond_company.text, 'lxml')
+
                         company_isforeign = False
                         if (soup_company.find('div', attrs={'class': 'row title'}).h1 == None):  # HongKong Company
                             soup_company.find('div', attrs={'class': 'row title'}).span.extract()
@@ -110,12 +112,17 @@ def qichacha(company_input_list, path, sourcename, timestamp):
                         else:
                             company_name = soup_company.find('div', attrs={'class': 'row title'}).h1.text
                         company_id = re.findall(r'/firm_(.*).html', str(company_href))[0]
+                        # print(company_id, company_name)
                         company_phone = ''
                         company_website = ''
                         company_email = ''
                         company_address = ''
-                        if (soup_company.find('span', attrs={'class': "cdes"}).next_sibling.span != None):
-                            cpmpany_phone = soup_company.find('span', attrs={'class': "cdes"}).next_sibling.span.text
+                        for i in soup_company.find_all('span', attrs={'class': "cdes"}):
+                            if i.text == '电话：':
+                                if (i.next_sibling.span != None):
+                                    company_phone = i.next_sibling.span.text
+                        # if (soup_company.find('span', attrs={'class': "cdes"}).next_sibling.span != None):
+                        #     company_phone = soup_company.find('span', attrs={'class': "cdes"}).next_sibling.span.text
                         if (soup_company.find('a', attrs={'onclick': "zhugeTrack('企业主页-企业头部-官网')"}) != None):
                             company_website = soup_company.find('a', attrs={'onclick': "zhugeTrack('企业主页-企业头部-官网')"})[
                                 'href']
@@ -233,8 +240,8 @@ def qichacha(company_input_list, path, sourcename, timestamp):
                                      '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
                 company_info_data = dict(zip(columnname, company_info_data))
                 company_scrapy_result = company_scrapy_result.append(company_info_data, ignore_index=True)
-                print('Need Verification!')
-                print('Progress: ' + company_progress / company_count * 100 + '%')
+                print('Need Verification case 1!')
+                print('Progress: {} %'.format(company_progress / company_count * 100))
                 break
         # Need verification, set ID as 'breakpoint'
         elif company_info_list_flag == None:
@@ -244,8 +251,8 @@ def qichacha(company_input_list, path, sourcename, timestamp):
             company_info_data = dict(zip(columnname, company_info_data))
             company_scrapy_result = company_scrapy_result.append(company_info_data, ignore_index=True)
 
-            print('Need Verification!')
-            print('Progress: ' + company_progress / company_count * 100 + '%')
+            print('Need Verification case 2!')
+            print('Progress: {} %'.format(company_progress / company_count * 100))
             break
         # No result return
         elif company_info_list_flag.span.text.strip() == '0':
@@ -260,7 +267,13 @@ def qichacha(company_input_list, path, sourcename, timestamp):
 
 # print(timestamp)
 # print()
-# company_scrapy_result.to_excel(r'C:\Users\Benson.Chen\Desktop\Capforce\ICG\QiChaCha\QiChaCha'+timestamp+'.xlsx', index = False, header=True, columns= list(columnname), sheet_name='Qichacha')
+# path = r'C:\Users\Benson.Chen\Desktop\Scrapy_GZ-TopX_2018072014.xlsx'
+# timestamp = '2018072014'
+# sourcename = 'CM-GZ-TopX-1'
+# company_topx_list = pd.read_excel(path, sheet_name='TopX-Source')
+# print(company_topx_list)
+# company_scrapy_result = qichacha(company_topx_list, path, 'company_scrapy_list_TopX', sourcename, timestamp)
 #
-#
+# company_scrapy_result.to_excel(path, index = False, header=True, columns= list(columnname), sheet_name='company_scrapy_list_TopX')
+
 

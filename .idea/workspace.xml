@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Temp/GZ_address_enrich.py" beforeDir="false" afterPath="$PROJECT_DIR$/Temp/GZ_address_enrich.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confidence.py" beforeDir="false" afterPath="$PROJECT_DIR$/confidence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplyscrapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplyscrapy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +19,20 @@
       <file leaf-file-name="confidence.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confidence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+            <state relative-caret-position="374">
+              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
               <folding>
                 <element signature="e#107#126#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="supplyscrapy.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2181">
+              <caret line="267" column="4" selection-start-line="267" selection-start-column="2" selection-end-line="267" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -32,24 +40,8 @@
       <file leaf-file-name="validation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
-              <folding>
-                <element signature="e#107#126#0" expanded="true" />
-                <element signature="e#3233#3728#0" />
-                <element signature="e#3788#5305#0" />
-                <element signature="e#5472#5978#0" />
-                <element signature="e#6067#7112#0" />
-                <element signature="e#7190#8284#0" />
-                <element signature="e#10518#11989#0" />
-                <element signature="e#8335#8419#0" />
-                <element signature="e#8479#8586#0" />
-                <element signature="e#9208#9873#0" />
-                <element signature="e#9978#11021#0" />
-                <element signature="e#11124#12548#0" />
-                <element signature="e#12609#15571#0" />
-                <element signature="e#15621#16871#0" />
-              </folding>
+            <state relative-caret-position="294">
+              <caret line="84" column="59" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -57,8 +49,8 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+            <state relative-caret-position="141">
+              <caret line="65" column="10" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="10" />
               <folding>
                 <element signature="e#24#106#1" />
                 <element signature="e#108#127#0" expanded="true" />
@@ -87,26 +79,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>scrapy_verfy</find>
-      <find>C:</find>
-      <find>Full</find>
-      <find>validate_contacts</find>
-      <find>for index, company in</find>
-      <find>contact_common_list</find>
-      <find>contact_output_list</find>
-      <find>isin</find>
-      <find>contact</find>
-      <find>pd</find>
-      <find>CHN_DQ_backupriter</find>
-      <find>Local</find>
-      <find>SourceID</find>
       <find>company_colnames</find>
       <find>].loc[</find>
       <find>common</find>
       <find>duplica</find>
       <find>dupli</find>
       <find>Email</find>
-      <find>zip</find>
       <find>company_dup_group['vc_Master ID']</find>
       <find>['vc_Master ID']</find>
       <find>nan</find>
@@ -117,6 +95,20 @@
       <find>company_name</find>
       <find>print</find>
       <find>pd.Data</find>
+      <find>Address</find>
+      <find>Billing Address line1 (Street/Road)</find>
+      <find>Source ID</find>
+      <find>zip</find>
+      <find>Billing Address</find>
+      <find>sourcename</find>
+      <find>sheet_name</find>
+      <find>qichacha</find>
+      <find>time</find>
+      <find>company_master</find>
+      <find>merge_company</find>
+      <find>.ix</find>
+      <find>prin</find>
+      <find>pr</find>
     </findStrings>
     <replaceStrings>
       <replace>soup_company</replace>
@@ -144,6 +136,8 @@
       <replace>,</replace>
       <replace>company_name</replace>
       <replace>company_keyword</replace>
+      <replace>Billing Address</replace>
+      <replace>.loc</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -160,18 +154,18 @@
         <option value="$PROJECT_DIR$/combine.py" />
         <option value="$PROJECT_DIR$/qichacha.py" />
         <option value="$PROJECT_DIR$/scrapy.py" />
-        <option value="$PROJECT_DIR$/supplyscrapy.py" />
         <option value="$PROJECT_DIR$/Temp/GZ_address_enrich.py" />
         <option value="$PROJECT_DIR$/confidence.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/supplyscrapy.py" />
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/validation.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
+    <option name="x" value="1929" />
+    <option name="y" value="90" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -245,24 +239,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="confidence" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CHN_DQ" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/confidence.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CHN_DQ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -276,6 +252,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="supplyscrapy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CHN_DQ" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/supplyscrapy.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -318,19 +312,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.confidence" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.validation" />
       <item itemvalue="Python.run" />
       <item itemvalue="Python.GZ_address_enrich" />
+      <item itemvalue="Python.supplyscrapy" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
+        <item itemvalue="Python.supplyscrapy" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.GZ_address_enrich" />
         <item itemvalue="Python.validation" />
-        <item itemvalue="Python.confidence" />
       </list>
     </recent_temporary>
   </component>
@@ -360,42 +354,42 @@
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" weight="0.09799789" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09799789" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49841937" weight="0.37037036" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.456427" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39969254" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.5163399" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09799789" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.5163399" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39969254" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -403,7 +397,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -454,30 +448,10 @@
     <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/combine.py" />
     <entry file="file://$PROJECT_DIR$/scrapy.py" />
-    <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2887">
-          <caret line="58" column="37" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Temp/GZ_address_enrich.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="28" column="61" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confidence.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-          <folding>
-            <element signature="e#107#126#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -488,10 +462,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/confidence.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding>
+            <element signature="e#107#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2181">
+          <caret line="267" column="4" selection-start-line="267" selection-start-column="2" selection-end-line="267" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+        <state relative-caret-position="141">
+          <caret line="65" column="10" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="10" />
           <folding>
             <element signature="e#24#106#1" />
             <element signature="e#108#127#0" expanded="true" />
@@ -501,24 +492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
-          <folding>
-            <element signature="e#107#126#0" expanded="true" />
-            <element signature="e#3233#3728#0" />
-            <element signature="e#3788#5305#0" />
-            <element signature="e#5472#5978#0" />
-            <element signature="e#6067#7112#0" />
-            <element signature="e#7190#8284#0" />
-            <element signature="e#10518#11989#0" />
-            <element signature="e#8335#8419#0" />
-            <element signature="e#8479#8586#0" />
-            <element signature="e#9208#9873#0" />
-            <element signature="e#9978#11021#0" />
-            <element signature="e#11124#12548#0" />
-            <element signature="e#12609#15571#0" />
-            <element signature="e#15621#16871#0" />
-          </folding>
+        <state relative-caret-position="294">
+          <caret line="84" column="59" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
         </state>
       </provider>
     </entry>

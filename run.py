@@ -20,7 +20,7 @@ import bau_cf_contacts as bau_contacts
 
 
 # Source-Site-LoadRound
-sourcename = 'CM-West-1'
+sourcename = 'CM-South-1'
 # YYYYMMDDHH
 timestamp = '2018071717'
 # File path
@@ -34,8 +34,8 @@ reviewfilepath = path + reviewfilename
 #backupfilepath = r'C:\Users\Benson.Chen\Desktop\test_com.xlsx'
 
 contact_colnames = ['Source ID', 'Company Name', 'Name','First Name', 'Last Name', 'Email', 'Phone', 'Title', 'Source Company ID', 'vc_Load', 'Reject Reason', 'First Name2', 'Last Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
-company_colnames = ['Source ID', 'Group Name', 'Company Name', 'Company Local Name', 'Billing Address line1 (Street/Road)', 'Billing Address line2 (Building Name)', 'Billing Address line3(Suite, Level, Floor, Unit)', 'Postal Code','District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website','Industry', 'Revenue', 'Employee', 'Full Address', 'dq_New']
-company_dup_colnames = ['Company Name','Company Local Name', 'Billing Address line1 (Street/Road)', 'City', 'State', 'Source ID', 'vc_Deduplicate', 'vc_Load', 'vc_Master ID', 'ComName_temp']
+company_colnames = ['Source ID', 'Group Name', 'Company Name', 'Company Local Name', 'Billing Address', 'Postal Code', 'District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full Address', 'dq_New']
+company_dup_colnames = ['Source ID', 'Company Name','Company Local Name', 'Billing Address', 'City', 'State', 'Phone', 'Website', 'Email' , 'vc_Deduplicate', 'vc_Load', 'vc_Master ID', 'ComName_temp']
 
 
 
@@ -133,7 +133,7 @@ def run(phrase):
         company_dedup_list = pd.read_excel(backupfilepath, sheet_name='company_dedup_list', sort=False)
         company_dq_list = vd.enrich_dq(company_dedup_list, company_dq_result)
         # Run scrapy process
-        company_scrapy_result = qichacha(company_dq_list[company_dq_list['dq_New'] != False], backupfilepath, sourcename, timestamp)
+        company_scrapy_result = qichacha(company_dq_list[company_dq_list['dq_New'] != False], backupfilepath, 'company_scrapy_list', sourcename, timestamp)
         company_scrapy_result['Confidence'] = company_scrapy_result.apply(getConfidence, axis=1)
         company_scrapy_list, company_scrapy_verify = vd.validate_company(company_dq_list, company_scrapy_result, company_colnames)
         company_scrapy_result.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns=list(company_scrapy_result),
