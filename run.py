@@ -34,43 +34,39 @@ reviewfilepath = path + reviewfilename
 #backupfilepath = r'C:\Users\Benson.Chen\Desktop\test_com.xlsx'
 
 contact_colnames = ['Source ID', 'Company Name', 'Name','First Name', 'Last Name', 'Email', 'Phone', 'Title', 'Source Company ID', 'vc_Load', 'Reject Reason', 'First Name2', 'Last Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
-company_colnames = ['Source ID', 'Group Name', 'Company Name', 'Company Local Name', 'Billing Address', 'Postal Code', 'District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full Address', 'dq_New']
+company_colnames = ['Source ID', 'Group Name', 'Company Name', 'Company Local Name', 'Billing Address', 'Postal Code', 'District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full Address', 'ComName_temp', 'dq_New']
 company_dup_colnames = ['Source ID', 'Company Name','Company Local Name', 'Billing Address', 'City', 'State', 'Phone', 'Website', 'Email' , 'vc_Deduplicate', 'vc_Load', 'vc_Master ID', 'ComName_temp']
 
 
 
 
 def run(phrase):
-
-
     # Deduplicate company, find common companies and contacts
     if phrase == 'p1':
         CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
         CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
-        company_raw_list = pd.read_excel(rawfilepath, sheet_name='Company', sort=False)
+        company_raw_list = pd.read_excel(rawfilepath, sheet_name='Company', sort=False, dtype=str)
         contact_raw_list = pd.read_excel(rawfilepath, sheet_name='Contact', sort=False)
-        company_init_list = vd.init_company(company_raw_list)
+        company_init_list = vd.init_list(company_raw_list, company_colnames, 'company')
         company_common_list, contact_common_list = vd.validate_common(company_init_list, contact_raw_list)
 
         company_duplicate_list, company_duplicate_full, company_common_list, contact_common_list = vd.dedup_company(company_common_list, contact_common_list)
         company_duplicate_list.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns= company_dup_colnames, sheet_name='1_Duplicate')
         company_duplicate_full.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns= company_dup_colnames, sheet_name='1_Duplicate_Full')
         company_common_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns= company_colnames, sheet_name='company_common_list')
-        company_common_list.to_excel(r'C:\Users\Benson.Chen\Desktop\a.xlsx', index=False, header=True, columns=company_colnames,
-                                     sheet_name='company_common_list')
         contact_common_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns= contact_colnames, sheet_name='contact_common_list')
         CHN_DQ_reviewwriter.save()
         CHN_DQ_reviewwriter.close()
         CHN_DQ_backupwriter.save()
         CHN_DQ_backupwriter.close()
-        print('Check {}, {}, deduplicate company'.format(backupfilename, '1_Duplicate') )
+        print('Check {}, {}, deduplicate company'.format(backupfilename, '1_Duplicate'))
     # Deduplicate company and clean relative contacts
     elif phrase == 'p2':
         CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
         backupbook = load_workbook(CHN_DQ_backupwriter.path)
         CHN_DQ_backupwriter.book = backupbook
-        company_common_list = pd.read_excel(backupfilepath, sheet_name='company_common_list', sort=False)
-        contact_common_list = pd.read_excel(backupfilepath, sheet_name='contact_common_list', sort=False)
+        company_common_list = pd.read_excel(backupfilepath, sheet_name='company_common_list', sort=False, converters = {'Source ID': str})
+        contact_common_list = pd.read_excel(backupfilepath, sheet_name='contact_common_list', sort=False, converters = {'Source Company ID': str})
         company_duplicate_list = pd.read_excel(reviewfilepath, sheet_name='1_Duplicate', sort=False)
         company_dedup_list, contact_dedup_list = vd.dedup_fix(company_common_list, contact_common_list,
                                                               company_duplicate_list)

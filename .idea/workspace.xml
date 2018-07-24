@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/confidence.py" beforeDir="false" afterPath="$PROJECT_DIR$/confidence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supplyscrapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplyscrapy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +19,8 @@
       <file leaf-file-name="confidence.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confidence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+            <state relative-caret-position="969">
+              <caret line="57" column="117" lean-forward="true" selection-start-line="57" selection-start-column="117" selection-end-line="57" selection-end-column="117" />
               <folding>
                 <element signature="e#107#126#0" expanded="true" />
               </folding>
@@ -31,26 +31,78 @@
       <file leaf-file-name="supplyscrapy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2181">
+            <state relative-caret-position="417">
               <caret line="267" column="4" selection-start-line="267" selection-start-column="2" selection-end-line="267" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="validation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="84" column="59" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
+            <state relative-caret-position="221">
+              <caret line="254" column="13" selection-start-line="254" selection-start-column="13" selection-end-line="254" selection-end-column="13" />
+              <folding>
+                <element signature="e#24#105#1" />
+                <element signature="e#732#874#0" />
+                <element signature="e#1157#2959#0" />
+                <element signature="e#1415#1757#0" />
+                <element signature="e#2334#2853#0" />
+                <element signature="e#2633#2853#0" />
+                <element signature="e#3701#6573#0" />
+                <element signature="e#5057#6573#0" />
+                <element signature="e#6633#8149#0" />
+                <element signature="e#7029#7270#0" />
+                <element signature="e#7095#7270#0" />
+                <element signature="e#7324#7536#0" />
+                <element signature="e#7390#7536#0" />
+                <element signature="e#7589#7800#0" />
+                <element signature="e#7655#7800#0" />
+                <element signature="e#7862#8087#0" />
+                <element signature="e#7932#8087#0" />
+                <element signature="e#8150#8170#0" />
+                <element signature="e#8316#8802#0" />
+                <element signature="e#8382#8770#0" />
+                <element signature="e#8891#9916#0" />
+                <element signature="e#8951#9886#0" />
+                <element signature="e#9994#11028#0" />
+                <element signature="e#10308#10574#0" />
+                <element signature="e#11444#11464#0" />
+                <element signature="e#12846#12930#0" />
+                <element signature="e#13604#14048#0" />
+                <element signature="e#14147#14164#0" />
+                <element signature="e#14928#15971#0" />
+                <element signature="e#15059#15920#0" />
+                <element signature="e#15317#15369#0" />
+                <element signature="e#15577#15846#0" />
+                <element signature="e#15577#15669#0" />
+                <element signature="e#16203#16696#0" />
+                <element signature="e#17559#20521#0" />
+                <element signature="e#17970#18047#0" />
+                <element signature="e#18066#18411#0" />
+                <element signature="e#18416#18442#0" />
+                <element signature="e#18663#18757#0" />
+                <element signature="e#18725#18757#0" />
+                <element signature="e#18925#18986#0" />
+                <element signature="e#18952#18986#0" />
+                <element signature="e#19047#20151#0" />
+                <element signature="e#19099#19396#0" />
+                <element signature="e#19457#19748#0" />
+                <element signature="e#19865#19872#0" />
+                <element signature="e#20571#21821#0" />
+                <element signature="e#20944#21266#0" />
+                <element signature="e#21039#21172#0" />
+                <element signature="e#21234#21266#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="65" column="10" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="10" />
+            <state relative-caret-position="191">
+              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
               <folding>
                 <element signature="e#24#106#1" />
                 <element signature="e#108#127#0" expanded="true" />
@@ -62,8 +114,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="51">
+              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -79,21 +131,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>company_colnames</find>
-      <find>].loc[</find>
-      <find>common</find>
-      <find>duplica</find>
-      <find>dupli</find>
-      <find>Email</find>
-      <find>company_dup_group['vc_Master ID']</find>
-      <find>['vc_Master ID']</find>
-      <find>nan</find>
       <find>np.</find>
       <find>company_dup_group.loc['vc_Master ID'] = sourceid</find>
       <find>notnull</find>
       <find>= s</find>
       <find>company_name</find>
-      <find>print</find>
       <find>pd.Data</find>
       <find>Address</find>
       <find>Billing Address line1 (Street/Road)</find>
@@ -108,7 +150,17 @@
       <find>merge_company</find>
       <find>.ix</find>
       <find>prin</find>
+      <find>extra</find>
+      <find>compi</find>
       <find>pr</find>
+      <find>init</find>
+      <find>vc_Deduplicate</find>
+      <find>print</find>
+      <find>str</find>
+      <find>init_company</find>
+      <find>company_colnames</find>
+      <find>company_duplicate_list['vc_Load'] = False</find>
+      <find>apply</find>
     </findStrings>
     <replaceStrings>
       <replace>soup_company</replace>
@@ -138,6 +190,8 @@
       <replace>company_keyword</replace>
       <replace>Billing Address</replace>
       <replace>.loc</replace>
+      <replace>raw_list</replace>
+      <replace>colnames</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -155,19 +209,19 @@
         <option value="$PROJECT_DIR$/qichacha.py" />
         <option value="$PROJECT_DIR$/scrapy.py" />
         <option value="$PROJECT_DIR$/Temp/GZ_address_enrich.py" />
-        <option value="$PROJECT_DIR$/confidence.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/supplyscrapy.py" />
-        <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/confidence.py" />
         <option value="$PROJECT_DIR$/validation.py" />
+        <option value="$PROJECT_DIR$/run.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1929" />
-    <option name="y" value="90" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="2449" />
+    <option name="y" value="119" />
+    <option name="width" value="859" />
+    <option name="height" value="457" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -206,7 +260,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -359,37 +413,37 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.456427" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.537037" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.21786493" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09799789" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.5163399" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39969254" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.35947713" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -397,7 +451,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -457,43 +511,95 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="51">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="267" column="4" selection-start-line="267" selection-start-column="2" selection-end-line="267" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confidence.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+        <state relative-caret-position="969">
+          <caret line="57" column="117" lean-forward="true" selection-start-line="57" selection-start-column="117" selection-end-line="57" selection-end-column="117" />
           <folding>
             <element signature="e#107#126#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
+    <entry file="file://$PROJECT_DIR$/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2181">
-          <caret line="267" column="4" selection-start-line="267" selection-start-column="2" selection-end-line="267" selection-end-column="4" />
+        <state relative-caret-position="221">
+          <caret line="254" column="13" selection-start-line="254" selection-start-column="13" selection-end-line="254" selection-end-column="13" />
+          <folding>
+            <element signature="e#24#105#1" />
+            <element signature="e#732#874#0" />
+            <element signature="e#1157#2959#0" />
+            <element signature="e#1415#1757#0" />
+            <element signature="e#2334#2853#0" />
+            <element signature="e#2633#2853#0" />
+            <element signature="e#3701#6573#0" />
+            <element signature="e#5057#6573#0" />
+            <element signature="e#6633#8149#0" />
+            <element signature="e#7029#7270#0" />
+            <element signature="e#7095#7270#0" />
+            <element signature="e#7324#7536#0" />
+            <element signature="e#7390#7536#0" />
+            <element signature="e#7589#7800#0" />
+            <element signature="e#7655#7800#0" />
+            <element signature="e#7862#8087#0" />
+            <element signature="e#7932#8087#0" />
+            <element signature="e#8150#8170#0" />
+            <element signature="e#8316#8802#0" />
+            <element signature="e#8382#8770#0" />
+            <element signature="e#8891#9916#0" />
+            <element signature="e#8951#9886#0" />
+            <element signature="e#9994#11028#0" />
+            <element signature="e#10308#10574#0" />
+            <element signature="e#11444#11464#0" />
+            <element signature="e#12846#12930#0" />
+            <element signature="e#13604#14048#0" />
+            <element signature="e#14147#14164#0" />
+            <element signature="e#14928#15971#0" />
+            <element signature="e#15059#15920#0" />
+            <element signature="e#15317#15369#0" />
+            <element signature="e#15577#15846#0" />
+            <element signature="e#15577#15669#0" />
+            <element signature="e#16203#16696#0" />
+            <element signature="e#17559#20521#0" />
+            <element signature="e#17970#18047#0" />
+            <element signature="e#18066#18411#0" />
+            <element signature="e#18416#18442#0" />
+            <element signature="e#18663#18757#0" />
+            <element signature="e#18725#18757#0" />
+            <element signature="e#18925#18986#0" />
+            <element signature="e#18952#18986#0" />
+            <element signature="e#19047#20151#0" />
+            <element signature="e#19099#19396#0" />
+            <element signature="e#19457#19748#0" />
+            <element signature="e#19865#19872#0" />
+            <element signature="e#20571#21821#0" />
+            <element signature="e#20944#21266#0" />
+            <element signature="e#21039#21172#0" />
+            <element signature="e#21234#21266#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="65" column="10" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="10" />
+        <state relative-caret-position="191">
+          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
           <folding>
             <element signature="e#24#106#1" />
             <element signature="e#108#127#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="84" column="59" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
         </state>
       </provider>
     </entry>

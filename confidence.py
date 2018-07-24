@@ -9,8 +9,9 @@ import pandas as pd
 import numpy as np
 import Levenshtein as lv
 import sys
+import validation as vd
 # company_input_list = pd.read_excel(r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Company Check.xlsx',sheet_name='Company')
-# company_scrapy_list = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\Capforce\ICG\QiChaCha\QiChaCha2018062223.xlsx',sheet_name='Sheet1')
+company_scrapy_list = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\Capforce\ICG\QiChaCha\QiChaCha2018062223.xlsx',sheet_name='Sheet1')
 
 # For english, split company name by space and calculate distance by matching words
 def lvEN(com1, com2):
@@ -45,6 +46,8 @@ def getConfidence(company_scrapy):
     if pd.isna(company_search_key) or pd.isna(company_response_name):
         return None
     elif hasCHN(company_search_key) and hasCHN(company_response_name):
+        company_search_key = vd.extract_keyword(company_search_key)
+        company_response_name = vd.extract_keyword(company_response_name)
         return lv.distance(company_search_key,company_response_name)
     elif not hasCHN(company_search_key) and not hasCHN(company_response_name):
         return lvEN(company_search_key, company_response_name)

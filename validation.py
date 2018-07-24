@@ -14,6 +14,7 @@ from openpyxl import load_workbook
 path = r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\Shared Files'
 lastname_list = pd.read_excel(path + '\LastName.xlsx', sheet_name='Sheet2', sort=False)
 geo_list = pd.read_excel(path + '\China City&District List.xlsx', sheet_name='district-full', sort=False)
+null_list = [r'^\s*null\s*$', r'^\s*nan\s*$', r'^\s*n/*a\s*$', r'^\s*tbd\s*$', r'^\s*-\s*$', r'^\s*$']
 company_common_suffix = ['股份', '有限', '责任', '公司', '集团', '企业', '控股', '实业']
 company_common_func = ['银行', '置业', '房地产','地产', '开发', '银行', '投资', '基金', '证券', '资本', '物业', '服务', '管理', '资产']
 
@@ -22,16 +23,15 @@ company_common_func = ['银行', '置业', '房地产','地产', '开发', '银�
 
 # Deduplicate company by name
 def dedup_company(company_common_list, contact_common_list):
-    # company_common_list.loc['ComName_temp'] = None
-    # company_common_list.loc['vc_Deduplicate'] = None
-    # company_common_list.loc['vc_Load'] = None
-    # company_common_list.loc['vc_Master ID'] = None
+    company_common_list['ComName_temp'] = None
+    company_common_list['vc_Deduplicate'] = None
+    company_common_list['vc_Load'] = None
+    company_common_list['vc_Master ID'] = None
     for index, company in company_common_list.iterrows():
         if pd.notna(company['Company Local Name']):
             company_common_list.ix[index, 'ComName_temp'] = extract_keyword(company['Company Local Name'])#str(company['Company Local Name']).strip().replace(' ','')
         else:
             company_common_list.ix[index, 'ComName_temp'] = format_space(str(company['Company Name']).strip().lower())
-
     company_common_list['vc_Deduplicate'] = company_common_list.duplicated(subset=['ComName_temp'], keep=False)
     company_common_list['vc_Deduplicate'] = company_common_list['vc_Deduplicate'].apply(lambda x: False if x else True)
     # Duplicate list needs review
@@ -210,36 +210,39 @@ def extract_keyword(company_name):
     city = None
     if company_keyword == None:
         return None
-    # Find direct city
-    for index, d in dcities.iterrows():
-        if d['Full Name'] in company_keyword or d['Name'] in company_keyword:
-            state = d['Name']
-            city = d['Name']
-            company_keyword = company_keyword.replace(d['Full Name'], '')
-            company_keyword = company_keyword.replace(d['Name'], '')
-            break
-    # Find state
-    for index, s in states.iterrows():
-        if s['Full Name'] in company_keyword or s['Name'] in company_keyword:
-            state = s['Name']
-            company_keyword = company_keyword.replace(s['Full Name'], '')
-            company_keyword = company_keyword.replace(s['Name'], '')
-            break
-    # Find city
-    for index, c in cities.iterrows():
-        if c['Full Name'] in company_keyword or c['Name'] in company_keyword:
-            city = c['Name']
-            company_keyword = company_keyword.replace(c['Full Name'], '')
-            company_keyword = company_keyword.replace(c['Name'], '')
-            break
+    # # Find direct city
+    # for index, d in dcities.iterrows():
+    #     if d['Full Name'] in company_keyword or d['Name'] in company_keyword:
+    #         state = d['Name']
+    #         city = d['Name']
+    #         company_keyword = company_keyword.replace(d['Full Name'], '')
+    #         company_keyword = company_keyword.replace(d['Name'], '')
+    #         break
+    # # Find state
+    # for index, s in states.iterrows():
+    #     if s['Full Name'] in company_keyword or s['Name'] in company_keyword:
+    #         state = s['Name']
+    #         company_keyword = company_keyword.replace(s['Full Name'], '')
+    #         company_keyword = company_keyword.replace(s['Name'], '')
+    #         break
+    # # Find city
+    # for index, c in cities.iterrows():
+    #     if c['Full Name'] in company_keyword or c['Name'] in company_keyword:
+    #         city = c['Name']
+    #         company_keyword = company_keyword.replace(c['Full Name'], '')
+    #         company_keyword = company_keyword.replace(c['Name'], '')
+    #         break
+    # # Find company function
+    # for cf in company_common_func:
+    #     if cf in company_keyword:
+    #         company_keyword = company_keyword.replace(cf, '')
     # Find company suffix
     for cs in company_common_suffix:
         if cs in company_keyword:
             company_keyword = company_keyword.replace(cs, '')
-    # Find company function
-    # for cf in company_common_func:
-    #     if cf in company_keyword:
-    #         company_keyword = company_keyword.replace(cf, '')
+    # Remove ()
+    company_keyword = re.sub(r'\(.*\)', '', company_keyword)
+    company_keyword = re.sub(r'（.*）', '', company_keyword)
     return company_keyword
 
 # Keep only one space
@@ -249,10 +252,19 @@ def format_space(str):
     return str[0].strip()
 
 # Initial company
-def init_company(company_raw_list):
-    company_raw_list['dq_New'] = True
+def init_list(raw_list, colnames, mode):
+    for col in colnames:
+        for i in null_list:
+            if col not in list(raw_list) or pd.isnull(raw_list[col]).all():
+                break
+            else:
+                raw_list[col] = raw_list[col].str.lower().replace(i, np.nan, regex=True)
+                #raw_list[col] = raw_list[col].str.replace('nan', '')
+    if mode == 'company':
+        raw_list['dq_New'] = True
+        raw_list['Company Local Name'] = raw_list.loc[pd.notnull(raw_list['Company Local Name']), 'Company Local Name'].apply(lambda x: x.replace(' ',''))
     # TODO: Null, '', space, 'N/A', '-' check
-    return company_raw_list
+    return raw_list
 
 # Merger duplicate company, no longer used
 def merge_company(company_common_list, contact_common_list, company_dup_group, company_masterid):
@@ -270,7 +282,7 @@ def validate_common(company_init_list, contact_raw_list):
     #if contact_raw_list['Source ID'].isnull().sum() == len(contact_raw_list):
     contact_raw_list['Source ID'] = list(range(1, (len(contact_raw_list) + 1)))
     company_source_list = list(company_init_list['Source ID'])
-    contact_source_list = list(contact_raw_list['Source Company ID'])
+    contact_source_list = list(contact_raw_list['Source Company ID'].astype(str))
     common_source_list = list(set(company_source_list).intersection(set(contact_source_list)))
     company_common_list = company_init_list[company_init_list['Source ID'].isin(common_source_list)]
     contact_common_list = contact_raw_list[contact_raw_list['Source Company ID'].isin(common_source_list)]
