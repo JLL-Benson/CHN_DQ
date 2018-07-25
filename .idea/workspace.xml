@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supplyscrapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplyscrapy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +37,8 @@
       <file leaf-file-name="validation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="37" column="96" lean-forward="true" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
+            <state relative-caret-position="629">
+              <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
               <folding>
                 <element signature="e#24#105#1" />
                 <element signature="e#732#874#0" />
@@ -95,8 +90,8 @@
       <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="18" column="89" selection-start-line="18" selection-start-column="89" selection-end-line="18" selection-end-column="89" />
+            <state>
+              <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
               <folding>
                 <element signature="e#108#122#0" expanded="true" />
               </folding>
@@ -143,8 +138,8 @@
       <find />
       <find>Company_Local_Name</find>
       <find>Source_ID</find>
-      <find>Billing_Address</find>
       <find />
+      <find>Billing_Address</find>
     </findStrings>
     <replaceStrings>
       <replace>contact_validate_list</replace>
@@ -175,8 +170,8 @@
       <replace />
       <replace />
       <replace>Source_ID</replace>
-      <replace />
       <replace>Company_Name</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -514,16 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="18" column="89" selection-start-line="18" selection-start-column="89" selection-end-line="18" selection-end-column="89" />
-          <folding>
-            <element signature="e#108#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-67">
@@ -545,10 +530,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
+          <folding>
+            <element signature="e#108#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="37" column="96" lean-forward="true" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
+        <state relative-caret-position="629">
+          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
           <folding>
             <element signature="e#24#105#1" />
             <element signature="e#732#874#0" />
