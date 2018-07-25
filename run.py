@@ -33,24 +33,21 @@ reviewfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp +'_REVIEW.xlsx'
 reviewfilepath = path + reviewfilename
 #backupfilepath = r'C:\Users\Benson.Chen\Desktop\test_com.xlsx'
 
-contact_colnames = ['Source ID', 'Company Name', 'Name','First Name', 'Last Name', 'Email', 'Phone', 'Title', 'Source Company ID', 'vc_Load', 'Reject Reason', 'First Name2', 'Last Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
-company_colnames = ['Source ID', 'Group Name', 'Company Name', 'Company Local Name', 'Billing Address', 'Postal Code', 'District', 'City', 'State', 'Country', 'Company Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full Address', 'ComName_temp', 'dq_New']
-company_dup_colnames = ['Source ID', 'Company Name','Company Local Name', 'Billing Address', 'City', 'State', 'Phone', 'Website', 'Email' , 'vc_Deduplicate', 'vc_Load', 'vc_Master ID', 'ComName_temp']
-
-
-
+contact_colnames = ['Source_ID', 'Company_Name', 'Name', 'First_Name', 'Last_Name', 'Email', 'Phone', 'Title', 'Source_Company_ID', 'vc_Load', 'Reject_Reason', 'First_Name2', 'Last_Name2', 'Email2', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
+company_colnames = ['Source_ID', 'Group_Name', 'Company_Name', 'Company_Local_Name', 'Billing_Address', 'Postal_Code', 'District', 'City', 'State', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full_Address', 'ComName_temp', 'dq_New']
+company_dup_colnames = ['Source_ID', 'Company_Name','Company_Local_Name', 'Billing_Address', 'City', 'State', 'Phone', 'Website', 'Email' , 'vc_Deduplicate', 'vc_Load', 'vc_Master ID', 'ComName_temp']
 
 def run(phrase):
     # Deduplicate company, find common companies and contacts
     if phrase == 'p1':
-        CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
-        CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
+
         company_raw_list = pd.read_excel(rawfilepath, sheet_name='Company', sort=False, dtype=str)
         contact_raw_list = pd.read_excel(rawfilepath, sheet_name='Contact', sort=False)
         company_init_list = vd.init_list(company_raw_list, company_colnames, 'company')
         company_common_list, contact_common_list = vd.validate_common(company_init_list, contact_raw_list)
-
         company_duplicate_list, company_duplicate_full, company_common_list, contact_common_list = vd.dedup_company(company_common_list, contact_common_list)
+        CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
+        CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
         company_duplicate_list.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns= company_dup_colnames, sheet_name='1_Duplicate')
         company_duplicate_full.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns= company_dup_colnames, sheet_name='1_Duplicate_Full')
         company_common_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns= company_colnames, sheet_name='company_common_list')
@@ -62,19 +59,20 @@ def run(phrase):
         print('Check {}, {}, deduplicate company'.format(backupfilename, '1_Duplicate'))
     # Deduplicate company and clean relative contacts
     elif phrase == 'p2':
-        CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
-        backupbook = load_workbook(CHN_DQ_backupwriter.path)
-        CHN_DQ_backupwriter.book = backupbook
-        company_common_list = pd.read_excel(backupfilepath, sheet_name='company_common_list', sort=False, converters = {'Source ID': str})
-        contact_common_list = pd.read_excel(backupfilepath, sheet_name='contact_common_list', sort=False, converters = {'Source Company ID': str})
+
+        company_common_list = pd.read_excel(backupfilepath, sheet_name='company_common_list', sort=False, converters = {'Source_ID': str})
+        contact_common_list = pd.read_excel(backupfilepath, sheet_name='contact_common_list', sort=False, converters = {'Source_Company_ID': str})
         company_duplicate_list = pd.read_excel(reviewfilepath, sheet_name='1_Duplicate', sort=False)
         company_dedup_list, contact_dedup_list = vd.dedup_fix(company_common_list, contact_common_list,
                                                               company_duplicate_list)
+
+        CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
+        backupbook = load_workbook(CHN_DQ_backupwriter.path)
+        CHN_DQ_backupwriter.book = backupbook
         company_dedup_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns=company_colnames,
                                     sheet_name='company_dedup_list')
         contact_dedup_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns=contact_colnames,
                                     sheet_name='contact_dedup_list')
-
         CHN_DQ_backupwriter.save()
         CHN_DQ_backupwriter.close()
         print('Run p3')
@@ -96,12 +94,12 @@ def run(phrase):
 
         sheetname = 'company_dedup_list'
         column_mapping = {
-            'Source ID': 'Integration_MDM_Ids__c',
-            'Company Name': 'Name',
-            'Full Address': 'BillingStreet',
+            'Source_ID': 'Integration_MDM_Ids__c',
+            'Company_Name': 'Name',
+            'Full_Address': 'BillingStreet',
             'City': 'BillingCity',
             'State': 'BillingState',
-            'Postal Code': 'BillingPostalCode',
+            'Postal_Code': 'BillingPostalCode',
             'Country': 'BillingCountry',
             'Phone': 'Phone',
             'Fax': 'Fax',
@@ -117,12 +115,7 @@ def run(phrase):
         # End company dq process
     # Enrich company with company dq result, run company scrapy process and enrich
     elif phrase == 'p4':
-        CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
-        CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
-        backupbook = load_workbook(CHN_DQ_backupwriter.path)
-        reviewbook = load_workbook(CHN_DQ_reviewwriter.path)
-        CHN_DQ_backupwriter.book = backupbook
-        CHN_DQ_reviewwriter.book = reviewbook
+
         dqfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp + '_BACKUP_ENRICHED.xlsx'
         dqfilepath = path + dqfilename
         company_dq_result = pd.read_excel(dqfilepath, sheet_name='Existing_Accounts', sort=False)
@@ -132,6 +125,13 @@ def run(phrase):
         company_scrapy_result = qichacha(company_dq_list[company_dq_list['dq_New'] != False], backupfilepath, 'company_scrapy_list', sourcename, timestamp)
         company_scrapy_result['Confidence'] = company_scrapy_result.apply(getConfidence, axis=1)
         company_scrapy_list, company_scrapy_verify = vd.validate_company(company_dq_list, company_scrapy_result, company_colnames)
+
+        CHN_DQ_backupwriter = pd.ExcelWriter(backupfilepath, engine='openpyxl')
+        CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
+        backupbook = load_workbook(CHN_DQ_backupwriter.path)
+        reviewbook = load_workbook(CHN_DQ_reviewwriter.path)
+        CHN_DQ_backupwriter.book = backupbook
+        CHN_DQ_reviewwriter.book = reviewbook
         company_scrapy_result.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns=list(company_scrapy_result),
                                     sheet_name='company_scrapy_result')
         company_scrapy_list.to_excel(CHN_DQ_backupwriter, index=False, header=True, columns=company_colnames,
@@ -144,38 +144,40 @@ def run(phrase):
         CHN_DQ_reviewwriter.close()
     # Enrich company with business return, validate contact
     elif phrase == 'p5':
-        CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
-        reviewbook = load_workbook(CHN_DQ_reviewwriter.path)
-        CHN_DQ_reviewwriter.book = reviewbook
+
         company_business_result = pd.read_excel(reviewfilepath, sheet_name='2_Scrapy', sort=False)
         company_scrapy_list = pd.read_excel(backupfilepath, sheet_name='company_scrapy_list', sort=False)
         contact_dedup_list = pd.read_excel(backupfilepath, sheet_name='contact_dedup_list', sort=False)
         company_load_list = vd.enrich_business(company_scrapy_list, company_business_result, company_colnames)
 
         contact_validate_list = vd.validate_contacts(contact_dedup_list, contact_colnames, company_load_list)
+
+        CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
+        reviewbook = load_workbook(CHN_DQ_reviewwriter.path)
+        CHN_DQ_reviewwriter.book = reviewbook
         contact_validate_list.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns=contact_colnames,
                                     sheet_name='3_Validate')
-
         company_load_list.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns=company_colnames,
                                    sheet_name='4_Company_Load')
         CHN_DQ_reviewwriter.save()
         CHN_DQ_reviewwriter.close()
     elif phrase == 'p6':
+        contact_dedup_list = pd.read_excel(backupfilepath, sheet_name='contact_dedup_list', sort=False)
+        contact_business_list = pd.read_excel(reviewfilepath, sheet_name='3_Validate', sort=False)
+        droplist = list(contact_business_list.loc[contact_business_list['vc_Load'] == False,'Source_ID'])
+        contact_load_list = contact_dedup_list[~contact_dedup_list['Source_ID'].isin(droplist)]
+
         CHN_DQ_reviewwriter = pd.ExcelWriter(reviewfilepath, engine='openpyxl')
         reviewbook = load_workbook(CHN_DQ_reviewwriter.path)
         CHN_DQ_reviewwriter.book = reviewbook
-        contact_dedup_list = pd.read_excel(backupfilepath, sheet_name='contact_dedup_list', sort=False)
-        contact_business_list = pd.read_excel(reviewfilepath, sheet_name='3_Validate', sort=False)
-        droplist = list(contact_business_list.loc[contact_business_list['vc_Load'] == False,'Source ID'])
-        contact_load_list = contact_dedup_list[~contact_dedup_list['Source ID'].isin(droplist)]
         contact_load_list.to_excel(CHN_DQ_reviewwriter, index=False, header=True, columns=contact_colnames,
                                    sheet_name='4_Contact_Load')
         CHN_DQ_reviewwriter.save()
         CHN_DQ_reviewwriter.close()
-run('p1')
+#run('p1')
 
-def toexcel(filepath, colnames, sheetname):
-    return 0
+
+
 
 
 # contact_output = validate_contacts(contact_input_list, contact_colnames)

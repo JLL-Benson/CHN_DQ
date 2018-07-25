@@ -1,5 +1,5 @@
 import pandas as pd
-
+import pymssql
 
 def tryc(x,y):
     return y,x
@@ -23,3 +23,4 @@ test.ix[0,'col2'] = str(test.loc[test['col1'].dropna().duplicated(keep=False).in
 # print(test['col5'])
 # print(test.duplicated(subset=['col5'], keep=False))
 #print(test[test['col1']])
+# pd.read_excel(r'C:\Users\Benson.Chen\Desktop\a.xlsx')

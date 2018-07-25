@@ -31,7 +31,7 @@ search_headers = {
         'Connection': 'keep-alive'}
 
 # Column count 32
-columnname = ['ID','Source ID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','境外公司','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
+columnname = ['ID','Source_ID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','境外公司','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
 
 def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
 
@@ -51,14 +51,14 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
         company_keyword_break = \
         np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['搜索词']).tolist()[0]
         company_progress = \
-        np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['Source ID']).tolist()[0]
+        np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['Source_ID']).tolist()[0]
         company_scrapy_result = company_scrapy_result[company_scrapy_result['搜索词'] != company_keyword_break]
-        if company_input_list[company_input_list['Company Local Name'] == company_keyword_break].empty == False:
+        if company_input_list[company_input_list['Company_Local_Name'] == company_keyword_break].empty == False:
             company_input_break = np.array(
-                company_input_list[company_input_list['Company Local Name'] == company_keyword_break].index).tolist()[0]
+                company_input_list[company_input_list['Company_Local_Name'] == company_keyword_break].index).tolist()[0]
         else:
             company_input_break = np.array(
-                company_input_list[company_input_list['Company Name'] == company_keyword_break].index).tolist()[0]
+                company_input_list[company_input_list['Company_Name'] == company_keyword_break].index).tolist()[0]
         company_input_list = company_input_list.drop(list(range(0, company_input_break)))
     # First time running
     except:
@@ -66,11 +66,11 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
 
     for index, row in company_input_list.iterrows():
         company_progress += 1
-        if pd.notna(row['Company Local Name']):
-            company_keyword = row['Company Local Name']
+        if pd.notna(row['Company_Local_Name']):
+            company_keyword = row['Company_Local_Name']
         else:
-            company_keyword = row['Company Name']
-        company_sourceid = row['Source ID']
+            company_keyword = row['Company_Name']
+        company_sourceid = row['Source_ID']
 
         # Search filter
         search_base = 'https://www.qichacha.com/search?key='
@@ -79,7 +79,7 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
         search_key = urllib.parse.quote(company_keyword)
         # Organization Type： 0:Company 1:Organization 3:HK Company 5:TW Company
         search_type = '&searchType='
-        # Searching Index： 2:Company Name 4:Representative/Share holder  6:Management 8:Brand/Product 10:Connection(Address)
+        # Searching Index： 2:Company_Name 4:Representative/Share holder  6:Management 8:Brand/Product 10:Connection(Address)
         search_index = '&index=2'
         # Province
         search_province = '&province='

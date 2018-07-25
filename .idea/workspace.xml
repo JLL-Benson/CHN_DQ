@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confidence.py" beforeDir="false" afterPath="$PROJECT_DIR$/confidence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supplyscrapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplyscrapy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +21,8 @@
       <file leaf-file-name="confidence.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confidence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="57" column="117" lean-forward="true" selection-start-line="57" selection-start-column="117" selection-end-line="57" selection-end-column="117" />
+            <state relative-caret-position="839">
+              <caret line="50" column="68" lean-forward="true" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
               <folding>
                 <element signature="e#107#126#0" expanded="true" />
               </folding>
@@ -31,81 +33,48 @@
       <file leaf-file-name="supplyscrapy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="267" column="4" selection-start-line="267" selection-start-column="2" selection-end-line="267" selection-end-column="4" />
+            <state relative-caret-position="306">
+              <caret line="72" column="41" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="validation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="254" column="13" selection-start-line="254" selection-start-column="13" selection-end-line="254" selection-end-column="13" />
+            <state relative-caret-position="291">
+              <caret line="37" column="96" lean-forward="true" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
               <folding>
                 <element signature="e#24#105#1" />
                 <element signature="e#732#874#0" />
-                <element signature="e#1157#2959#0" />
-                <element signature="e#1415#1757#0" />
-                <element signature="e#2334#2853#0" />
-                <element signature="e#2633#2853#0" />
-                <element signature="e#3701#6573#0" />
-                <element signature="e#5057#6573#0" />
-                <element signature="e#6633#8149#0" />
-                <element signature="e#7029#7270#0" />
-                <element signature="e#7095#7270#0" />
-                <element signature="e#7324#7536#0" />
-                <element signature="e#7390#7536#0" />
-                <element signature="e#7589#7800#0" />
-                <element signature="e#7655#7800#0" />
-                <element signature="e#7862#8087#0" />
-                <element signature="e#7932#8087#0" />
-                <element signature="e#8150#8170#0" />
-                <element signature="e#8316#8802#0" />
-                <element signature="e#8382#8770#0" />
-                <element signature="e#8891#9916#0" />
-                <element signature="e#8951#9886#0" />
-                <element signature="e#9994#11028#0" />
-                <element signature="e#10308#10574#0" />
-                <element signature="e#11444#11464#0" />
-                <element signature="e#12846#12930#0" />
-                <element signature="e#13604#14048#0" />
-                <element signature="e#14147#14164#0" />
-                <element signature="e#14928#15971#0" />
-                <element signature="e#15059#15920#0" />
-                <element signature="e#15317#15369#0" />
-                <element signature="e#15577#15846#0" />
-                <element signature="e#15577#15669#0" />
-                <element signature="e#16203#16696#0" />
-                <element signature="e#17559#20521#0" />
-                <element signature="e#17970#18047#0" />
-                <element signature="e#18066#18411#0" />
-                <element signature="e#18416#18442#0" />
-                <element signature="e#18663#18757#0" />
-                <element signature="e#18725#18757#0" />
-                <element signature="e#18925#18986#0" />
-                <element signature="e#18952#18986#0" />
-                <element signature="e#19047#20151#0" />
-                <element signature="e#19099#19396#0" />
-                <element signature="e#19457#19748#0" />
-                <element signature="e#19865#19872#0" />
-                <element signature="e#20571#21821#0" />
-                <element signature="e#20944#21266#0" />
-                <element signature="e#21039#21172#0" />
-                <element signature="e#21234#21266#0" />
+                <element signature="e#3143#3638#0" />
+                <element signature="e#3753#6625#0" />
+                <element signature="e#6685#8201#0" />
+                <element signature="e#8368#8854#0" />
+                <element signature="e#8943#9968#0" />
+                <element signature="e#10046#11080#0" />
+                <element signature="e#11147#12981#0" />
+                <element signature="e#13032#13116#0" />
+                <element signature="e#13181#13785#0" />
+                <element signature="e#13932#14376#0" />
+                <element signature="e#14475#15151#0" />
+                <element signature="e#15256#16299#0" />
+                <element signature="e#16402#17826#0" />
+                <element signature="e#17887#20849#0" />
+                <element signature="e#20899#22149#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+            <state relative-caret-position="-872">
+              <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
               <folding>
-                <element signature="e#24#106#1" />
-                <element signature="e#108#127#0" expanded="true" />
+                <element signature="e#1955#3460#0" />
+                <element signature="e#3549#4756#0" />
               </folding>
             </state>
           </provider>
@@ -114,8 +83,23 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+            <state relative-caret-position="-67">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="18" column="89" selection-start-line="18" selection-start-column="89" selection-end-line="18" selection-end-column="89" />
+              <folding>
+                <element signature="e#108#122#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,67 +115,68 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>np.</find>
-      <find>company_dup_group.loc['vc_Master ID'] = sourceid</find>
-      <find>notnull</find>
-      <find>= s</find>
-      <find>company_name</find>
-      <find>pd.Data</find>
-      <find>Address</find>
-      <find>Billing Address line1 (Street/Road)</find>
-      <find>Source ID</find>
-      <find>zip</find>
-      <find>Billing Address</find>
-      <find>sourcename</find>
-      <find>sheet_name</find>
-      <find>qichacha</find>
-      <find>time</find>
-      <find>company_master</find>
-      <find>merge_company</find>
-      <find>.ix</find>
-      <find>prin</find>
-      <find>extra</find>
-      <find>compi</find>
-      <find>pr</find>
-      <find>init</find>
-      <find>vc_Deduplicate</find>
-      <find>print</find>
       <find>str</find>
+      <find />
       <find>init_company</find>
+      <find>try</find>
+      <find>Dat</find>
       <find>company_colnames</find>
-      <find>company_duplicate_list['vc_Load'] = False</find>
       <find>apply</find>
+      <find />
+      <find />
+      <find />
+      <find />
+      <find />
+      <find />
+      <find />
+      <find>_</find>
+      <find>Company_Type</find>
+      <find />
+      <find>First_Name</find>
+      <find>Source_Company_ID</find>
+      <find>Reject_Reason</find>
+      <find>First_Name2</find>
+      <find>Group_Name</find>
+      <find>Company_Name</find>
+      <find />
+      <find>Source</find>
+      <find />
+      <find>Company_Local_Name</find>
+      <find>Source_ID</find>
+      <find>Billing_Address</find>
+      <find />
     </findStrings>
     <replaceStrings>
-      <replace>soup_company</replace>
-      <replace>eve</replace>
-      <replace>rannie</replace>
-      <replace>combine</replace>
-      <replace>True</replace>
-      <replace>nswap</replace>
-      <replace>\n</replace>
-      <replace />
-      <replace>geo_list</replace>
-      <replace>contact_common_list</replace>
-      <replace>company_dedup_list</replace>
-      <replace>company_dq_list</replace>
-      <replace>enrich_scrapy</replace>
-      <replace>company_init_list</replace>
-      <replace>company_scrapy_result</replace>
-      <replace>scrapy_verify</replace>
-      <replace>contact_dedup_list</replace>
       <replace>contact_validate_list</replace>
       <replace>CHN_DQ_Writer</replace>
       <replace>backupfilepath</replace>
       <replace>CHN_DQ_backupwriter</replace>
-      <replace>Source ID</replace>
       <replace>,</replace>
       <replace>company_name</replace>
       <replace>company_keyword</replace>
-      <replace>Billing Address</replace>
       <replace>.loc</replace>
       <replace>raw_list</replace>
       <replace>colnames</replace>
+      <replace>Group_Name</replace>
+      <replace />
+      <replace>Billing_Address</replace>
+      <replace>Postal_Code</replace>
+      <replace>First_Name</replace>
+      <replace>Last_Name</replace>
+      <replace>Reject_Reason</replace>
+      <replace>Company_Type</replace>
+      <replace />
+      <replace />
+      <replace>Company_Local_Name</replace>
+      <replace />
+      <replace />
+      <replace />
+      <replace />
+      <replace />
+      <replace />
+      <replace>Source_ID</replace>
+      <replace />
+      <replace>Company_Name</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -209,19 +194,21 @@
         <option value="$PROJECT_DIR$/qichacha.py" />
         <option value="$PROJECT_DIR$/scrapy.py" />
         <option value="$PROJECT_DIR$/Temp/GZ_address_enrich.py" />
-        <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/supplyscrapy.py" />
         <option value="$PROJECT_DIR$/confidence.py" />
-        <option value="$PROJECT_DIR$/validation.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/venv/db.py" />
+        <option value="$PROJECT_DIR$/supplyscrapy.py" />
+        <option value="$PROJECT_DIR$/db.py" />
         <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/validation.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2449" />
-    <option name="y" value="119" />
-    <option name="width" value="859" />
-    <option name="height" value="457" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1937" />
+    <option name="height" value="1097" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -274,7 +261,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run">
+  <component name="RunManager" selected="Python.db">
     <configuration name="GZ_address_enrich" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CHN_DQ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -288,6 +275,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Temp/GZ_address_enrich.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CHN_DQ" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -347,38 +352,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="validation" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CHN_DQ" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/validation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list>
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.validation" />
       <item itemvalue="Python.run" />
       <item itemvalue="Python.GZ_address_enrich" />
       <item itemvalue="Python.supplyscrapy" />
+      <item itemvalue="Python.db" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.db" />
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.supplyscrapy" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.supplyscrapy" />
         <item itemvalue="Python.GZ_address_enrich" />
-        <item itemvalue="Python.validation" />
       </list>
     </recent_temporary>
   </component>
@@ -405,15 +392,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.09799789" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.14785373" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015806" side_tool="true" weight="0.4422658" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.537037" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49841937" visible="true" weight="0.24329159" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.21786493" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -451,12 +438,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
     <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
@@ -509,96 +494,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/venv/db.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="267" column="4" selection-start-line="267" selection-start-column="2" selection-end-line="267" selection-end-column="4" />
+        <state relative-caret-position="306">
+          <caret line="72" column="41" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confidence.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="117" lean-forward="true" selection-start-line="57" selection-start-column="117" selection-end-line="57" selection-end-column="117" />
+        <state relative-caret-position="839">
+          <caret line="50" column="68" lean-forward="true" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
           <folding>
             <element signature="e#107#126#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/validation.py">
+    <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="254" column="13" selection-start-line="254" selection-start-column="13" selection-end-line="254" selection-end-column="13" />
+        <state relative-caret-position="186">
+          <caret line="18" column="89" selection-start-line="18" selection-start-column="89" selection-end-line="18" selection-end-column="89" />
           <folding>
-            <element signature="e#24#105#1" />
-            <element signature="e#732#874#0" />
-            <element signature="e#1157#2959#0" />
-            <element signature="e#1415#1757#0" />
-            <element signature="e#2334#2853#0" />
-            <element signature="e#2633#2853#0" />
-            <element signature="e#3701#6573#0" />
-            <element signature="e#5057#6573#0" />
-            <element signature="e#6633#8149#0" />
-            <element signature="e#7029#7270#0" />
-            <element signature="e#7095#7270#0" />
-            <element signature="e#7324#7536#0" />
-            <element signature="e#7390#7536#0" />
-            <element signature="e#7589#7800#0" />
-            <element signature="e#7655#7800#0" />
-            <element signature="e#7862#8087#0" />
-            <element signature="e#7932#8087#0" />
-            <element signature="e#8150#8170#0" />
-            <element signature="e#8316#8802#0" />
-            <element signature="e#8382#8770#0" />
-            <element signature="e#8891#9916#0" />
-            <element signature="e#8951#9886#0" />
-            <element signature="e#9994#11028#0" />
-            <element signature="e#10308#10574#0" />
-            <element signature="e#11444#11464#0" />
-            <element signature="e#12846#12930#0" />
-            <element signature="e#13604#14048#0" />
-            <element signature="e#14147#14164#0" />
-            <element signature="e#14928#15971#0" />
-            <element signature="e#15059#15920#0" />
-            <element signature="e#15317#15369#0" />
-            <element signature="e#15577#15846#0" />
-            <element signature="e#15577#15669#0" />
-            <element signature="e#16203#16696#0" />
-            <element signature="e#17559#20521#0" />
-            <element signature="e#17970#18047#0" />
-            <element signature="e#18066#18411#0" />
-            <element signature="e#18416#18442#0" />
-            <element signature="e#18663#18757#0" />
-            <element signature="e#18725#18757#0" />
-            <element signature="e#18925#18986#0" />
-            <element signature="e#18952#18986#0" />
-            <element signature="e#19047#20151#0" />
-            <element signature="e#19099#19396#0" />
-            <element signature="e#19457#19748#0" />
-            <element signature="e#19865#19872#0" />
-            <element signature="e#20571#21821#0" />
-            <element signature="e#20944#21266#0" />
-            <element signature="e#21039#21172#0" />
-            <element signature="e#21234#21266#0" />
+            <element signature="e#108#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-67">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+        <state relative-caret-position="-872">
+          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
           <folding>
-            <element signature="e#24#106#1" />
-            <element signature="e#108#127#0" expanded="true" />
+            <element signature="e#1955#3460#0" />
+            <element signature="e#3549#4756#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="37" column="96" lean-forward="true" selection-start-line="37" selection-start-column="96" selection-end-line="37" selection-end-column="96" />
+          <folding>
+            <element signature="e#24#105#1" />
+            <element signature="e#732#874#0" />
+            <element signature="e#3143#3638#0" />
+            <element signature="e#3753#6625#0" />
+            <element signature="e#6685#8201#0" />
+            <element signature="e#8368#8854#0" />
+            <element signature="e#8943#9968#0" />
+            <element signature="e#10046#11080#0" />
+            <element signature="e#11147#12981#0" />
+            <element signature="e#13032#13116#0" />
+            <element signature="e#13181#13785#0" />
+            <element signature="e#13932#14376#0" />
+            <element signature="e#14475#15151#0" />
+            <element signature="e#15256#16299#0" />
+            <element signature="e#16402#17826#0" />
+            <element signature="e#17887#20849#0" />
+            <element signature="e#20899#22149#0" />
           </folding>
         </state>
       </provider>

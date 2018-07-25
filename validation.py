@@ -28,10 +28,10 @@ def dedup_company(company_common_list, contact_common_list):
     company_common_list['vc_Load'] = None
     company_common_list['vc_Master ID'] = None
     for index, company in company_common_list.iterrows():
-        if pd.notna(company['Company Local Name']):
-            company_common_list.ix[index, 'ComName_temp'] = extract_keyword(company['Company Local Name'])#str(company['Company Local Name']).strip().replace(' ','')
+        if pd.notna(company['Company_Local_Name']):
+            company_common_list.ix[index, 'ComName_temp'] = extract_keyword(company['Company_Local_Name'])
         else:
-            company_common_list.ix[index, 'ComName_temp'] = format_space(str(company['Company Name']).strip().lower())
+            company_common_list.ix[index, 'ComName_temp'] = format_space(str(company['Company_Name']).strip().lower())
     company_common_list['vc_Deduplicate'] = company_common_list.duplicated(subset=['ComName_temp'], keep=False)
     company_common_list['vc_Deduplicate'] = company_common_list['vc_Deduplicate'].apply(lambda x: False if x else True)
     # Duplicate list needs review
@@ -52,13 +52,19 @@ def dedup_company(company_common_list, contact_common_list):
 
     return company_duplicate_list, company_duplicate_full, company_common_list, contact_common_list
 
+# Deduplicate company with staging data
+def dedup_comany_db (company_list, company_db_list):
+
+
+    return 0
+
 # Remove duplicate, fix contact source company id
 def dedup_fix(company_common_list, contact_common_list, company_duplicate_list):
     company_remove_list = company_duplicate_list[company_duplicate_list['vc_Load'] == False]
     for index, company in company_remove_list.iterrows():
-        sourceid = company['Source ID']
+        sourceid = company['Source_ID']
         masterid = company['vc_Master ID']
-        company_common_list = company_common_list[company_common_list['Source ID'] != sourceid]
+        company_common_list = company_common_list[company_common_list['Source_ID'] != sourceid]
         contact_common_list.loc[contact_common_list['Source Company ID'] == sourceid, 'Source Company ID'] = masterid
     return company_common_list, contact_common_list
 
@@ -66,7 +72,7 @@ def dedup_fix(company_common_list, contact_common_list, company_duplicate_list):
 def dedup_get_master(company_common_list, company_dup_group):
     if company_dup_group.empty:
         return None
-    master_address = company_dup_group.ix[company_dup_group['Billing Address'].dropna().duplicated(keep=False).index, 'Billing Address']
+    master_address = company_dup_group.ix[company_dup_group['Billing_Address'].dropna().duplicated(keep=False).index, 'Billing_Address']
     master_city = company_dup_group.ix[company_dup_group['City'].dropna().duplicated(keep=False).index, 'City']
     if len(master_city) > 1:
         master_city = master_city.iloc[0]
@@ -84,23 +90,23 @@ def dedup_get_master(company_common_list, company_dup_group):
     if len(master_address) > 1 or len(master_phone) > 1 or len(master_email) > 1 or len(master_website) > 1:
         return None, company_common_list, company_dup_group
     else:
-        company_masterid = list(company_dup_group['Source ID'])[0]
+        company_masterid = list(company_dup_group['Source_ID'])[0]
         if not master_address.empty:
-            company_common_list.ix[company_common_list['Source ID'] == company_masterid, 'Billing Address'] = list(master_address.values)[0]
+            company_common_list.ix[company_common_list['Source_ID'] == company_masterid, 'Billing_Address'] = list(master_address.values)[0]
         if not master_city.empty:
-            company_common_list.ix[company_common_list['Source ID'] == company_masterid, 'City'] = list(master_city.values)[0]
+            company_common_list.ix[company_common_list['Source_ID'] == company_masterid, 'City'] = list(master_city.values)[0]
         if not master_state.empty:
-            company_common_list.ix[company_common_list['Source ID'] == company_masterid, 'State'] = list(master_state.values)[0]
+            company_common_list.ix[company_common_list['Source_ID'] == company_masterid, 'State'] = list(master_state.values)[0]
         if not master_country.empty:
-            company_common_list.ix[company_common_list['Source ID'] == company_masterid, 'Country'] = list(master_country.values)[0]
+            company_common_list.ix[company_common_list['Source_ID'] == company_masterid, 'Country'] = list(master_country.values)[0]
         if not master_phone.empty:
-            company_common_list.ix[company_common_list['Source ID'] == company_masterid, 'Phone'] = list(master_phone.values)[0]
+            company_common_list.ix[company_common_list['Source_ID'] == company_masterid, 'Phone'] = list(master_phone.values)[0]
         if not master_website.empty:
-            company_common_list.ix[company_common_list['Source ID'] == company_masterid, 'Website'] = list(master_website.values)[0]
+            company_common_list.ix[company_common_list['Source_ID'] == company_masterid, 'Website'] = list(master_website.values)[0]
         if not master_email.empty:
-            company_common_list.ix[company_common_list['Source ID'] == company_masterid, 'Email'] = list(master_email.values)[0]
-        company_dup_group.ix[company_dup_group['Source ID'] == company_masterid, 'vc_Load'] = True
-        company_dup_group.ix[company_dup_group['Source ID'] != company_masterid, 'vc_Master ID'] = company_masterid
+            company_common_list.ix[company_common_list['Source_ID'] == company_masterid, 'Email'] = list(master_email.values)[0]
+        company_dup_group.ix[company_dup_group['Source_ID'] == company_masterid, 'vc_Load'] = True
+        company_dup_group.ix[company_dup_group['Source_ID'] != company_masterid, 'vc_Master ID'] = company_masterid
         return company_masterid, company_common_list, company_dup_group
 
 # Enrich company address
@@ -151,10 +157,10 @@ def enrich_address(address):
 # Enrich company and contact detail by business return
 def enrich_business(company_scrapy_list, company_business_result, company_colnames):
     for index, company in company_business_result.iterrows():
-        sourceid = company['Source ID']
-        company['Full Address'] = str(company['District']) + str(company['Billing Address'])
+        sourceid = company['Source_ID']
+        company['Full Address'] = str(company['District']) + str(company['Billing_Address'])
         company['Full Address'] = format_space(company['Full Address']).strip()
-        company_scrapy_list = company_scrapy_list[~(company_scrapy_list['Source ID'] == sourceid)]
+        company_scrapy_list = company_scrapy_list[~(company_scrapy_list['Source_ID'] == sourceid)]
         company_scrapy_list = company_scrapy_list.append(company, ignore_index=True)
 
     return company_scrapy_list
@@ -163,35 +169,35 @@ def enrich_business(company_scrapy_list, company_business_result, company_colnam
 def enrich_dq(company_dedup_list,company_dq_result):
     for index, company in company_dq_result.iterrows():
         sourceid = company['Integration_MDM_Ids__c']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'Company Name'] = company['Name']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'Billing Address'] = company['BillingStreet']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'Postal Code'] = company['BillingPostalCode']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'City'] = company['BillingCity']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'State'] = company['BillingState']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'Country'] = company['BillingCountry']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'Website'] = company['Website']
-        company_dedup_list.loc[company_dedup_list['Source ID'] == sourceid, 'dq_New'] = False
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'Company_Name'] = company['Name']
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'Billing_Address'] = company['BillingStreet']
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'Postal_Code'] = company['BillingPostalCode']
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'City'] = company['BillingCity']
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'State'] = company['BillingState']
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'Country'] = company['BillingCountry']
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'Website'] = company['Website']
+        company_dedup_list.loc[company_dedup_list['Source_ID'] == sourceid, 'dq_New'] = False
     return company_dedup_list
 
 # Enrich company detail by qichacha
 def enrich_scrapy(company, scrapy):
     if scrapy['英文名'] != None:
-        company['Company Name'] = scrapy['英文名']
-    company['Company Local Name'] = scrapy['公司名称']
+        company['Company_Name'] = scrapy['英文名']
+    company['Company_Local_Name'] = scrapy['公司名称']
     if scrapy['境外公司'] == True or scrapy['境外公司'] == 'True':
         company['Country'] = ''
     else:
         company['Country'] = 'China'
-    if company['Billing Address'] == None:
-        state, company['City'], company['District'], company['Billing Address'] = enrich_address(scrapy['地址'])
+    if company['Billing_Address'] == None:
+        state, company['City'], company['District'], company['Billing_Address'] = enrich_address(scrapy['地址'])
         if scrapy['所属地区'] is not None and len(scrapy['所属地区']) > 1:
             company['State'] = scrapy['所属地区']
         else:
             company['State'] = state
     # No district field in system for now
-    company['Full Address'] = company['District'] + company['Billing Address']
+    company['Full Address'] = company['District'] + company['Billing_Address']
     company['Full Address'] = format_space(company['Full Address']).strip()
-    company['Company Type'] = scrapy['公司类型']
+    company['Company_Type'] = scrapy['公司类型']
     company['Phone'] = scrapy['电话']
     company['Website'] = scrapy['网址']
     company['Email'] = scrapy['邮箱']
@@ -262,16 +268,16 @@ def init_list(raw_list, colnames, mode):
                 #raw_list[col] = raw_list[col].str.replace('nan', '')
     if mode == 'company':
         raw_list['dq_New'] = True
-        raw_list['Company Local Name'] = raw_list.loc[pd.notnull(raw_list['Company Local Name']), 'Company Local Name'].apply(lambda x: x.replace(' ',''))
+        raw_list['Company_Local_Name'] = raw_list.loc[pd.notnull(raw_list['Company_Local_Name']), 'Company_Local_Name'].apply(lambda x: x.replace(' ',''))
     # TODO: Null, '', space, 'N/A', '-' check
     return raw_list
 
 # Merger duplicate company, no longer used
 def merge_company(company_common_list, contact_common_list, company_dup_group, company_masterid):
-    company_dup_group.ix[company_dup_group['Source ID'] != company_masterid, 'vc_Load'] = False
+    company_dup_group.ix[company_dup_group['Source_ID'] != company_masterid, 'vc_Load'] = False
     print(company_masterid)
     print(company_masterid.tolist())
-    company_dup_group[company_dup_group['Source ID'] != company_masterid, 'vc_Master ID'] = company_masterid.tolist()
+    company_dup_group[company_dup_group['Source_ID'] != company_masterid, 'vc_Master ID'] = company_masterid.tolist()
     company_common_list, contact_common_list = dedup_fix(company_common_list, contact_common_list, company_dup_group)
     return company_common_list, contact_common_list
 
@@ -279,12 +285,12 @@ def merge_company(company_common_list, contact_common_list, company_dup_group, c
 def validate_common(company_init_list, contact_raw_list):
 
     # Fill contact id
-    #if contact_raw_list['Source ID'].isnull().sum() == len(contact_raw_list):
-    contact_raw_list['Source ID'] = list(range(1, (len(contact_raw_list) + 1)))
-    company_source_list = list(company_init_list['Source ID'])
+    #if contact_raw_list['Source_ID'].isnull().sum() == len(contact_raw_list):
+    contact_raw_list['Source_ID'] = list(range(1, (len(contact_raw_list) + 1)))
+    company_source_list = list(company_init_list['Source_ID'])
     contact_source_list = list(contact_raw_list['Source Company ID'].astype(str))
     common_source_list = list(set(company_source_list).intersection(set(contact_source_list)))
-    company_common_list = company_init_list[company_init_list['Source ID'].isin(common_source_list)]
+    company_common_list = company_init_list[company_init_list['Source_ID'].isin(common_source_list)]
     contact_common_list = contact_raw_list[contact_raw_list['Source Company ID'].isin(common_source_list)]
     return company_common_list, contact_common_list
 
@@ -294,8 +300,8 @@ def validate_company(company_dq_list, company_scrapy_result, company_colnames):
     for index, company in company_dq_list.iterrows():
         if company['dq_New'] == False:
             continue
-        sourceid = company['Source ID']
-        scrapy_list = company_scrapy_result[company_scrapy_result['Source ID'] == sourceid]
+        sourceid = company['Source_ID']
+        scrapy_list = company_scrapy_result[company_scrapy_result['Source_ID'] == sourceid]
         scrapy_best = scrapy_list[scrapy_list['Confidence'] == 0]
         # If multiple best match, get first one with address
         # If no best match, return top 5 result
@@ -316,18 +322,18 @@ def validate_contacts(contact_dedup_list, contact_colnames, company_load_list):
 
     for index, contact in contact_dedup_list.iterrows():
         sourceid = contact['Source Company ID']
-        company = company_load_list.loc[company_load_list['Source ID'] == sourceid]
-        contact['Reject Reason'] = ''
+        company = company_load_list.loc[company_load_list['Source_ID'] == sourceid]
+        contact['Reject_Reason'] = ''
         contact = validate_name(contact)
         contact = validate_email(contact,company)
-        contact['Company Name'] = list(company['Company Name'])[0]
+        contact['Company_Name'] = list(company['Company_Name'])[0]
         contact['vc_Load'] = contact['vn_Name_Check'] and contact['ve_Email_Check']
 
         contact_validate_list = contact_validate_list.append(contact, ignore_index=True)
 
     # Deduplicate by name and email
-    contact_validate_list['Fname_temp'] = contact_validate_list['First Name'].apply(lambda x: x.lower())
-    contact_validate_list['Lname_temp'] = contact_validate_list['Last Name'].apply(lambda x: x.lower())
+    contact_validate_list['Fname_temp'] = contact_validate_list['First_Name'].apply(lambda x: x.lower())
+    contact_validate_list['Lname_temp'] = contact_validate_list['Last_Name'].apply(lambda x: x.lower())
     # Switch True and False
     contact_validate_list['vc_Deduplicate'] = contact_validate_list.duplicated(subset=['Fname_temp', 'Lname_temp', 'Email'], keep=False)
     contact_validate_list['vc_Deduplicate'] = contact_validate_list['vc_Deduplicate'].apply(lambda x: False if x else True)
@@ -355,14 +361,14 @@ def validate_email(contact, company):
         contact['ve_Email_Suffix'] = esuffix
         contact['ve_Email_Domain'] = epersonal or edomain
         contact['ve_Email_Check'] = echeck
-        contact['Reject Reason'] = contact['Reject Reason'] + 'No Email;  '
+        contact['Reject_Reason'] = contact['Reject_Reason'] + 'No Email;  '
         return contact
     # TODO: Email format check
     # Email must contain @
     if('@' in email):
         eformat = True
     else:
-        contact['Reject Reason'] = contact['Reject Reason'] + 'Email without @;  '
+        contact['Reject_Reason'] = contact['Reject_Reason'] + 'Email without @;  '
 
     # Email suffix check
     for s in suffix:
@@ -370,7 +376,7 @@ def validate_email(contact, company):
             esuffix = True
             break
     if not esuffix:
-        contact['Reject Reason'] = contact['Reject Reason'] + 'Email invalid suffix;  '
+        contact['Reject_Reason'] = contact['Reject_Reason'] + 'Email invalid suffix;  '
 
     # Email personal check
     for p in personal:
@@ -386,24 +392,24 @@ def validate_email(contact, company):
             if domain in email:
                 edomain = True
             else:
-                contact['Reject Reason'] = contact['Reject Reason'] + 'Email domain not match;  '
+                contact['Reject_Reason'] = contact['Reject_Reason'] + 'Email domain not match;  '
         elif pd.notna(company['Email']).bool():
             company_email = list(company['Email'])[0]
             domain = company_email.split('@')[1].split('.')[0].lower()
             if domain in email:
                 edomain = True
             else:
-                contact['Reject Reason'] = contact['Reject Reason'] + 'Email domain not match;  '
+                contact['Reject_Reason'] = contact['Reject_Reason'] + 'Email domain not match;  '
         else:
-            contact['Reject Reason'] = contact['Reject Reason'] + 'Email domain not match;  '
+            contact['Reject_Reason'] = contact['Reject_Reason'] + 'Email domain not match;  '
         # else:
-        #     companyname = contact['Company Name'].split(' ',1)[0].lower()
+        #     companyname = contact['Company_Name'].split(' ',1)[0].lower()
         #     if companyname in contact['Email']:
         #         edomain = True
         #     else:
-        #         contact['Reject Reason'] = contact['Reject Reason'] + 'Email domain not match;  '
+        #         contact['Reject_Reason'] = contact['Reject_Reason'] + 'Email domain not match;  '
     else:
-        contact['Reject Reason'] = contact['Reject Reason'] + 'Company not exisits;  '
+        contact['Reject_Reason'] = contact['Reject_Reason'] + 'Company not exisits;  '
 
     # Email check
     echeck = eformat and esuffix and (epersonal or edomain)
@@ -419,27 +425,27 @@ def validate_name(contact):
     nlast = False
     nspace = False
 
-    # Remove more than two space and starting/ending space, format last name
-    contact['Last Name'] = format_space(contact['Last Name'].lower().capitalize())
-    contact['First Name'] = format_space(contact['First Name'])
+    # Remove more than two space and starting/ending space, format Last_Name
+    contact['Last_Name'] = format_space(contact['Last_Name'].lower().capitalize())
+    contact['First_Name'] = format_space(contact['First_Name'])
 
-    # Check first name and last name misplace
+    # Check First_Name and Last_Name misplace
 
     for lan in lastname_list.iloc[:,1:]:
         lastnames = list(lastname_list[lan])
-        if contact['Last Name'] in lastnames:
-            contact['vn_Lastname_CN'] = lastname_list.ix[lastnames.index(contact['Last Name']),'简体中文']
+        if contact['Last_Name'] in lastnames:
+            contact['vn_Lastname_CN'] = lastname_list.ix[lastnames.index(contact['Last_Name']),'简体中文']
             nlast = True
             break
-        elif contact['First Name'] in lastnames:
+        elif contact['First_Name'] in lastnames:
             nfirst = False
             break
     if not (nlast or nfirst):
-        contact['Reject Reason'] = contact['Reject Reason'] + 'first name and last name misplace;  '
+        contact['Reject_Reason'] = contact['Reject_Reason'] + 'First_Name and Last_Name misplace;  '
 
     # Check name contains space
-    if ' ' in contact['First Name'] or ' ' in contact['Last Name']:
-        contact['Reject Reason'] = contact['Reject Reason'] + 'name contains space;  '
+    if ' ' in contact['First_Name'] or ' ' in contact['Last_Name']:
+        contact['Reject_Reason'] = contact['Reject_Reason'] + 'name contains space;  '
     else:
         nspace = True
 
