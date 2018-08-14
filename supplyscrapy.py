@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 import random
 import time
-from openpyxl import load_workbook
+# from openpyxl import load_workbook
 
 # Replace Cookies with your own
 # TODO: Multiple cookie
@@ -22,52 +22,46 @@ search_headers = {
         'Host': 'www.qichacha.com',
         #'Referer': 'http://www.qichacha.com/search?key=%E4%BB%B2%E9%87%8F%E8%81%94%E8%A1%8C',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
-        'Cookie':'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; PHPSESSID=8pt65iue4vlev7pitthaeimvt7; hasShow=1; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1530168634,1531454260,1531900363,1532069553; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914CA07C57C86EB145AB6DE3939F4D3733BA; acw_tc=AQAAAIU6KjhviAAAqI+rbN4Kll8D1s9z; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1532070771; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201532069552841%2C%22updated%22%3A%201532072849222%2C%22info%22%3A%201532069552844%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22dc09655cd33494e7b3c689a23f3ef65d%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1532072849',
+        'Cookie': 'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; PHPSESSID=nb22uejm1je2gr9ku2lumucce0; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1533519091; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1531900363,1532069553,1532314450,1533524021; hasShow=1; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914C6F26D3B73348DAAA8D7981B05A64E647; acw_tc=AQAAAPODNVc6YgEAqI+rbO2bM1TFSU5U; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201533524020976%2C%22updated%22%3A%201533524199498%2C%22info%22%3A%201533524020984%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22dc09655cd33494e7b3c689a23f3ef65d%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1533524200',
         'Connection': 'keep-alive',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'en-US,en;q=0.9',
-        'Cache-Control': 'max-age=0',
-        'Connection': 'keep-alive'}
+        'Cache-Control': 'max-age=0', }
 
-# Column count 32
-columnname = ['ID','Source_ID','搜索词','公司名称','公司ID','电话','网址','邮箱','地址','境外公司','注册资本','实缴资本','经营状态','成立日期','注册号','组织机构代码','纳税人识别号','统一社会信用代码','公司类型','所属行业','核准日期','登记机关','所属地区','英文名','曾用名','参保人数','人员规模','营业期限','经营范围','法律诉讼','自身风险','关联风险','经营风险']#,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
 
-def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
+# Column count 33
+columnname = ['ID', 'Source_ID', '搜索词', '公司名称', '公司ID', '电话', '网址', '邮箱', '地址', '境外公司', '注册资本', '实缴资本', '经营状态', '成立日期', '注册号', '组织机构代码', '纳税人识别号', '统一社会信用代码', '公司类型', '所属行业', '核准日期', '登记机关', '所属地区', '英文名', '曾用名', '参保人数', '人员规模', '营业期限', '经营范围', '法律诉讼', '自身风险', '关联风险', '经营风险']  # ,'财务信息_url','公司实力等级','纳税区间','销售净利润率','销售毛利率','企业年报_url','城镇职工基本养老保险人数','职工基本医疗保险人数','生育保险人数','失业保险人数','工伤保险人数']
+
+
+def qichacha(company_input_list, path, sheetname):
 
     company_count = len(company_input_list)
     company_progress = 0
 
-    now = datetime.datetime.now()
-    if timestamp == '':
-        timestamp = str(now.strftime("%Y%m%d")) + str(now.hour)
-
     # Find existing file
     try:
-        company_scrapy_result = pd.read_excel(
-            path,
-            sheet_name=sheetname)
+        company_scrapy_result = pd.read_excel(path, sheet_name=sheetname)
         # Remove breakpoint record
-        company_keyword_break = \
-        np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['搜索词']).tolist()[0]
-        company_progress = \
-        np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['Source_ID']).tolist()[0]
+        company_keyword_break = np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['搜索词']).tolist()[0]
+        company_progress = np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['Source_ID']).tolist()[0]
         company_scrapy_result = company_scrapy_result[company_scrapy_result['搜索词'] != company_keyword_break]
-        if company_input_list[company_input_list['Company_Local_Name'] == company_keyword_break].empty == False:
+        if company_input_list[company_input_list['Company_Name_CN'] == company_keyword_break].empty == False:
             company_input_break = np.array(
-                company_input_list[company_input_list['Company_Local_Name'] == company_keyword_break].index).tolist()[0]
+                company_input_list[company_input_list['Company_Name_CN'] == company_keyword_break].index).tolist()[0]
         else:
             company_input_break = np.array(
                 company_input_list[company_input_list['Company_Name'] == company_keyword_break].index).tolist()[0]
         company_input_list = company_input_list.drop(list(range(0, company_input_break)))
+        print('Restart from breakpoint.')
     # First time running
     except:
         company_scrapy_result = pd.DataFrame()  # columns = columnname)
 
     for index, row in company_input_list.iterrows():
-        company_progress += 1
-        if pd.notna(row['Company_Local_Name']):
-            company_keyword = row['Company_Local_Name']
+        company_progress = int(company_progress) + 1
+        if pd.notna(row['Company_Name_CN']):
+            company_keyword = row['Company_Name_CN']
         else:
             company_keyword = row['Company_Name']
         company_sourceid = row['Source_ID']
@@ -75,18 +69,22 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
         # Search filter
         search_base = 'https://www.qichacha.com/search?key='
         # Keyword
-        print(company_keyword)
+        print('---------', company_keyword, '----------')
         search_key = urllib.parse.quote(company_keyword)
         # Organization Type： 0:Company 1:Organization 3:HK Company 5:TW Company
         search_type = '&searchType='
         # Searching Index： 2:Company_Name 4:Representative/Share holder  6:Management 8:Brand/Product 10:Connection(Address)
-        search_index = '&index=2'
+        search_index = '&index:2'
         # Province
-        search_province = '&province='
-
+        search_province = '&province:'
         # Fuzzy search for keyword
         time.sleep(random.randint(1, 2))
-        search_url_keyword = search_base + search_key# + '&ajaxflag=1' + search_index
+        if pd.notna(row['State_Abbr']):
+
+            search_province = search_province + row['State_Abbr']
+            search_url_keyword = search_base + search_key + '&ajaxflag=1' + search_index + search_province
+        else:
+            search_url_keyword = search_base + search_key + '&ajaxflag=1' + search_index
         respond_keyword = requests.get(search_url_keyword, headers=search_headers)
         soup_keyword = BeautifulSoup(respond_keyword.text, 'lxml')
         company_info_list_flag = soup_keyword.find('span', attrs={'id': 'countOld'})
@@ -130,16 +128,14 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
                             company_email = soup_company.find('a', attrs={'title': '发送邮件'}).text
                         if (soup_company.find('a', attrs={'title': "查看地址"}) != None):
                             company_address = soup_company.find('a', attrs={'title': "查看地址"}).text
-                        search_id = sourcename + timestamp + '_' + str(company_sourceid) + '_' + str(company_id)
-                        #print('---------', company_name, '----------')
-                        #print('---------', company_id, '----------')
+                        search_id = str(company_id)  # str(company_sourceid) + '_' +
+                        print(company_name)
+                        # print('---------', company_name, '----------')
+                        # print('---------', company_id, '----------')
                         if company_isforeign:
                             company_info_data = [search_id, company_sourceid, company_keyword, company_name, company_id,
-                                                 company_phone, company_website, company_email, company_address, '', '',
-                                                 '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-                                                 '',
-                                                 '',
-                                                 '']
+                                                 company_phone, company_website, company_email, company_address, company_isforeign, '', '',
+                                                 '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
                             company_info_data = dict(zip(columnname, company_info_data))
                             company_scrapy_result = company_scrapy_result.append(company_info_data, ignore_index=True)
                             step += 1
@@ -236,8 +232,7 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
 
             except:  # Need verification, set ID as 'breakpoint'
                 company_info_data = ['breakpoint', company_progress, company_keyword, '', '', '', '', '', '', '', '',
-                                     '', '',
-                                     '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+                                     '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
                 company_info_data = dict(zip(columnname, company_info_data))
                 company_scrapy_result = company_scrapy_result.append(company_info_data, ignore_index=True)
                 print('Need Verification case 1!')
@@ -245,9 +240,8 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
                 break
         # Need verification, set ID as 'breakpoint'
         elif company_info_list_flag == None:
-            company_info_data = ['breakpoint', company_progress, company_keyword, '', '', '', '', '', '', '', '', '',
-                                 '',
-                                 '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+            company_info_data = ['breakpoint', company_progress, company_keyword, '', '', '', '', '', '', '', '',
+                                 '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
             company_info_data = dict(zip(columnname, company_info_data))
             company_scrapy_result = company_scrapy_result.append(company_info_data, ignore_index=True)
 
@@ -256,7 +250,7 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
             break
         # No result return
         elif company_info_list_flag.span.text.strip() == '0':
-            search_id = sourcename + '_' + timestamp + '_' + str(company_sourceid)
+            search_id = str(company_sourceid)
             # Column count 32
             company_info_data = [search_id, company_sourceid, company_keyword, '', '', '', '', '', '', '', '', '', '',
                                  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
@@ -267,13 +261,15 @@ def qichacha(company_input_list, path, sheetname, sourcename, timestamp):
 
 # print(timestamp)
 # print()
-# path = r'C:\Users\Benson.Chen\Desktop\Scrapy_GZ-TopX_2018072014.xlsx'
-# timestamp = '2018072014'
-# sourcename = 'CM-GZ-TopX-1'
-# company_topx_list = pd.read_excel(path, sheet_name='TopX-Source')
-# print(company_topx_list)
-# company_scrapy_result = qichacha(company_topx_list, path, 'company_scrapy_list_TopX', sourcename, timestamp)
-#
-# company_scrapy_result.to_excel(path, index = False, header=True, columns= list(columnname), sheet_name='company_scrapy_list_TopX')
+
+if __name__ == '__main__':
+    path = r'C:\Users\Benson.Chen\Desktop\Scrapy_GZ-TopX_2018072014.xlsx'
+    timestamp = '2018072014'
+    sourcename = 'CM-GZ-TopX-1'
+    company_topx_list = pd.read_excel(path, sheet_name='TopX-Source')
+    print(company_topx_list)
+    company_scrapy_result = qichacha(company_topx_list, path, 'company_scrapy_list_TopX')
+
+    company_scrapy_result.to_excel(path, index = False, header=True, columns= list(columnname), sheet_name='company_scrapy_list_TopX')
 
 
