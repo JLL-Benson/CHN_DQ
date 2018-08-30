@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_credentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_credentials.py" afterDir="false" />
-    </list>
+    <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,20 +27,8 @@
       <file leaf-file-name="db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-              <folding>
-                <element signature="e#108#122#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db_credentials.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db_credentials.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -121,8 +104,8 @@
       <find>email exi</find>
       <find>duplicate</find>
       <find>Reject_Reason</find>
-      <find>validate_contacts</find>
       <find>d</find>
+      <find>validate_contacts</find>
     </findStrings>
     <replaceStrings>
       <replace>Source ID</replace>
@@ -217,12 +200,6 @@
               <item name="CHN_DQ" type="47feb1d3:ProjectViewModuleNode" />
               <item name="CHN_DQ" type="462c0819:PsiDirectoryNode" />
               <item name="Temp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CHN_DQ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CHN_DQ" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="CHN_DQ" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CHN_DQ" type="b2602c69:ProjectViewProjectNode" />
@@ -382,14 +359,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-14" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.15068494" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.15068494" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.1546841" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5023847" side_tool="true" weight="0.39892665" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3237925" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49761525" visible="true" weight="0.27450982" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49761525" weight="0.27450982" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.21645796" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -585,11 +563,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding>
-            <element signature="e#108#122#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
