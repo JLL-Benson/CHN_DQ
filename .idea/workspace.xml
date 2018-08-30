@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/run_short.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supplyscrapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplyscrapy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run_short.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run_short.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_short.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="382">
@@ -32,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+            <state relative-caret-position="204">
+              <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
               <folding>
                 <element signature="e#108#122#0" expanded="true" />
               </folding>
@@ -92,7 +86,7 @@
       <find>tolist</find>
       <find>Reject</find>
       <find>uni</find>
-      <find>company not</find>
+      <find />
       <find>get_on</find>
       <find>EXISTING</find>
       <find>DB_NEW</find>
@@ -112,24 +106,24 @@
       <find>company_dq_list</find>
       <find>full_address</find>
       <find>vc_Deduplicate</find>
-      <find>email exi</find>
+      <find />
       <find>duplicate</find>
       <find>d</find>
-      <find>validate_contacts</find>
       <find>Reject_Reason</find>
+      <find>validate_contacts</find>
     </findStrings>
     <replaceStrings>
-      <replace>Source ID</replace>
+      <replace />
       <replace>Company_Name</replace>
-      <replace>Billing Address</replace>
+      <replace />
       <replace>Source_ID</replace>
-      <replace>Company Local Name</replace>
+      <replace />
       <replace>Source_Company_ID</replace>
       <replace>vc_Master_ID</replace>
       <replace>=</replace>
       <replace>master_name_cn</replace>
       <replace>Parent_Name</replace>
-      <replace>== False</replace>
+      <replace />
       <replace>return</replace>
       <replace>contact_init_list</replace>
       <replace>,</replace>
@@ -142,13 +136,13 @@
       <replace>contact_validate_list</replace>
       <replace>contact_format_list</replace>
       <replace>company_list</replace>
-      <replace>raw_list.loc[index,</replace>
+      <replace />
       <replace>unique()</replace>
       <replace>.size</replace>
       <replace>tolist</replace>
       <replace>source_id</replace>
-      <replace>contact</replace>
       <replace>company_dedup_list</replace>
+      <replace>contact</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -170,16 +164,16 @@
         <option value="$PROJECT_DIR$/confidence.py" />
         <option value="$PROJECT_DIR$/run.py" />
         <option value="Z:/03_GZ GDIM/Daniel/43_GZ_SZ_Image_Check/download_image.py" />
-        <option value="$PROJECT_DIR$/db.py" />
         <option value="$PROJECT_DIR$/supplyscrapy.py" />
         <option value="$USER_HOME$/Desktop/download_image.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/validation.py" />
         <option value="$PROJECT_DIR$/run_short.py" />
+        <option value="$PROJECT_DIR$/db.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="2883" />
     <option name="y" value="461" />
     <option name="width" value="198" />
@@ -367,7 +361,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-14" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-14" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.15068494" />
@@ -533,16 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-          <folding>
-            <element signature="e#108#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/validation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1479">
@@ -568,6 +552,16 @@
           <folding>
             <element signature="e#24#106#1" />
             <element signature="e#108#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding>
+            <element signature="e#108#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
