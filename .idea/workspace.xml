@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88c853d0-5dbd-494f-9f4d-04ab2be922bf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run_short.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confidence.py" beforeDir="false" afterPath="$PROJECT_DIR$/confidence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supplyscrapy.py" beforeDir="false" afterPath="$PROJECT_DIR$/supplyscrapy.py" afterDir="false" />
@@ -20,110 +19,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="validation.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/validation.py">
+      <file leaf-file-name="run_short.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_short.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1599">
-              <caret line="555" lean-forward="true" selection-start-line="555" selection-end-line="555" />
+            <state relative-caret-position="382">
+              <caret line="33" column="340" selection-start-line="33" selection-start-column="333" selection-end-line="33" selection-end-column="340" />
               <folding>
-                <element signature="e#24#105#1" />
-                <element signature="e#870#2637#0" />
-                <element signature="e#1114#1391#0" />
-                <element signature="e#2017#2536#0" />
-                <element signature="e#2316#2536#0" />
-                <element signature="e#3241#3554#0" />
-                <element signature="e#4030#4497#0" />
-                <element signature="e#4183#4375#0" />
-                <element signature="e#4613#8086#0" />
-                <element signature="e#5346#5372#0" />
-                <element signature="e#5536#5563#0" />
-                <element signature="e#5735#5764#0" />
-                <element signature="e#6413#8086#0" />
-                <element signature="e#8268#9990#0" />
-                <element signature="e#8633#8874#0" />
-                <element signature="e#8699#8874#0" />
-                <element signature="e#8939#9151#0" />
-                <element signature="e#9005#9151#0" />
-                <element signature="e#9215#9426#0" />
-                <element signature="e#9281#9426#0" />
-                <element signature="e#9499#9729#0" />
-                <element signature="e#9569#9729#0" />
-                <element signature="e#9792#9812#0" />
-                <element signature="e#9941#10427#0" />
-                <element signature="e#10002#10227#0" />
-                <element signature="e#10676#12144#0" />
-                <element signature="e#10941#10993#0" />
-                <element signature="e#10920#11063#0" />
-                <element signature="e#11220#11629#0" />
-                <element signature="e#11220#11312#0" />
-                <element signature="e#11843#12128#0" />
-                <element signature="e#11903#12098#0" />
-                <element signature="e#12208#14286#0" />
-                <element signature="e#12349#12772#0" />
-                <element signature="e#12577#13933#0" />
-                <element signature="e#12924#13202#0" />
-                <element signature="e#13484#13930#0" />
-                <element signature="e#14354#16294#0" />
-                <element signature="e#14499#14546#0" />
-                <element signature="e#14742#14762#0" />
-                <element signature="e#16029#16116#0" />
-                <element signature="e#16344#16422#0" />
-                <element signature="e#16524#17781#0" />
-                <element signature="e#16553#16986#0" />
-                <element signature="e#16585#16986#0" />
-                <element signature="e#16705#16986#0" />
-                <element signature="e#16822#16986#0" />
-                <element signature="e#17017#17761#0" />
-                <element signature="e#17063#17442#0" />
-                <element signature="e#17313#17332#0" />
-                <element signature="e#17492#17940#0" />
-                <element signature="e#17790#17822#0" />
-                <element signature="e#17845#19639#0" />
-                <element signature="e#18106#19611#0" />
-                <element signature="e#18169#18542#0" />
-                <element signature="e#18619#19611#0" />
-                <element signature="e#18691#19099#0" />
-                <element signature="e#19192#19611#0" />
-                <element signature="e#19787#20228#0" />
-                <element signature="e#20316#24994#0" />
-                <element signature="e#20777#21032#0" />
-                <element signature="e#21077#22116#0" />
-                <element signature="e#21497#21703#0" />
-                <element signature="e#21554#21702#0" />
-                <element signature="e#21738#22116#0" />
-                <element signature="e#21795#22115#0" />
-                <element signature="e#22195#22443#0" />
-                <element signature="e#22449#22467#0" />
-                <element signature="e#22851#24978#0" />
-                <element signature="e#22976#23262#0" />
-                <element signature="e#23478#24978#0" />
-                <element signature="e#23547#23963#0" />
-                <element signature="e#23686#23963#0" />
-                <element signature="e#24025#24978#0" />
-                <element signature="e#24405#24686#0" />
-                <element signature="e#24518#24562#0" />
-                <element signature="e#24613#24686#0" />
-                <element signature="e#24734#24978#0" />
-                <element signature="e#25095#25665#0" />
-                <element signature="e#27035#27061#0" />
-                <element signature="e#27281#27379#0" />
-                <element signature="e#27347#27379#0" />
-                <element signature="e#27547#27608#0" />
-                <element signature="e#27574#27608#0" />
-                <element signature="e#27897#28132#0" />
-                <element signature="e#28050#28132#0" />
-                <element signature="e#28093#28132#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
-              <folding>
+                <element signature="e#24#106#1" />
                 <element signature="e#108#127#0" expanded="true" />
               </folding>
             </state>
@@ -133,8 +35,8 @@
       <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+            <state relative-caret-position="252">
+              <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
               <folding>
                 <element signature="e#108#122#0" expanded="true" />
               </folding>
@@ -145,10 +47,30 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+            <state relative-caret-position="430">
+              <caret line="53" selection-start-line="53" selection-end-line="54" selection-end-column="15" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/validation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1479">
+              <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
+              <folding>
+                <element signature="e#24#105#1" />
+                <element signature="e#107#126#0" expanded="true" />
+                <element signature="e#3039#4860#0" />
+                <element signature="e#4969#8119#0" />
+                <element signature="e#10361#13162#0" />
+                <element signature="e#13223#15134#0" />
+                <element signature="e#15689#17158#0" />
+                <element signature="e#20205#22145#0" />
+                <element signature="e#22195#22323#0" />
               </folding>
             </state>
           </provider>
@@ -165,45 +87,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>enrich</find>
-      <find>dq_New</find>
-      <find>validate_name</find>
-      <find>validate_company</find>
-      <find>validate_ema</find>
-      <find>validate_comp</find>
-      <find>validate_com</find>
-      <find>duplicated</find>
-      <find>company_dup_colnames</find>
-      <find>vc_Load</find>
-      <find>dq_</find>
-      <find>dq_N</find>
-      <find>db_NEW</find>
-      <find>Existing</find>
-      <find>company_scrapy_verify</find>
-      <find>re.</find>
-      <find>enrich_address</find>
-      <find>np</find>
-      <find>200120</find>
-      <find>subn</find>
-      <find>company_db_return</find>
-      <find>company_dedup_list</find>
-      <find>company</find>
-      <find>Load</find>
-      <find>db_New</find>
-      <find>contact_dedup_list</find>
-      <find>&amp;</find>
-      <find>db</find>
-      <find>Reje</find>
-      <find>Name</find>
+      <find>map</find>
+      <find>company_progress</find>
+      <find>tolist</find>
+      <find>Reject</find>
+      <find>uni</find>
+      <find>company not</find>
+      <find>get_on</find>
+      <find>EXISTING</find>
+      <find>DB_NEW</find>
+      <find>company_db_list</find>
+      <find>company[</find>
+      <find>list</find>
+      <find>duplicated(keep=False)</find>
+      <find>enrich_sc</find>
+      <find>)</find>
+      <find>.values)</find>
+      <find>enrich_company</find>
+      <find>print</find>
+      <find>to_list</find>
+      <find>dedup_fix</find>
+      <find>isin</find>
+      <find>id</find>
+      <find>company_dq_list</find>
+      <find>full_address</find>
+      <find>vc_Deduplicate</find>
+      <find>email exi</find>
+      <find>duplicate</find>
+      <find>d</find>
+      <find>validate_contacts</find>
+      <find>Reject_Reason</find>
     </findStrings>
     <replaceStrings>
-      <replace />
-      <replace>Company Type</replace>
-      <replace>Company_Local_Name</replace>
-      <replace>Company Name</replace>
-      <replace>First Name</replace>
-      <replace>Source Company ID</replace>
-      <replace>Reject Reason</replace>
       <replace>Source ID</replace>
       <replace>Company_Name</replace>
       <replace>Billing Address</replace>
@@ -225,8 +140,15 @@
       <replace>db_New</replace>
       <replace>contact_db_return</replace>
       <replace>contact_validate_list</replace>
-      <replace>contact</replace>
       <replace>contact_format_list</replace>
+      <replace>company_list</replace>
+      <replace>raw_list.loc[index,</replace>
+      <replace>unique()</replace>
+      <replace>.size</replace>
+      <replace>tolist</replace>
+      <replace>source_id</replace>
+      <replace>contact</replace>
+      <replace>company_dedup_list</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -245,20 +167,23 @@
         <option value="$PROJECT_DIR$/scrapy.py" />
         <option value="$PROJECT_DIR$/Temp/GZ_address_enrich.py" />
         <option value="$PROJECT_DIR$/venv/db.py" />
-        <option value="$PROJECT_DIR$/supplyscrapy.py" />
         <option value="$PROJECT_DIR$/confidence.py" />
-        <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/db.py" />
-        <option value="$PROJECT_DIR$/validation.py" />
         <option value="$PROJECT_DIR$/run.py" />
+        <option value="Z:/03_GZ GDIM/Daniel/43_GZ_SZ_Image_Check/download_image.py" />
+        <option value="$PROJECT_DIR$/db.py" />
+        <option value="$PROJECT_DIR$/supplyscrapy.py" />
+        <option value="$USER_HOME$/Desktop/download_image.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/validation.py" />
+        <option value="$PROJECT_DIR$/run_short.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2166" />
-    <option name="y" value="159" />
-    <option name="width" value="1288" />
-    <option name="height" value="683" />
+    <option name="x" value="2883" />
+    <option name="y" value="461" />
+    <option name="width" value="198" />
+    <option name="height" value="56" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -311,25 +236,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run">
-    <configuration name="GZ_address_enrich" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CHN_DQ" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Temp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Temp/GZ_address_enrich.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.run_short">
     <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CHN_DQ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,6 +250,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="download_image" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CHN_DQ" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Desktop/download_image.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -366,7 +291,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="supplyscrapy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="run_short" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CHN_DQ" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -378,7 +303,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/supplyscrapy.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_short.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -405,17 +330,17 @@
     <list>
       <item itemvalue="Python.test" />
       <item itemvalue="Python.run" />
-      <item itemvalue="Python.GZ_address_enrich" />
-      <item itemvalue="Python.supplyscrapy" />
       <item itemvalue="Python.db" />
+      <item itemvalue="Python.run_short" />
+      <item itemvalue="Python.download_image" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run" />
+        <item itemvalue="Python.run_short" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.download_image" />
+        <item itemvalue="Python.run" />
         <item itemvalue="Python.db" />
-        <item itemvalue="Python.supplyscrapy" />
-        <item itemvalue="Python.GZ_address_enrich" />
       </list>
     </recent_temporary>
   </component>
@@ -442,25 +367,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-14" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.06480506" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.15577342" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.15068494" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.1546841" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5023847" side_tool="true" weight="0.39892665" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291592" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32461873" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49761525" visible="true" weight="0.3638344" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3237925" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49761525" visible="true" weight="0.27450982" />
       <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" weight="0.09791667" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.21786493" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947917" weight="0.21645796" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.54357296" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Message" order="0" />
     </layout>
     <layout-to-restore>
@@ -488,14 +413,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="33" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/qichacha.py" />
-    <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/QiChaCha_V2.py" />
     <entry file="file://$PROJECT_DIR$/qichacha.py" />
     <entry file="file://$PROJECT_DIR$/QiChaCha_V3.py" />
     <entry file="file://$PROJECT_DIR$/test.py" />
@@ -545,16 +466,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/db.py" />
-    <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="54" column="89" lean-forward="true" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
-          <folding>
-            <element signature="e#108#123#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confidence.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -565,10 +476,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-806">
+          <caret line="32" column="338" lean-forward="true" selection-start-line="32" selection-start-column="338" selection-end-line="32" selection-end-column="338" />
+          <folding>
+            <element signature="e#24#106#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/03_GZ GDIM/Daniel/43_GZ_SZ_Image_Check/download_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="60" column="26" lean-forward="true" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/download_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="46" column="86" selection-start-line="46" selection-start-column="86" selection-end-line="46" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplyscrapy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="56" column="101" selection-start-line="56" selection-start-column="101" selection-end-line="56" selection-end-column="101" />
+          <folding>
+            <element signature="e#108#123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/dq/Lib/site-packages/pandas/core/indexes/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="560" selection-start-line="560" selection-end-line="560" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+        <state relative-caret-position="430">
+          <caret line="53" selection-start-line="53" selection-end-line="54" selection-end-column="15" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -577,116 +535,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        <state relative-caret-position="252">
+          <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
           <folding>
             <element signature="e#108#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
+    <entry file="file://$PROJECT_DIR$/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+        <state relative-caret-position="1479">
+          <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
           <folding>
-            <element signature="e#108#127#0" expanded="true" />
+            <element signature="e#24#105#1" />
+            <element signature="e#107#126#0" expanded="true" />
+            <element signature="e#3039#4860#0" />
+            <element signature="e#4969#8119#0" />
+            <element signature="e#10361#13162#0" />
+            <element signature="e#13223#15134#0" />
+            <element signature="e#15689#17158#0" />
+            <element signature="e#20205#22145#0" />
+            <element signature="e#22195#22323#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/validation.py">
+    <entry file="file://$PROJECT_DIR$/run_short.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1599">
-          <caret line="555" lean-forward="true" selection-start-line="555" selection-end-line="555" />
+        <state relative-caret-position="382">
+          <caret line="33" column="340" selection-start-line="33" selection-start-column="333" selection-end-line="33" selection-end-column="340" />
           <folding>
-            <element signature="e#24#105#1" />
-            <element signature="e#870#2637#0" />
-            <element signature="e#1114#1391#0" />
-            <element signature="e#2017#2536#0" />
-            <element signature="e#2316#2536#0" />
-            <element signature="e#3241#3554#0" />
-            <element signature="e#4030#4497#0" />
-            <element signature="e#4183#4375#0" />
-            <element signature="e#4613#8086#0" />
-            <element signature="e#5346#5372#0" />
-            <element signature="e#5536#5563#0" />
-            <element signature="e#5735#5764#0" />
-            <element signature="e#6413#8086#0" />
-            <element signature="e#8268#9990#0" />
-            <element signature="e#8633#8874#0" />
-            <element signature="e#8699#8874#0" />
-            <element signature="e#8939#9151#0" />
-            <element signature="e#9005#9151#0" />
-            <element signature="e#9215#9426#0" />
-            <element signature="e#9281#9426#0" />
-            <element signature="e#9499#9729#0" />
-            <element signature="e#9569#9729#0" />
-            <element signature="e#9792#9812#0" />
-            <element signature="e#9941#10427#0" />
-            <element signature="e#10002#10227#0" />
-            <element signature="e#10676#12144#0" />
-            <element signature="e#10941#10993#0" />
-            <element signature="e#10920#11063#0" />
-            <element signature="e#11220#11629#0" />
-            <element signature="e#11220#11312#0" />
-            <element signature="e#11843#12128#0" />
-            <element signature="e#11903#12098#0" />
-            <element signature="e#12208#14286#0" />
-            <element signature="e#12349#12772#0" />
-            <element signature="e#12577#13933#0" />
-            <element signature="e#12924#13202#0" />
-            <element signature="e#13484#13930#0" />
-            <element signature="e#14354#16294#0" />
-            <element signature="e#14499#14546#0" />
-            <element signature="e#14742#14762#0" />
-            <element signature="e#16029#16116#0" />
-            <element signature="e#16344#16422#0" />
-            <element signature="e#16524#17781#0" />
-            <element signature="e#16553#16986#0" />
-            <element signature="e#16585#16986#0" />
-            <element signature="e#16705#16986#0" />
-            <element signature="e#16822#16986#0" />
-            <element signature="e#17017#17761#0" />
-            <element signature="e#17063#17442#0" />
-            <element signature="e#17313#17332#0" />
-            <element signature="e#17492#17940#0" />
-            <element signature="e#17790#17822#0" />
-            <element signature="e#17845#19639#0" />
-            <element signature="e#18106#19611#0" />
-            <element signature="e#18169#18542#0" />
-            <element signature="e#18619#19611#0" />
-            <element signature="e#18691#19099#0" />
-            <element signature="e#19192#19611#0" />
-            <element signature="e#19787#20228#0" />
-            <element signature="e#20316#24994#0" />
-            <element signature="e#20777#21032#0" />
-            <element signature="e#21077#22116#0" />
-            <element signature="e#21497#21703#0" />
-            <element signature="e#21554#21702#0" />
-            <element signature="e#21738#22116#0" />
-            <element signature="e#21795#22115#0" />
-            <element signature="e#22195#22443#0" />
-            <element signature="e#22449#22467#0" />
-            <element signature="e#22851#24978#0" />
-            <element signature="e#22976#23262#0" />
-            <element signature="e#23478#24978#0" />
-            <element signature="e#23547#23963#0" />
-            <element signature="e#23686#23963#0" />
-            <element signature="e#24025#24978#0" />
-            <element signature="e#24405#24686#0" />
-            <element signature="e#24518#24562#0" />
-            <element signature="e#24613#24686#0" />
-            <element signature="e#24734#24978#0" />
-            <element signature="e#25095#25665#0" />
-            <element signature="e#27035#27061#0" />
-            <element signature="e#27281#27379#0" />
-            <element signature="e#27347#27379#0" />
-            <element signature="e#27547#27608#0" />
-            <element signature="e#27574#27608#0" />
-            <element signature="e#27897#28132#0" />
-            <element signature="e#28050#28132#0" />
-            <element signature="e#28093#28132#0" />
+            <element signature="e#24#106#1" />
+            <element signature="e#108#127#0" expanded="true" />
           </folding>
         </state>
       </provider>

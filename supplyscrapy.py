@@ -22,7 +22,7 @@ search_headers = {
         'Host': 'www.qichacha.com',
         #'Referer': 'http://www.qichacha.com/search?key=%E4%BB%B2%E9%87%8F%E8%81%94%E8%A1%8C',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
-        'Cookie': 'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; PHPSESSID=nb22uejm1je2gr9ku2lumucce0; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1533519091; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1531900363,1532069553,1532314450,1533524021; hasShow=1; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914C6F26D3B73348DAAA8D7981B05A64E647; acw_tc=AQAAAPODNVc6YgEAqI+rbO2bM1TFSU5U; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201533524020976%2C%22updated%22%3A%201533524199498%2C%22info%22%3A%201533524020984%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22dc09655cd33494e7b3c689a23f3ef65d%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1533524200',
+        'Cookie': 'UM_distinctid=163d94f3a16399-0da47b260a80f-737356c-e1000-163d94f3a197a; zg_did=%7B%22did%22%3A%20%22163d94f3a46245-0adc5aad4f380e-737356c-e1000-163d94f3a4d389%22%7D; _uab_collina=152835924223807635894595; PHPSESSID=kieco7vb43bresf2569gh6ls60; _umdata=85957DF9A4B3B3E8E8285445FCCF2E30F407CDC10EBABDA683652A36E0B34E63DA2686095C8088DDCD43AD3E795C914CD0385F77CC5D45BD05322C52B95C2CEF; acw_tc=AQAAAAi3CQ+caAYAMlKRd/aiPbvyfHqt; CNZZDATA1254842228=728643443-1528356765-https%253A%252F%252Fwww.google.com.hk%252F%7C1535078306; hasShow=1; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1533524021,1534322497,1534930675,1535081541; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201535081540998%2C%22updated%22%3A%201535081547314%2C%22info%22%3A%201534930675003%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%22dc09655cd33494e7b3c689a23f3ef65d%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1535081547',
         'Connection': 'keep-alive',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
@@ -43,16 +43,19 @@ def qichacha(company_input_list, path, sheetname):
     try:
         company_scrapy_result = pd.read_excel(path, sheet_name=sheetname)
         # Remove breakpoint record
-        company_keyword_break = np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['搜索词']).tolist()[0]
-        company_progress = np.array(company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['Source_ID']).tolist()[0]
-        company_scrapy_result = company_scrapy_result[company_scrapy_result['搜索词'] != company_keyword_break]
-        if company_input_list[company_input_list['Company_Name_CN'] == company_keyword_break].empty == False:
-            company_input_break = np.array(
-                company_input_list[company_input_list['Company_Name_CN'] == company_keyword_break].index).tolist()[0]
-        else:
-            company_input_break = np.array(
-                company_input_list[company_input_list['Company_Name'] == company_keyword_break].index).tolist()[0]
-        company_input_list = company_input_list.drop(list(range(0, company_input_break)))
+        # company_keyword_break = company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['搜索词']
+        company_sourceid_break = company_scrapy_result[company_scrapy_result['ID'] == 'breakpoint']['Source_ID'].values[0]
+        company_progress = len(company_scrapy_result['Source_ID'].unique().tolist())
+        company_scrapy_result = company_scrapy_result[company_scrapy_result['Source_ID'] != company_sourceid_break]
+        company_done = company_scrapy_result['Source_ID'].unique().tolist()
+        # if company_input_list[company_input_list['Company_Name_CN'] == company_keyword_break].empty == False:
+        #     company_input_break = np.array(
+        #         company_input_list[company_input_list['Company_Name_CN'] == company_keyword_break].index).tolist()[0]
+        # else:
+        #     company_input_break = np.array(
+        #         company_input_list[company_input_list['Company_Name'] == company_keyword_break].index).tolist()[0]
+        company_progress = len(company_input_list[company_input_list['Source_ID'].isin(company_done)])
+        company_input_list = company_input_list[~company_input_list['Source_ID'].isin(company_done)]
         print('Restart from breakpoint.')
     # First time running
     except:
@@ -67,7 +70,7 @@ def qichacha(company_input_list, path, sheetname):
         company_sourceid = row['Source_ID']
 
         # Search filter
-        search_base = 'https://www.qichacha.com/search?key='
+        search_base = 'https://www.qichacha.com/search?key={}#'
         # Keyword
         print('---------', company_keyword, '----------')
         search_key = urllib.parse.quote(company_keyword)
@@ -80,11 +83,11 @@ def qichacha(company_input_list, path, sheetname):
         # Fuzzy search for keyword
         time.sleep(random.randint(1, 2))
         if pd.notna(row['State_Abbr']):
-
             search_province = search_province + row['State_Abbr']
-            search_url_keyword = search_base + search_key + '&ajaxflag=1' + search_index + search_province
+            search_url_keyword = search_base.format(search_key) + search_index + search_province + '&'
         else:
-            search_url_keyword = search_base + search_key + '&ajaxflag=1' + search_index
+            search_url_keyword = search_base.format(search_key) + search_index + '&'
+        # print(search_url_keyword)
         respond_keyword = requests.get(search_url_keyword, headers=search_headers)
         soup_keyword = BeautifulSoup(respond_keyword.text, 'lxml')
         company_info_list_flag = soup_keyword.find('span', attrs={'id': 'countOld'})
@@ -231,7 +234,7 @@ def qichacha(company_input_list, path, sheetname):
                     step += 1
 
             except:  # Need verification, set ID as 'breakpoint'
-                company_info_data = ['breakpoint', company_progress, company_keyword, '', '', '', '', '', '', '', '',
+                company_info_data = ['breakpoint', company_sourceid, company_keyword, '', '', '', '', '', '', '', '',
                                      '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
                 company_info_data = dict(zip(columnname, company_info_data))
                 company_scrapy_result = company_scrapy_result.append(company_info_data, ignore_index=True)
@@ -240,7 +243,7 @@ def qichacha(company_input_list, path, sheetname):
                 break
         # Need verification, set ID as 'breakpoint'
         elif company_info_list_flag == None:
-            company_info_data = ['breakpoint', company_progress, company_keyword, '', '', '', '', '', '', '', '',
+            company_info_data = ['breakpoint', company_sourceid, company_keyword, '', '', '', '', '', '', '', '',
                                  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
             company_info_data = dict(zip(columnname, company_info_data))
             company_scrapy_result = company_scrapy_result.append(company_info_data, ignore_index=True)
@@ -270,6 +273,6 @@ if __name__ == '__main__':
     print(company_topx_list)
     company_scrapy_result = qichacha(company_topx_list, path, 'company_scrapy_list_TopX')
 
-    company_scrapy_result.to_excel(path, index = False, header=True, columns= list(columnname), sheet_name='company_scrapy_list_TopX')
+    company_scrapy_result.to_excel(path, index=False, header=True, columns=list(columnname), sheet_name='company_scrapy_list_TopX')
 
 

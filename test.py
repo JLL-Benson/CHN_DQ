@@ -14,7 +14,7 @@ from run import rawfilepath
 from run import backupfilepath
 import validation as vd
 import db
-
+import urllib
 def tryc(x,y):
     return y,x
 
@@ -51,4 +51,6 @@ test2 = pd.DataFrame([[2,'ab',1],[2,2,3],[2,'ab',1]],columns=col)
 # db.load_staging(logs, logs_columns, 'Logs', sourcename, timestamp)
 
 #test3 = vd.dedup_comany_db(test2,test)
-#print(test3)
+b = []
+b = np.array(b)
+
