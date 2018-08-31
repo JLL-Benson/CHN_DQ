@@ -15,7 +15,7 @@ import warnings
 
 
 # Source-Site-(City)-LoadRound
-sourcename = 'CM-West-CD-1'
+sourcename = 'CM-West-CQ-1'
 # YYYYMMDDHH
 timestamp = '20180803'
 # File path
@@ -142,6 +142,8 @@ def run(phrase):
         company_existing_review = pd.read_excel(reviewfilepath, sheet_name='2_Existing_Company', sort=False)
         company_address_review = pd.read_excel(reviewfilepath, sheet_name='3_No_Address_Company', sort=False)
         company_scrapy_list = pd.read_excel(backupfilepath, sheet_name='company_scrapy_list', sort=False)
+
+        # Enrich companies from business review
         company_load_list = vd.enrich_business(company_scrapy_list, company_duplicate_review)
         company_load_list = vd.enrich_business(company_load_list, company_existing_review)
         # Enrich companies without address
@@ -160,7 +162,7 @@ def run(phrase):
         temp, contact_load_list = vd.dedup_fix(company_load_list, contact_load_list, company_duplicate_review)
         temp, contact_load_list = vd.dedup_fix(company_load_list, contact_load_list, company_existing_review)
         contact_load_list = vd.enrich_contact(company_load_list, contact_load_list, company_load_colnames)
-        contact_load_list = contact_load_list[contact_load_list['Load'] == True]
+        contact_load_list = contact_load_list[contact_load_list['Load'] != False]
         contact_no_company = contact_load_list[contact_load_list['Load'] == False]
         contact_no_company['Reject_Reason'] = 'No company;  '
         contact_min_list = contact_validate_list[contact_validate_list['Load'] == False]
@@ -210,11 +212,40 @@ def run(phrase):
         reviewwriter.save()
         reviewwriter.close()
         print('---------- Done.---------- ')
+    elif phrase == 'Reload':
+        company_load_list = pd.read_excel(reviewfilepath, sheet_name='6_Company_Load', sort=False)
+        contact_load_list = pd.read_excel(reviewfilepath, sheet_name='6_Contact_Load', sort=False)
+        db.load_staging(company_load_list, company_load_colnames, 'Company', sourcename, timestamp)
+        db.load_staging(contact_load_list, contact_load_colnames, 'Contact', sourcename, timestamp)
+
+        # Loading logs
+        company_raw_list = pd.read_excel(rawfilepath, sheet_name='Company', sort=False)
+        contact_raw_list = pd.read_excel(rawfilepath, sheet_name='Contact', sort=False)
+        contact_raw_list['Source_ID'] = list(range(1, (len(contact_raw_list) + 1)))
+        contact_raw_list['Source_ID'] = contact_raw_list['Source_ID'].apply(lambda x: sourcename + '_' + timestamp + '_' + 'Contact' + '_' + str(x))
+        company_logs = vd.staging_log(company_raw_list, company_load_list, 'Company', logs_columns)
+        db.load_staging(company_logs, logs_columns, 'Logs', sourcename, timestamp)
+        contact_logs = vd.staging_log(contact_raw_list, contact_load_list, 'Contact', logs_columns)
+        db.load_staging(contact_logs, logs_columns, 'Logs', sourcename, timestamp)
+
+        # Loading summary
+        company_duplicate_list = pd.read_excel(reviewfilepath, sheet_name='1_Duplicate_Company_Full', sort=False)
+        company_existing_list = pd.read_excel(reviewfilepath, sheet_name='2_Existing_Company', sort=False)
+        company_standard_list = pd.read_excel(reviewfilepath, sheet_name='3_No_Address_Company', sort=False)
+        company_summary = vd.staging_summary('Company', company_raw_list, company_duplicate_list, company_existing_list, company_standard_list, company_load_list)
+        db.load_staging(company_summary, list(company_summary), 'Summary', sourcename, timestamp)
+        contact_validate_list = pd.read_excel(reviewfilepath, sheet_name='4_Validate_Contact', sort=False)
+        contact_duplicate_list = contact_validate_list[contact_validate_list['vc_Deduplicate'] == False]
+        contact_existing_list = contact_validate_list[contact_validate_list['db_New'] == False]
+        contact_standard_list = contact_validate_list[contact_validate_list['Load'] == False]
+        contact_summary = vd.staging_summary('Contact', contact_raw_list, contact_duplicate_list, contact_existing_list, contact_standard_list, contact_load_list)
+        db.load_staging(contact_summary, list(contact_summary), 'Summary', sourcename, timestamp)
+        # db.load_staging(company_scrapy_return, list(company_scrapy_return), 'Scrapy', sourcename, timestamp)
 
 
 if __name__ == '__main__':
     warnings.filterwarnings("ignore")
-    run('p3')
+    run('Reload')
 
 # contact_output =validate_contacts(contact_input_list, contact_colnames)
 # contact_output.to_excel(r'C:\Users\Benson.Chen\Desktop\test.xlsx', index=False, header=True, columns=contact_colnames, sheet_name='Contact')

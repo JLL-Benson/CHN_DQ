@@ -76,8 +76,8 @@ def dedup_comany_db(company_dedup_list, company_db_return):
 def dedup_contact_db(contact_format_list, contact_db_return):
     if contact_db_return.empty:
         return contact_db_return
-    contact_db_return['Reject_Reason'] = ''
-    contact_db_return['Existing'] = False
+    contact_format_list['Reject_Reason'] = ''
+    contact_format_list['Existing'] = False
     # email = contact_format_list.merge(contact_db_return, on=['Mobile'], how='left', suffixes=['', '_stage'])
     # contact_combine_list = pd.concat([contact_format_list, contact_db_return], keys=['Input', 'Stage'])
     # contact_combine_list['Reject_Reason'] = ''
@@ -257,9 +257,6 @@ def enrich_company(company_dedup_list, company_scrapy_result, company_colnames):
             company = enrich_scrapy(company, scrapy_best)
         # If no best match, return companies without address
         elif len(scrapy_best) < 1:
-            # scrapy_verify = scrapy_list[scrapy_list['地址'].notnull()].sort_values(by='Confidence')[0:5]
-            # company_scrapy_verify = company_scrapy_verify.append(scrapy_verify)
-            # company = enrich_scrapy(company, scrapy_best)
             if pd.isna(company['Billing_Address']):
                 company_scrapy_verify = company_scrapy_verify.append(company.to_frame().transpose())
         else:
@@ -286,7 +283,7 @@ def enrich_contact(company_load_list, contact_load_list, company_load_colnames):
         if pd.isna(contact['Company_Name_CN']):
             contact_load_list[index, 'Company_Name_CN'] = company['Company_Name_CN']
         if pd.isna(contact['Contact_Address']):
-            contact_load_list[index, 'Contact_Address'] = company['Contact_Address']
+            contact_load_list[index, 'Contact_Address'] = company['Billing_Address']
         if pd.isna(contact['District']):
             contact_load_list[index, 'District'] = company['District']
         if pd.isna(contact['City']):
@@ -303,7 +300,7 @@ def enrich_contact(company_load_list, contact_load_list, company_load_colnames):
 # Enrich no address companies:
 def enrich_no_address(company_load_list, company_address_review):
     company_address_review = company_address_review[company_address_review['Load'] == True]
-    for index, company in company_address_review:
+    for index, company in company_address_review.iterrows():
         state, city, district, company['Billing_Address'], zipcode = enrich_address(company['Billing_Address'])
         if pd.isna(company_load_list.loc[index, 'State']):
             company_load_list.loc[index, 'State'] = state
@@ -313,10 +310,10 @@ def enrich_no_address(company_load_list, company_address_review):
             company_load_list.loc[index, 'District'] = district
         if pd.isna(company_load_list.loc[index, 'Postal_Code']):
             company_load_list.loc[index, 'Postal_Code'] = zipcode
-        if pd.notna(company_load_list.loc[index, 'District']):
-            company_load_list.loc[index, 'Full_Address'] = company_load_list.loc[index, 'District'] + company_load_list.loc[index, 'Billing_Address']
-        else:
-            company_load_list.loc[index, 'Full_Address'] = company_load_list.loc[index, 'Billing_Address']
+
+    company_load_list.loc[pd.notnull(company_load_list['District']), 'Full_Address'] = company_load_list['District'] + company_load_list['Billing_Address']
+    company_load_list.loc[pd.isnull(company_load_list['District']), 'Full_Address'] = company_load_list['Billing_Address']
+
     return company_load_list
 
 
@@ -368,11 +365,11 @@ def enrich_scrapy(company, scrapy):
         company['Employee'] = scrapy['参保人数'].values[0]
 
     # If district is found in list, combine district and street
-    if pd.notna(company['District']):
-        company['Full_Address'] = company['District'] + company['Billing_Address']
-    else:
-        company['Full_Address'] = company['Billing_Address']
-    company['Full_Address'] = format_space(company['Full_Address'])
+    # if pd.notna(company['District']):
+    #     company['Full_Address'] = company['District'] + company['Billing_Address']
+    # else:
+    #     company['Full_Address'] = company['Billing_Address']
+    # company['Full_Address'] = format_space(company['Full_Address'])
     return company
 
 
