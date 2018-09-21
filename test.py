@@ -51,6 +51,17 @@ test2 = pd.DataFrame([[2,'ab',1],[2,2,3],[2,'ab',1]],columns=col)
 # db.load_staging(logs, logs_columns, 'Logs', sourcename, timestamp)
 
 #test3 = vd.dedup_comany_db(test2,test)
-b = []
-b = np.array(b)
+diff_source = ['CM-West-CD-1_20180803_Contact_56', 'CM-West-CD-1_20180803_Contact_459', 'CM-West-CD-1_20180803_Contact_183']
+mode= 'cONTACTR'
+difser = pd.Series(diff_source)
+# delta_logs = pd.DataFrame()
+# delta_logs['Source_ID'] = difser
+# delta_logs['Log_From'] = difser
+# delta_logs['Field'] = ['Source_ID']*len(difser)
+# delta_logs['Action_Type']= ['Delete']*len(difser)
+delta_logs = pd.DataFrame.from_dict({'Source_ID': diff_source, 'Entity_Type': [mode]*len(diff_source), 'Field': ['Source_ID']*len(diff_source), 'Action_Type': ['Delete']*len(diff_source), 'Log_From': diff_source, 'Log_To': ['NULL']*len(diff_source)})
+# delta_logs = pd.DataFrame.from_dict({ 'Entity_Type': [mode], 'Field': ['Source_ID'], 'Action_Type': ['Delete'],  'Log_To': ['NULL']})
+
+print(difser)
+print(delta_logs)
 

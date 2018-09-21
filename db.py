@@ -25,14 +25,35 @@ def load_staging(load_list, colnames, table, sourcename, timestamp):
     columns = 'STG_ID,' + ', '.join(colnames) + ', Source_Name, Source_Timestamp, Load_Timestamp'
 
     values = None
+    count = 0
     for index, row in load_list.iterrows():
-        row = map(lambda x: str(x).replace('\'', '\'\''), row)
+        row = map(lambda x: str(x).replace('\'', ''), row)
         value = '\',N\''.join(row).replace('nan', '')
         value = '(N\'CNCM_{}_\' +  CONVERT(NVARCHAR(100), NEWID()), N\'{}\', N\'{}\', N\'{}\', GETDATE())'.format(table, value, sourcename, timestamp)
         if values is None:
             values = value
         else:
             values = values + ', ' + value
+
+        count += 1
+        if count > 200:
+
+            query = 'INSERT INTO {}({}) VALUES {}'.format(tablenames[table], columns, values)
+
+            # If error, delete all records related this load
+            try:
+                cur.execute(query)
+                conn.commit()
+            except Exception as e:
+                print(e)
+                conn.rollback()
+                delete = 'DELETE * FROM {} WHERE SOURCE_NAME = {}'
+                delete_query = map(lambda x: delete.format(x, sourcename), tablenames.values())
+                delete_query = '; '.join(delete_query)
+                cur.execute(delete_query)
+                conn.commit()
+            values = None
+            count = 0
     query = 'INSERT INTO {}({}) VALUES {}'.format(tablenames[table], columns, values)
 
     # If error, delete all records related this load
@@ -47,7 +68,7 @@ def load_staging(load_list, colnames, table, sourcename, timestamp):
         delete_query = '; '.join(delete_query)
         cur.execute(delete_query)
         conn.commit()
-        
+
     conn.close()
     return 0
 
@@ -68,8 +89,7 @@ def get_one(column, table, value, colnames):
     conn = pymssql.connect(server, user, password, database)
 
     columns = ', '.join(colnames)
-
-    query = 'SELECT {} FROM {} WHERE {} = {}'.format(columns, tablenames[table], column, value)
+    query = 'SELECT {} FROM {} WHERE {} = \'{}\''.format(columns, tablenames[table], column, value)
     result = pd.read_sql(query, conn)
     df = pd.DataFrame(result)
     conn.close()

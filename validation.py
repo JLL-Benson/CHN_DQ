@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import re
 import db
+from confidence import hasCHN
 # from openpyxl import load_workbook
 
 
@@ -16,6 +17,7 @@ path = r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\Shared Files'
 lastname_list = pd.read_excel(path + '\LastName.xlsx', sheet_name='Sheet2', sort=False)
 geo_list = pd.read_excel(path + '\China City&District List.xlsx', sheet_name='district-full', sort=False)
 null_list = [r'^\s*null\s*$', r'^\s*nan\s*$', r'^\s*n/*a\s*$', r'^\s*tbd\s*$', r'^\s*-\s*$', r'^\s*$',  r'^\s*—\s*$']
+addrcol_list = ['Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country']
 
 company_common_suffix = ['分公司', '股份', '有限', '责任', '公司', '集团', '企业', '控股', '实业']
 company_common_func = ['银行', '置业', '房地产', '地产', '开发', '银行', '投资', '基金', '证券', '资本', '物业', '服务', '管理', '资产']
@@ -51,6 +53,7 @@ def dedup_company(company_common_list, contact_common_list):
             company_duplicate_full.loc[company_duplicate_full['Source_ID'] == company_masterid, 'Load'] = True
             company_common_list, contact_common_list = dedup_fix(company_common_list, contact_common_list, company_dup_group)
             company_duplicate_list = company_duplicate_list[company_duplicate_list['ComName_temp'] != dup]
+
     company_common_list.loc[company_common_list['vc_Deduplicate'] == False, 'Load'] = False
     return company_duplicate_list, company_duplicate_full, company_common_list, contact_common_list
 
@@ -132,43 +135,45 @@ def dedup_fix(company_list, contact_list, company_dup_group):
 def dedup_get_master(company_common_list, company_dup_group):
     if company_dup_group.empty:
         return None, company_common_list, company_dup_group
-    master_group = company_dup_group['Parent_Name'].dropna().unique()
-    master_name = company_dup_group['Company_Name'].dropna().unique()
-    master_name_cn = company_dup_group['Company_Name_CN'].dropna().unique()
     master_address = company_dup_group['Billing_Address'].dropna().unique()
-    master_city = company_dup_group['City'].dropna().unique()
-    master_state = company_dup_group['State'].dropna().unique()
-    master_country = company_dup_group['Country'].dropna().unique()
+    master_address_cn = company_dup_group['Billing_Address_CN'].dropna().unique()
     master_phone = company_dup_group['Phone'].dropna().unique()
     master_email = company_dup_group['Email'].dropna().unique()
     master_website = company_dup_group['Website'].dropna().unique()
 
     # If multiple duplicates contain details, no master id
-    if master_address.size > 1 or master_phone.size > 1 or master_email.size > 1 or master_website.size > 1:
+    if (master_address.size > 1) or (master_address_cn.size > 1) or (master_phone.size > 1) or (master_email.size > 1) or (master_website.size > 1):
         return None, company_common_list, company_dup_group
     else:
         company_masterindex = company_dup_group.index[0]
         company_masterid = company_dup_group['Source_ID'].values[0]
-        if not (master_group.size == 0):
-            company_common_list.ix[company_masterindex, 'Parent_Name'] = master_group[0]
-        if not (master_name.size == 0):
-            company_common_list.ix[company_masterindex, 'Company_Name'] = master_name[0]
-        if not (master_name_cn.size == 0):
-            company_common_list.ix[company_masterindex, 'Company_Name_CN'] = master_name_cn[0]
-        if not (master_address.size == 0):
-            company_common_list.ix[company_masterindex, 'Billing_Address'] = master_address[0]
-        if not (master_city.size == 0):
-            company_common_list.ix[company_masterindex, 'City'] = master_city[0]
-        if not (master_state.size == 0):
-            company_common_list.ix[company_masterindex, 'State'] = master_state[0]
-        if not (master_country.size == 0):
-            company_common_list.ix[company_masterindex, 'Country'] = master_country[0]
-        if not (master_phone.size == 0):
-            company_common_list.ix[company_masterindex, 'Phone'] = master_phone[0]
-        if not (master_website.size == 0):
-            company_common_list.ix[company_masterindex, 'Website'] = master_website[0]
-        if not (master_email.size == 0):
-            company_common_list.ix[company_masterindex, 'Email'] = master_email[0]
+
+        for col in list(company_common_list)[2:14]:
+            if col in list(company_dup_group):
+                master_col = company_dup_group[col].dropna().unique()
+                if not (master_col.size == 0):
+                    company_common_list.loc[company_masterindex, col] = master_col[0]
+
+        # if not (master_group.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Parent_Name'] = master_group[0]
+        # if not (master_name.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Company_Name'] = master_name[0]
+        # if not (master_name_cn.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Company_Name_CN'] = master_name_cn[0]
+        # if not (master_address.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Billing_Address'] = master_address[0]
+        # if not (master_city.size == 0):
+        #     company_common_list.ix[company_masterindex, 'City'] = master_city[0]
+        # if not (master_state.size == 0):
+        #     company_common_list.ix[company_masterindex, 'State'] = master_state[0]
+        # if not (master_country.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Country'] = master_country[0]
+        # if not (master_phone.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Phone'] = master_phone[0]
+        # if not (master_website.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Website'] = master_website[0]
+        # if not (master_email.size == 0):
+        #     company_common_list.ix[company_masterindex, 'Email'] = master_email[0]
 
         company_dup_group.loc[company_masterindex, 'Load'] = True
         company_dup_group['vc_Master_ID'] = company_masterid
@@ -181,54 +186,93 @@ def enrich_address(address):
     states = geo_list[geo_list['Level ID'] == 1]
     cities = geo_list[geo_list['Level ID'] == 2]
     districts = geo_list[geo_list['Level ID'] == 3]
-    state = None
-    city = None
-    district = None
-    street = None
-    zipcode = None
+    address_list = dict()
+
     if address is None or address is np.nan:
 
-        return state, city, district, street, zipcode
-    address = address.replace(' ', '')
-    address = address.replace('中国', '')
-    # Find direct city
-    for index, d in dcities.iterrows():
-        if d['Full Name'] in address or d['Name'] in address:
-            state = d['Name']
-            city = d['Name']
-            address = address.replace(d['Full Name'], '')
-            address = address.replace(d['Name'], '')
-            break
-    # Find state
-    for index, s in states.iterrows():
-        if s['Full Name'] in address or s['Name'] in address:
-            state = s['Name']
-            address = address.replace(s['Full Name'], '')
-            address = address.replace(s['Name'], '')
-            break
-    # Find city
-    for index, c in cities.iterrows():
-        if c['Full Name'] in address or c['Name'] in address:
-            city = c['Name']
-            address = address.replace(c['Full Name'], '')
-            address = address.replace(c['Name'], '')
-            break
-    # Find district
-    for index, dis in districts.iterrows():
-        if dis['Full Name'] in address:  # or dis['Name'] in address:
-            district = dis['Full Name']
-            address = address.replace(dis['Full Name'], '')
-            address = address.replace(dis['Name'], '')
-            break
-    zips = re.compile(r'\d{6}$')
-    zipcode = zips.findall(address)
-    address = zips.subn('', address)
-    if len(zipcode) > 0:
-        zipcode = zipcode[0]
-    else:
-        zipcode = None
-    street = address[0].strip()
-    return state, city, district, street, zipcode
+        return address_list
+    
+    # address = address.replace(' ', '')
+
+    # Address in CN
+    if hasCHN(address):
+        if '中国' in address:
+            address_list['Country'] = 'China'
+            address = address.replace('中国', '')
+
+        # Find direct city
+        for index, d in dcities.iterrows():
+            if d['Full Name'] in address or d['Name'] in address or d['PingYin3'] in address.lower():
+                address_list['State_CN'] = d['Name']
+                address_list['State'] = d['PingYin3'].capitalize()
+                address_list['City_CN'] = d['Name']
+                address_list['City'] = d['PingYin3'].capitalize()
+                address = address.replace(d['Full Name'], '')
+                address = address.replace(d['Name'], '')
+                break
+        # Find state
+        for index, s in states.iterrows():
+            if s['Full Name'] in address or s['Name'] in address or s['PingYin3'] in address.lower():
+
+                address_list['State_CN'] = s['Name']
+                address_list['State'] = s['PingYin3'].capitalize()
+                address = address.replace(s['Full Name'], '')
+                address = address.replace(s['Name'], '')
+                break
+        # Find city
+        for index, c in cities.iterrows():
+            if c['Full Name'] in address or c['Name'] in address or c['PingYin3'] in address.lower():
+                address_list['City_CN'] = c['Name']
+                address_list['City'] = c['PingYin3'].capitalize()
+                address = address.replace(c['Full Name'], '')
+                address = address.replace(c['Name'], '')
+                cpid = c['PID']
+                state = states[states['ID'] == cpid]
+                if 'State_CN' not in address_list.keys() and not state.empty:
+                    address_list['State_CN'] = state['Name'].values[0]
+                if 'State' not in address_list.keys() and not state.empty:
+                    address_list['State'] = state['PingYin3'].values[0].capitalize()
+                break
+        # Find district
+        for index, dis in districts.iterrows():
+            if dis['Full Name'] in address:  # or dis['PingYin3'] in address.lower() or dis['Name'] in address:
+                address_list['District_CN'] = dis['Full Name']
+                address_list['District'] = dis['PingYin3'].capitalize()
+                address = address.replace(dis['Full Name'], '')
+                dispid = dis['PID']
+                city = cities[cities['ID'] == dispid]
+                if 'City_CN' not in address_list.keys() and not city.empty:
+                    address_list['City_CN'] = city['Name'].values[0]
+                if 'City' not in address_list.keys() and not city.empty:
+                    address_list['City'] = city['PingYin3'].values[0].capitalize()
+                if not city.empty:
+                    cpid = city['PID'].values[0]
+                    state = states[states['ID'] == cpid]
+                    if 'State_CN' not in address_list.keys() and not state.empty:
+                        address_list['State_CN'] = state['Name'].values[0]
+                    if 'State' not in address_list.keys() and not state.empty:
+                        address_list['State'] = state['PingYin3'].values[0].capitalize()
+                # address = address.replace(dis['Name'], '')
+                break
+        zips = re.compile(r'\d{6}$')
+        zipcode = zips.findall(address)
+        address = zips.subn('', address)
+        if len(zipcode) > 0:
+            address_list['Postal_Code'] = zipcode[0]
+        if hasCHN(address[0].strip()):
+            address_list['Billing_Address_CN'] = address[0].replace(' ', '')
+            if 'District_CN' in address_list.keys():
+                address_list['Full_Address_CN'] = address_list['District_CN'] + address_list['Billing_Address_CN']
+            else:
+                address_list['Full_Address_CN'] = address_list['Billing_Address_CN']
+        else:
+            address_list['Billing_Address'] = address[0].strip()
+            if 'District' in address_list.keys():
+                address_list['Full_Address'] = address_list['District'] + address_list['Billing_Address']
+            else:
+                address_list['Full_Address'] = address_list['Billing_Address']           
+
+    return address_list
 # TODO: Zipcode fill
 
 
@@ -243,8 +287,9 @@ def enrich_business(clean_list, business_return):
 
 # Enrich company by best qichacha return
 def enrich_company(company_dedup_list, company_scrapy_result, company_colnames):
-    company_scrapy_verify = pd.DataFrame(columns=list(company_colnames))
+    company_scrapy_verify = pd.DataFrame(columns=company_colnames)
     for index, company in company_dedup_list.iterrows():
+
         if company['db_New'] == False:
             continue
         sourceid = company['Source_ID']
@@ -253,15 +298,17 @@ def enrich_company(company_dedup_list, company_scrapy_result, company_colnames):
 
         # If multiple best match, get first one with address
         if len(scrapy_best) > 1:
-            scrapy_best = scrapy_best[scrapy_best['地址'].notnull()].iloc[0].to_frame().transpose()
+            if len(scrapy_best[scrapy_best['地址'].notnull()]) > 1:
+                scrapy_best = scrapy_best[scrapy_best['地址'].notnull()].iloc[0].to_frame().transpose()
+            else:
+                scrapy_best = scrapy_best.iloc[0].to_frame().transpose()
             company = enrich_scrapy(company, scrapy_best)
         # If no best match, return companies without address
         elif len(scrapy_best) < 1:
-            if pd.isna(company['Billing_Address']):
+            if pd.isna(company['Billing_Address']) and pd.isna(company['Billing_Address_CN']):
                 company_scrapy_verify = company_scrapy_verify.append(company.to_frame().transpose())
         else:
             company = enrich_scrapy(company, scrapy_best)
-
         company_dedup_list[company_dedup_list['Source_ID'] == company['Source_ID']] = company.to_frame().transpose()
     company_dedup_list = validate_company(company_dedup_list)
     company_scrapy_verify = validate_company(company_scrapy_verify)
@@ -272,28 +319,40 @@ def enrich_company(company_dedup_list, company_scrapy_result, company_colnames):
 def enrich_contact(company_load_list, contact_load_list, company_load_colnames):
     for index, contact in contact_load_list.iterrows():
         company_id = contact['Source_Company_ID']
+        if company_id is np.nan:
+            contact_load_list.loc[index, 'Load'] = False
+            continue
         company = company_load_list[company_load_list['Source_ID'] == company_id]
         if company.empty:
             company = db.get_one('Source_ID', 'Company', company_id, company_load_colnames)
             if company.empty:
-                contact_load_list.loc[contact_load_list['Source_Company_ID'], 'Load'] = False
+                contact_load_list.loc[index, 'Load'] = False
                 continue
-        if pd.isna(contact['Company_Name']):
-            contact_load_list[index, 'Company_Name'] = company['Company_Name']
-        if pd.isna(contact['Company_Name_CN']):
-            contact_load_list[index, 'Company_Name_CN'] = company['Company_Name_CN']
-        if pd.isna(contact['Contact_Address']):
-            contact_load_list[index, 'Contact_Address'] = company['Billing_Address']
-        if pd.isna(contact['District']):
-            contact_load_list[index, 'District'] = company['District']
-        if pd.isna(contact['City']):
-            contact_load_list[index, 'City'] = company['City']
-        if pd.isna(contact['State']):
-            contact_load_list[index, 'State'] = company['State']
-        if pd.isna(contact['Postal_Code']):
-            contact_load_list[index, 'Postal_Code'] = company['Postal_Code']
-        if pd.isna(contact['Country']):
-            contact_load_list[index, 'Country'] = company['Country']
+
+        if pd.isna(contact['Company_Name']) and pd.notna(company['Company_Name']).all():
+            contact_load_list.loc[index, 'Company_Name'] = company['Company_Name'].values[0]
+        if pd.isna(contact['Company_Name_CN']) and pd.notna(company['Company_Name_CN']).all():
+            contact_load_list.loc[index, 'Company_Name_CN'] = company['Company_Name_CN'].values[0]
+        if pd.isna(contact['Billing_Address']) and pd.notna(company['Billing_Address']).all():
+            contact_load_list.loc[index, 'Billing_Address'] = company['Billing_Address'].values[0]
+        if pd.isna(contact['Billing_Address_CN']) and pd.notna(company['Billing_Address_CN']).all():
+            contact_load_list.loc[index, 'Billing_Address_CN'] = company['Billing_Address_CN'].values[0]
+        if pd.isna(contact['District']) and pd.notna(company['District']).all():
+            contact_load_list[index, 'District'] = company['District'].values[0]
+        if pd.isna(contact['District_CN']) and pd.notna(company['District_CN']).all():
+            contact_load_list[index, 'District_CN'] = company['District_CN'].values[0]
+        if pd.isna(contact['City']) and pd.notna(company['City']).all():
+            contact_load_list.loc[index, 'City'] = company['City'].values[0]
+        if pd.isna(contact['City_CN']) and pd.notna(company['City_CN']).all():
+            contact_load_list.loc[index, 'City_CN'] = company['City_CN'].values[0]
+        if pd.isna(contact['State']) and pd.notna(company['State']).all():
+            contact_load_list.loc[index, 'State'] = company['State'].values[0]
+        if pd.isna(contact['State_CN']) and pd.notna(company['State_CN']).all():
+            contact_load_list.loc[index, 'State_CN'] = company['State_CN'].values[0]
+        if pd.isna(contact['Postal_Code']) and pd.notna(company['Postal_Code']).all():
+            contact_load_list.loc[index, 'Postal_Code'] = company['Postal_Code'].values[0]
+        if pd.isna(contact['Country']) and pd.notna(company['Country']).all():
+            contact_load_list.loc[index, 'Country'] = company['Country'].values[0]
     return contact_load_list
 
 
@@ -301,62 +360,58 @@ def enrich_contact(company_load_list, contact_load_list, company_load_colnames):
 def enrich_no_address(company_load_list, company_address_review):
     company_address_review = company_address_review[company_address_review['Load'] == True]
     for index, company in company_address_review.iterrows():
-        state, city, district, company['Billing_Address'], zipcode = enrich_address(company['Billing_Address'])
-        if pd.isna(company_load_list.loc[index, 'State']):
-            company_load_list.loc[index, 'State'] = state
-        if pd.isna(company_load_list.loc[index, 'City']):
-            company_load_list.loc[index, 'City'] = city
-        if pd.isna(company_load_list.loc[index, 'District']):
-            company_load_list.loc[index, 'District'] = district
-        if pd.isna(company_load_list.loc[index, 'Postal_Code']):
-            company_load_list.loc[index, 'Postal_Code'] = zipcode
+        sourceid = company['Source_ID']
+        if pd.notna(company['Billing_Address_CN']):
+            address_list = enrich_address(company['Billing_Address_CN'])
+        elif pd.notna(company['Billing_Address']):
+            address_list = enrich_address(company['Billing_Address'])
+        for key in address_list.keys():
+            company_load_list.loc[company_load_list['Source_ID'] == sourceid, key] = address_list[key]
+        # if pd.isna(company_load_list.loc[index, 'State']):
+        #     company_load_list.loc[index, 'State'] = state
+        # if pd.isna(company_load_list.loc[index, 'City']):
+        #     company_load_list.loc[index, 'City'] = city
+        # if pd.isna(company_load_list.loc[index, 'District']):
+        #     company_load_list.loc[index, 'District'] = district
+        # if pd.isna(company_load_list.loc[index, 'Postal_Code']):
+        #     company_load_list.loc[index, 'Postal_Code'] = zipcode
 
-    company_load_list.loc[pd.notnull(company_load_list['District']), 'Full_Address'] = company_load_list['District'] + company_load_list['Billing_Address']
-    company_load_list.loc[pd.isnull(company_load_list['District']), 'Full_Address'] = company_load_list['Billing_Address']
+    # company_load_list.loc[pd.notnull(company_load_list['District']), 'Full_Address'] = company_load_list['District'] + company_load_list['Billing_Address']
+    # company_load_list.loc[pd.isnull(company_load_list['District']), 'Full_Address'] = company_load_list['Billing_Address']
 
     return company_load_list
 
 
-    # Enrich company detail by qichacha
+# Enrich company detail by qichacha
 def enrich_scrapy(company, scrapy):
 
     if scrapy.empty:
-        state, city, district, company['Billing_Address'], zipcode = enrich_address(company['Billing_Address'])
-        if pd.isna(company['State']):
-            company['State'] = state
-        if pd.isna(company['City']):
-            company['City'] = city
-        if pd.isna(company['District']):
-            company['District'] = district
-        if pd.isna(company['Postal_Code']):
-            company['Postal_Code'] = zipcode
+        return company
+
     else:
         if pd.notna(scrapy['英文名']).any():
             company['Company_Name'] = scrapy['英文名'].values[0]
         company['Company_Name_CN'] = scrapy['公司名称'].values[0]
-
         if scrapy['境外公司'] is True:
             company['Country'] = ''
         else:
             company['Country'] = 'China'
 
-        if pd.isna(company['Billing_Address']):
-            state, company['City'], company['District'], company['Billing_Address'], company['Postal_Code'] = enrich_address(scrapy['地址'].values[0])
+        if pd.isna(company['Billing_Address_CN']):
+            address_list = enrich_address(scrapy['地址'].values[0])
+            for key in address_list.keys():
+                company[key] = address_list[key]
+
+            # Set state as '所属地区'
             if pd.notna(scrapy['所属地区']).all():
-                company['State'] = scrapy['所属地区'].values[0]
-            else:
-                company['State'] = state
-        # Keep original address
-        else:
-            state, city, district, company['Billing_Address'], zipcode = enrich_address(company['Billing_Address'])
-            if pd.isna(company['State']):
-                company['State'] = state
-            if pd.isna(company['City']):
-                company['City'] = city
-            if pd.isna(company['District']):
-                company['District'] = district
-            if pd.isna(company['Postal_Code']):
-                company['Postal_Code'] = zipcode
+                state = scrapy['所属地区'].values[0]
+                states = geo_list[geo_list['Level ID'] == 1]
+                for index, s in states.iterrows():
+                    if s['Full Name'] == state or s['Name'] == state or s['PingYin3']  == state.lower():
+                        company['State_CN'] = s['Name']
+                        company['State'] = s['PingYin3'].capitalize()
+                        break
+
         # company['Company_Type'] = scrapy['公司类型'].values[0]
         company['Phone'] = scrapy['电话'].values[0]
         company['Website'] = scrapy['网址'].values[0]
@@ -364,12 +419,6 @@ def enrich_scrapy(company, scrapy):
         company['Industry'] = scrapy['所属行业'].values[0]
         company['Employee'] = scrapy['参保人数'].values[0]
 
-    # If district is found in list, combine district and street
-    # if pd.notna(company['District']):
-    #     company['Full_Address'] = company['District'] + company['Billing_Address']
-    # else:
-    #     company['Full_Address'] = company['Billing_Address']
-    # company['Full_Address'] = format_space(company['Full_Address'])
     return company
 
 
@@ -431,7 +480,7 @@ def format_space(s):
 
 
 # Initial company, Null, '', space, 'N/A', '-' check
-def init_list(raw_list, colnames, *args):
+def init_list(raw_list, colnames, **kwargs):
     for col in colnames:
         for i in null_list:
             if col not in list(raw_list) or pd.isnull(raw_list[col]).all():
@@ -443,30 +492,39 @@ def init_list(raw_list, colnames, *args):
                     raw_list[col] = raw_list[col].astype(object).str.lower().replace(i, np.nan, regex=True)
                     raw_list[col] = raw_list[col].astype(object).str.title()
 
-    if len(args) > 0:
-        if args[0] == 'Company':
-            raw_list['db_New'] = True
-            raw_list['Load'] = True
-            raw_list['Company_Name_CN'] = raw_list.loc[pd.notnull(raw_list['Company_Name_CN']), 'Company_Name_CN'].apply(lambda x: x.replace(' ', ''))
-            for index, company in raw_list.iterrows():
-                state, city, district, raw_list.loc[index, 'Billing_Address'], zipcode = enrich_address(company['Billing_Address'])
-                if pd.isna(company['State']):
-                    raw_list.loc[index, 'State'] = state
-                if pd.isna(company['City']):
-                    raw_list.loc[index, 'City'] = city
-                if pd.isna(company['District']):
-                    raw_list.loc[index, 'District'] = district
-                if pd.isna(company['Postal_Code']):
-                    raw_list.loc[index, 'Postal_Code'] = zipcode
-            # if len(args) > 2:
-            #     raw_list['Source_ID'] = raw_list['Source_ID'].apply(lambda x: args[1] + '_' + args[2] + '_' + 'Company' + '_' + str(x))
-        if args[0] == 'Contact':
-            raw_list['db_New'] = True
-            raw_list['Load'] = True
-            raw_list['Source_ID'] = list(range(1, (len(raw_list) + 1)))
-            raw_list['Source_ID'] = raw_list['Source_ID'].apply(lambda x: args[1] + '_' + args[2] + '_' + 'Contact' + '_' + str(x))
-            # if len(args) > 2 and raw_list:
-            #     raw_list['Source_Company_ID'] = raw_list['Source_Company_ID'].apply(lambda x: args[1] + '_' + args[2] + '_' + 'Company' + '_' + str(x))
+    if kwargs['mode'] == 'Company':
+        raw_list['db_New'] = True
+        raw_list['Load'] = True
+        raw_list['Company_Name_CN'] = raw_list.loc[pd.notnull(raw_list['Company_Name_CN']), 'Company_Name_CN'].apply(lambda x: x.replace(' ', ''))
+        for index, company in raw_list.iterrows():
+            address_list = dict()
+            if pd.notna(company['Billing_Address_CN']):
+                address_list = enrich_address(company['Billing_Address_CN'])
+            elif pd.notna(company['Billing_Address']):
+                address_list = enrich_address(company['Billing_Address'])
+            for key in address_list.keys():
+                raw_list.loc[index, key] = address_list[key]
+        # if len(args) > 2:
+        #     raw_list['Source_ID'] = raw_list['Source_ID'].apply(lambda x: args[1] + '_' + args[2] + '_' + 'Company' + '_' + str(x))
+    if kwargs['mode'] == 'Contact':
+        raw_list['db_New'] = True
+        raw_list['Load'] = True
+        raw_list['Source_ID'] = list(range(1, (len(raw_list) + 1)))
+        raw_list['Source_ID'] = raw_list['Source_ID'].apply(lambda x: kwargs['sourcename'] + '_' + kwargs['timestamp'] + '_' + 'Contact' + '_' + str(x))
+        if 'company' in kwargs.keys():
+            company_list = kwargs['company']
+            raw_list['Billing_Address'] = company_list['Billing_Address']
+            raw_list['Billing_Address_CN'] = company_list['Billing_Address_CN']
+            raw_list['District'] = company_list['District']
+            raw_list['District_CN'] = company_list['District_CN']
+            raw_list['City'] = company_list['City']
+            raw_list['City_CN'] = company_list['City_CN']
+            raw_list['State'] = company_list['State']
+            raw_list['State_CN'] = company_list['State_CN']
+            raw_list['Postal_Code'] = company_list['Postal_Code']
+            raw_list['Country'] = company_list['Country']
+        # if len(args) > 2 and raw_list:
+        #     raw_list['Source_Company_ID'] = raw_list['Source_Company_ID'].apply(lambda x: args[1] + '_' + args[2] + '_' + 'Company' + '_' + str(x))
     return raw_list
 
 
@@ -546,23 +604,25 @@ def staging_log(raw_list, load_list, mode, logs_columns):
             # No similar company name, log as delete
             if load_list[load_list['ComName_temp'] == comname_temp].empty:
                 delta_logs = pd.DataFrame.from_dict(
-                    {'Source_ID': [id], 'Entity_Type': [mode], 'Field': 'Source_ID', 'Action_Type': ['Delete'], 'Log_From': [id],
-                     'Log_To': [None]})
+                    {'Source_ID': [id], 'Entity_Type': [mode], 'Field': ['Source_ID'], 'Action_Type': ['Delete'], 'Log_From': [id],
+                     'Log_To': ['NULL']})
             else:
                 delta_logs = pd.DataFrame.from_dict(
-                    {'Source_ID': [load_list.loc[load_list['ComName_temp'] == comname_temp, 'Source_ID'].values[0]], 'Entity_Type': [mode], 'Field': 'Source_ID', 'Action_Type': ['Merge'],
+                    {'Source_ID': [load_list.loc[load_list['ComName_temp'] == comname_temp, 'Source_ID'].values[0]], 'Entity_Type': [mode], 'Field': ['Source_ID'], 'Action_Type': ['Merge'],
                      'Log_From': [id],
                      'Log_To': [load_list.loc[load_list['ComName_temp'] == comname_temp, 'Source_ID'].values[0]]})
         logs = logs.append(delta_logs, ignore_index=True)
-        checklist = ['Parent_Name', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'Postal_Code', 'District', 'City', 'State', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website',
-                     'Industry', 'Revenue', 'Employee', 'Full_Address']
+        checklist = ['Parent_STG_ID', 'Parent_Name', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full_Address', 'Full_Address_CN']
 
     # Contact deletion
     if mode == 'Contact':
         if len(diff_source) > 0:
-            delta_logs = pd.DataFrame.from_dict({'Source_ID': [diff_source], 'Entity_Type': [mode], 'Field': 'Source_ID', 'Action_Type': ['Delete'], 'Log_From': [diff_source], 'Log_To': [None]})
+            delta_logs = pd.DataFrame.from_dict(
+                {'Source_ID': diff_source, 'Entity_Type': [mode] * len(diff_source), 'Field': ['Source_ID'] * len(diff_source), 'Action_Type': ['Delete'] * len(diff_source), 'Log_From': diff_source,
+                 'Log_To': ['NULL'] * len(diff_source)})
             logs = logs.append(delta_logs, ignore_index=True)
-        checklist = ['Company_Name', 'Company_Name_CN', 'First_Name', 'Last_Name', 'First_Name_CN', 'Last_Name_CN', 'Email', 'Phone', 'Mobile', 'Fax', 'Title', 'Source_Company_ID']
+        checklist = ['Company_Name', 'Company_Name_CN', 'First_Name', 'Last_Name', 'First_Name_CN', 'Last_Name_CN', 'Email', 'Phone', 'Mobile', 'Fax', 'Title',  'Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country', 'Preferred_Language', 'Invest_Sectors', 'Investor_Purpose', 'Source_Company_ID', 'Comment']
+
     # Company & Contact, same source_id merge, modification, addition
     combine_list = raw_list.append(load_list[list(raw_list)])
     combine_list['Duplicate'] = combine_list.duplicated(subset=checklist, keep=False)
@@ -582,7 +642,7 @@ def staging_log(raw_list, load_list, mode, logs_columns):
                 if pd.isna(load_list.loc[load_list['Source_ID'] == id, col]).all():
                     continue
                 else:
-                    add_logs = pd.DataFrame.from_dict({'Source_ID': [id], 'Entity_Type': [mode], 'Field': [col], 'Action_Type': ['Add'], 'Log_From': [None], 'Log_To': [load_list.loc[load_list['Source_ID'] == id, col].values[0]]})
+                    add_logs = pd.DataFrame.from_dict({'Source_ID': [id], 'Entity_Type': [mode], 'Field': [col], 'Action_Type': ['Add'], 'Log_From': ['NULL'], 'Log_To': [load_list.loc[load_list['Source_ID'] == id, col].values[0]]})
                     logs = logs.append(add_logs, ignore_index=True)
             # Modification
             else:
@@ -624,7 +684,7 @@ def validate_common(company_init_list, contact_init_list):
 
 # Check company existing address
 def validate_company(company_list):
-    company_list['vc_Address'] = company_list['Billing_Address'].apply(lambda x: pd.notna(x))
+    company_list['vc_Address'] = (company_list['Billing_Address'].apply(lambda x: pd.isna(x)) & company_list['Billing_Address_CN'].apply(lambda x: pd.isna(x)))
     company_list['Load'] = company_list['vc_Address'] & company_list['db_New'] & company_list['vc_Deduplicate']
     return company_list
 
@@ -641,8 +701,8 @@ def validate_contacts(contact_dedup_list, contact_colnames, company_scrapy_list)
         if not company.empty:
             contact['Company_Name'] = company['Company_Name'].values[0]
             contact['Company_Name_CN'] = company['Company_Name_CN'].values[0]
-            if pd.isna(contact['Contact_Address']):
-                contact['Contact_Address'] = company['Full_Address'].values[0]
+            if pd.isna(contact['Billing_Address']):
+                contact['Billing_Address'] = company['Full_Address'].values[0]
             if pd.isna(contact['City']):
                 contact['City'] = company['City'].values[0]
             if pd.isna(contact['State']):
@@ -691,7 +751,6 @@ def validate_email(contact, company):
         return contact
     # TODO: Email format check
 
-    # Email Du
     # Email must contain @
     if '@' in email:
         eformat = True

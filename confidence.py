@@ -13,6 +13,7 @@ import validation as vd
 # company_input_list = pd.read_excel(r'C:\Users\Benson.Chen\JLL\TDIM-GZ - Documents\Capforce\ICG\From ICG\icg-Company Check.xlsx',sheet_name='Company')
 # company_scrapy_list = pd.read_excel(r'C:\Users\Benson.Chen\Desktop\Capforce\ICG\QiChaCha\QiChaCha2018062223.xlsx',sheet_name='Sheet1')
 
+
 # For english, split company name by space and calculate distance by matching words
 def lvEN(com1, com2):
     list1 = com1.split(' ')
@@ -33,12 +34,14 @@ def lvEN(com1, com2):
             d[i][j] = min(delete, insert, sub)
     return d[i][j]
 
+
 # Check name contain Chinese
 def hasCHN(str):
     for ch in str.encode().decode('utf-8'):
         if u'\u4e00' <= ch <= u'\u9fff':
             return True
     return False
+
 
 def getConfidence(company_scrapy):
     company_search_key = company_scrapy['搜索词']

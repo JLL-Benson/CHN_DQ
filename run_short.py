@@ -15,7 +15,7 @@ import warnings
 
 
 # Source-Site-(City)-LoadRound
-sourcename = 'CM-West-CQ-1'
+sourcename = 'CM-West-CD-1'
 # YYYYMMDDHH
 timestamp = '20180803'
 # File path
@@ -30,11 +30,11 @@ scrapyfilename = r'\CHN-DQ_' + sourcename + '_' + timestamp + '_SCRAPY.xlsx'
 scrapyfilepath = path + scrapyfilename
 # backupfilepath =r'C:\Users\Benson.Chen\Desktop\test_com.xlsx'
 
-contact_colnames = ['Source_ID', 'Company_Name', 'Company_Name_CN', 'Name', 'First_Name', 'Last_Name', 'First_Name_CN', 'Last_Name_CN', 'Email', 'Phone', 'Mobile', 'Fax', 'Title', 'Contact_Address', 'City', 'State', 'Postal_Code', 'Country', 'Preferred_Language', 'Invest_Sectors', 'Investor_Purpose', 'Source_Company_ID', 'Comment', 'Reject_Reason', 'Load', 'db_New', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
-contact_load_colnames = ['Source_ID', 'Company_Name', 'Company_Name_CN', 'First_Name', 'Last_Name', 'First_Name_CN', 'Last_Name_CN', 'Email', 'Phone', 'Mobile', 'Fax', 'Title', 'Contact_Address', 'District', 'City', 'State', 'Postal_Code', 'Country', 'Preferred_Language', 'Invest_Sectors', 'Investor_Purpose', 'Source_Company_ID', 'Comment', 'Load']
-company_colnames = ['Source_ID', 'Parent_Name', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'District', 'City', 'State', 'Postal_Code', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full_Address', 'Comment', 'ComName_temp', 'State_Abbr', 'Load', 'db_New', 'vc_Deduplicate', 'vc_Address']
-company_load_colnames = ['Source_ID', 'Parent_Name', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'District', 'City', 'State', 'Postal_Code', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full_Address', 'Comment', 'ComName_temp', 'Load']
-company_dup_colnames = ['Source_ID', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'City', 'State', 'Phone', 'Website', 'Email', 'ComName_temp', 'vc_Deduplicate', 'db_New', 'Load', 'vc_Master_ID']
+contact_colnames = ['Source_ID', 'Company_Name', 'Company_Name_CN', 'Name', 'First_Name', 'Last_Name', 'First_Name_CN', 'Last_Name_CN', 'Email', 'Phone', 'Mobile', 'Fax', 'Title', 'Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country', 'Preferred_Language', 'Invest_Sectors', 'Investor_Purpose', 'Source_Company_ID', 'Comment', 'Reject_Reason', 'Load', 'db_New', 'vc_Deduplicate', 'vn_Lastname_CN', 'vn_Name_Swap', 'vn_Name_Space', 'vn_Name_Check', 've_Email_Format', 've_Email_Suffix', 've_Email_Domain', 've_Email_Check']
+contact_load_colnames = ['Source_ID', 'Company_Name', 'Company_Name_CN', 'First_Name', 'Last_Name', 'First_Name_CN', 'Last_Name_CN', 'Email', 'Phone', 'Mobile', 'Fax', 'Title',  'Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country', 'Preferred_Language', 'Invest_Sectors', 'Investor_Purpose', 'Source_Company_ID', 'Comment', 'Load']
+company_colnames = ['Source_ID', 'Parent_STG_ID', 'Parent_Name', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full_Address', 'Full_Address_CN', 'Comment', 'ComName_temp', 'State_Abbr', 'Load', 'db_New', 'vc_Deduplicate', 'vc_Address']
+company_load_colnames = ['Source_ID', 'Parent_STG_ID', 'Parent_Name', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full_Address', 'Full_Address_CN', 'Comment', 'ComName_temp', 'Load']
+company_dup_colnames = ['Source_ID', 'Parent_STG_ID', 'Parent_Name', 'Company_Name', 'Company_Name_CN', 'Billing_Address', 'Billing_Address_CN', 'District', 'District_CN', 'City', 'City_CN', 'State', 'State_CN', 'Postal_Code', 'Country', 'Company_Type', 'Phone', 'Fax', 'Email', 'Website', 'Industry', 'Revenue', 'Employee', 'Full_Address', 'Full_Address_CN', 'Comment', 'ComName_temp', 'vc_Deduplicate', 'db_New', 'Load', 'vc_Master_ID']
 logs_columns = ['Source_ID', 'Entity_Type', 'Field', 'Action_Type', 'Log_From', 'Log_To']
 
 
@@ -46,8 +46,8 @@ def run(phrase):
         company_raw_list = pd.read_excel(rawfilepath, sheet_name='Company', sort=False, dtype=str)
         contact_raw_list = pd.read_excel(rawfilepath, sheet_name='Contact', sort=False, dtype=str)
         # Initialization
-        company_init_list = vd.init_list(company_raw_list, company_colnames, 'Company')
-        contact_init_list = vd.init_list(contact_raw_list, contact_colnames, 'Contact', sourcename, timestamp)
+        company_init_list = vd.init_list(company_raw_list, company_colnames, mode='Company')
+        contact_init_list = vd.init_list(contact_raw_list, contact_colnames, mode='Contact', sourcename=sourcename, timestamp=timestamp, company=company_init_list)
         # Deduplication within source data
         company_common_list, contact_common_list = vd.validate_common(company_init_list, contact_init_list)
         # Map state abbreviation and enrich state
@@ -85,7 +85,7 @@ def run(phrase):
 
         company_dedup_list = pd.read_excel(backupfilepath, sheet_name='company_dedup_list', sort=False)
         # company_dedup_list = company_dedup_list[company_dedup_list['db_New'] != False]
-        company_dedup_list = company_dedup_list[(company_dedup_list['db_New'] != False) & pd.isnull(company_dedup_list['Billing_Address'])]
+        company_dedup_list = company_dedup_list[(company_dedup_list['db_New'] != False) & (company_dedup_list['Load'] == True) & pd.isnull(company_dedup_list['Billing_Address']) & pd.isnull(company_dedup_list['Billing_Address_CN'])]
         company_scrapy_return = qichacha(company_dedup_list, scrapyfilepath, 'company_scrapy_return')
         company_scrapy_return.to_excel(scrapyfilepath, index=False, header=True, columns=list(company_scrapy_return), sheet_name='company_scrapy_return')
 
@@ -94,7 +94,7 @@ def run(phrase):
         print('Phrase 3: Enrich companies with web scraper returns')
 
         company_scrapy_return = pd.read_excel(scrapyfilepath, sheet_name='company_scrapy_return', sort=False)
-        company_scrapy_return = vd.init_list(company_scrapy_return, list(company_scrapy_return))
+        company_scrapy_return = vd.init_list(company_scrapy_return, list(company_scrapy_return), mode='')
         company_scrapy_return['Confidence'] = company_scrapy_return.apply(getConfidence, axis=1)
         company_scrapy_return['境外公司'] = company_scrapy_return['境外公司'].replace({0: False, 1: True})
         company_scrapy_return.to_excel(scrapyfilepath, index=False, header=True, columns=list(company_scrapy_return), sheet_name='company_scrapy_return')
@@ -157,13 +157,13 @@ def run(phrase):
         print('Phrase 6: Merge deduplicate companies and clean relative contacts. Enrich contacts with business return.')
         contact_validate_review = pd.read_excel(reviewfilepath, sheet_name='4_Validate_Contact', sort=False)
         contact_validate_list = pd.read_excel(backupfilepath, sheet_name='contact_validate_list', sort=False)
-
         contact_load_list = vd.enrich_business(contact_validate_list, contact_validate_review)
         temp, contact_load_list = vd.dedup_fix(company_load_list, contact_load_list, company_duplicate_review)
         temp, contact_load_list = vd.dedup_fix(company_load_list, contact_load_list, company_existing_review)
         contact_load_list = vd.enrich_contact(company_load_list, contact_load_list, company_load_colnames)
-        contact_load_list = contact_load_list[contact_load_list['Load'] != False]
-        contact_no_company = contact_load_list[contact_load_list['Load'] == False]
+        # contact_load_list = contact_load_list[contact_load_list['Load'] != False]
+        contact_load_list.loc[~contact_load_list['Source_Company_ID'].isin(company_load_list['Source_ID'].tolist()), 'Load'] = False
+        contact_no_company = contact_load_list[~contact_load_list['Source_Company_ID'].isin(company_load_list['Source_ID'].tolist())]
         contact_no_company['Reject_Reason'] = 'No company;  '
         contact_min_list = contact_validate_list[contact_validate_list['Load'] == False]
         contact_min_list = contact_min_list.append(contact_no_company)
@@ -173,7 +173,7 @@ def run(phrase):
         # Load company and contact into staging table
         print('Phrase 7:  Load company and contact into staging table.')
         db.load_staging(company_load_list, company_load_colnames, 'Company', sourcename, timestamp)
-        db.load_staging(contact_load_list, contact_load_colnames, 'Contact', sourcename, timestamp)
+        db.load_staging(contact_load_list[contact_load_list['Load']!=False], contact_load_colnames, 'Contact', sourcename, timestamp)
         print('{} companies load into staging table.'.format(len(company_load_list)))
         print('{} contacts load into staging table.'.format(len(contact_load_list)))
 
@@ -245,7 +245,7 @@ def run(phrase):
 
 if __name__ == '__main__':
     warnings.filterwarnings("ignore")
-    run('Reload')
+    run('p4')
 
 # contact_output =validate_contacts(contact_input_list, contact_colnames)
 # contact_output.to_excel(r'C:\Users\Benson.Chen\Desktop\test.xlsx', index=False, header=True, columns=contact_colnames, sheet_name='Contact')
